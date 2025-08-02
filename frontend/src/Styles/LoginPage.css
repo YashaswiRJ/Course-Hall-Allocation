@@ -1,0 +1,137 @@
+/* --- Import a clean, professional font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Main container with a dark, professional gradient --- */
+.login-page-container {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensures it takes full viewport height */
+    width: 100vw;      /* Ensures it takes full viewport width */
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); /* Dark slate gradient */
+    overflow: hidden; /* Prevents any accidental scrollbars on the body */
+    box-sizing: border-box;
+}
+
+/* --- The main login card --- */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    color: #1a202c;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Media query for smaller screens to reduce padding */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 2rem;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Header styles --- */
+.login-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+}
+
+.login-header p {
+    text-align: center;
+    font-weight: 400;
+    color: #718096; /* A softer grey for subtitle */
+    margin-bottom: 2.5rem;
+}
+
+/* --- Form element styles --- */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #4a5568;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    background: #fdfdff;
+    color: #2d3748;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field::placeholder {
+    color: #a0aec0;
+}
+
+/* --- Updated focus color to a deep teal --- */
+.input-field:focus {
+    outline: none;
+    border-color: #047857; /* Deep Teal/Green */
+    box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+}
+
+/* --- Error message --- */
+.error-message {
+    color: #e53e3e; /* A standard error red */
+    font-size: 0.875rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    height: 1.25em; /* Reserve space to prevent layout shift */
+}
+
+/* --- Submit button with new theme color --- */
+.submit-button {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #059669; /* Vibrant Teal/Green */
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-button:hover {
+    background: #047857; /* Darker shade for hover */
+}
+
+.submit-button:active {
+    transform: scale(0.98); /* Click effect */
+}
+
+/* --- Hint text below the card --- */
+.login-hint {
+    text-align: center;
+    margin-top: 2rem;
+    color: #a0aec0;
+    font-size: 0.875rem;
+}

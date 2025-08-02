@@ -1,0 +1,129 @@
+/* --- Header Styles --- */
+.main-header {
+  margin-bottom: 20px;
+}
+.main-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  background: linear-gradient(45deg, #2c3e50 30%, #3498db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+.main-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2px;
+    width: 60px;
+    height: 4px;
+    background: #3498db;
+    border-radius: 2px;
+}
+.main-header p {
+  color: #5a6872;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  padding-left: 2px;
+}
+
+/* --- NEW: Professional Card Design --- */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+/* Base style for all cards */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2f7;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  padding: 25px; /* Padding for standard cards */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Specific styles for LINK cards */
+.card-link {
+    flex-direction: row; /* Arrange icon and content side-by-side */
+    padding: 0; /* Remove base padding to use internal containers */
+    overflow: hidden; /* Ensure border radius is respected by children */
+    border-left: 5px solid transparent; /* Colored border on the left */
+}
+.card-link:hover {
+    border-color: #3498db; /* Default hover border color */
+}
+
+/* Color variations for the left border */
+.card-link.blue { border-color: #3498db; }
+.card-link.orange { border-color: #e67e22; }
+.card-link.green { border-color: #27ae60; }
+
+.card-icon-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-shrink: 0;
+}
+.card-icon-area .icon {
+    font-size: 2.5rem;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Text styles for ALL cards */
+.card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50; /* Dark, readable text */
+}
+
+.card .description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #7f8c8d; /* Readable grey text */
+  flex-grow: 1;
+}
+
+/* Style for the 'Go to ->' link */
+.go-to-link {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #3498db;
+  align-self: flex-start;
+}
+.card-link.orange .go-to-link { color: #e67e22; }
+.card-link.green .go-to-link { color: #27ae60; }
+
+
+/* Style for standard info cards (like Server Load) */
+.card .metric {
+  margin: 10px 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}

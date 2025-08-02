@@ -1,0 +1,13 @@
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  /* Add a transition for a smooth main content resize */
+  transition: padding-left 0.3s ease-in-out; 
+}
+
+.main-content-area {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
