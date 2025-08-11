@@ -1,18 +1,18 @@
+/* === Sidebar.css (Updated) === */
+
 /* --- Base Sidebar Container --- */
 .sidebar {
-  width: 250px;
+  width: 100%; /* Take up the full grid column width */
   background-color: #2c3e50;
   color: #ecf0f1;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  box-sizing: border-box; /* Add this for better padding control */
   flex-shrink: 0;
-  transition: width 0.3s ease-in-out;
   position: relative;
 }
-.sidebar.collapsed {
-  width: 80px;
-}
+/* No need for .collapsed styles on the sidebar itself anymore */
 
 /* --- Header and Toggle Button --- */
 .sidebar-header {
@@ -25,11 +25,13 @@
 .sidebar-header h2 {
   margin: 0;
   font-size: 1.8rem;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
+  transform: translateX(0);
 }
 .sidebar.collapsed .sidebar-header h2 {
   opacity: 0;
+  transform: translateX(-20px);
 }
 
 .sidebar-toggle {
@@ -44,10 +46,11 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 25px;
-  right: -15px;
+  top: 5px; /* Adjusted position */
+  right: -45px; /* Positioned outside the sidebar */
   z-index: 10;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .sidebar-toggle:hover {
   background: #3498db;
@@ -64,66 +67,75 @@
   margin: 0;
 }
 
-/* Base styles for all links (top-level and submenu) */
+/* Base styles for all links */
 .sidebar-nav li a,
 .sidebar-nav .main-link {
   display: flex;
   align-items: center;
   gap: 15px;
   padding: 15px 20px;
-  color: #ecf0f1;
+  color: #bdc3c7; /* Lighter color for non-active text */
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Slightly more rounded */
   overflow: hidden;
   white-space: nowrap;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
+  position: relative; /* For tooltips */
 }
 
 /* Specific margin for top-level items */
-.sidebar-nav > ul > li > a,
-.sidebar-nav > ul > li > .collapsible-menu-header {
-    margin-bottom: 10px;
+.sidebar-nav > ul > li {
+    margin-bottom: 5px;
 }
 
-/* Hover effect for non-active, top-level links */
-.sidebar-nav > ul > li:not(.active) > a:hover {
+/* Hover effect for non-active links */
+.sidebar-nav a:hover,
+.sidebar-nav .main-link:hover {
     background-color: #34495e;
+    color: #ffffff;
+    transform: translateX(5px);
 }
 
-/* Active state for top-level links */
-.sidebar-nav > ul > li.active > a {
+/* Active state for links */
+.sidebar-nav .active > a, 
+.sidebar-nav .active > .collapsible-menu-header .main-link {
   background-color: #3498db;
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 500;
 }
+
+/* UPDATED: Add a visual indicator bar for active links */
+.sidebar-nav .active > a::before,
+.sidebar-nav .active-parent > .collapsible-menu-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 4px;
+    background-color: #ffffff;
+    border-radius: 0 4px 4px 0;
+}
+
 
 /* --- Collapsible Submenu --- */
 .collapsible-menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  padding: 0; /* Padding is on the inner link */
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  padding: 0; 
 }
 .collapsible-menu-header .main-link {
     flex-grow: 1;
-    margin: 0; /* Remove margin from the inner link */
+    margin: 0;
 }
-.collapsible-menu-header .main-link:hover {
-    background-color: #34495e;
-}
-
-/* Highlight the parent menu item when a child is active */
 .collapsible-menu.active-parent > .collapsible-menu-header {
-    background-color: #3498db;
+    background-color: #34495e;
     color: #ffffff;
 }
-.collapsible-menu.active-parent > .collapsible-menu-header .main-link:hover {
-    background-color: transparent; /* Disable hover on active parent */
-}
-
-/* Arrow for the dropdown */
 .arrow {
   font-size: 1.5rem;
   transition: transform 0.3s ease;
@@ -139,46 +151,61 @@
   transform: rotate(90deg);
 }
 
-/* Submenu container */
 .submenu {
   list-style: none;
   padding-left: 25px; 
-  margin: -5px 0 10px 0;
-  max-height: 500px;
+  margin: -5px 0 5px 15px; /* Indent submenu further */
+  max-height: 0; /* Collapsed by default */
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
+  border-left: 1px solid #34495e;
+}
+.submenu.open {
+    max-height: 500px; /* Expand to show items */
 }
 .submenu li a {
     padding: 10px 15px;
     margin-bottom: 5px;
 }
-.submenu li a:hover {
-    background-color: #34495e;
-}
 .submenu li.active > a {
     background-color: #34495e;
     border-radius: 5px;
+    font-weight: 500;
+    color: #ffffff;
 }
 
 /* --- Icons and Text --- */
 .icon {
   font-size: 1.2rem;
   flex-shrink: 0;
+  width: 24px; /* Give icon a fixed width for alignment */
+  text-align: center;
 }
 .sub-icon {
   font-size: 0.9rem !important;
 }
 .text {
   opacity: 1;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.3s ease;
+  transform: translateX(0);
 }
-.sidebar.collapsed .text {
+.sidebar.collapsed .text,
+.sidebar.collapsed .arrow {
   opacity: 0;
+  width: 0;
+  transform: translateX(-20px);
 }
+.sidebar.collapsed .sidebar-nav a,
+.sidebar.collapsed .sidebar-nav .main-link {
+    justify-content: center;
+}
+
 
 /* --- Footer --- */
 .sidebar-footer {
   text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #34495e;
 }
 .logout-button {
   display: flex;
@@ -190,12 +217,39 @@
   background-color: #e74c3c;
   border: none;
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
 }
 .logout-button:hover {
   background-color: #c0392b;
+}
+
+/* ========================================= */
+/* --- NEW: Tooltip for Collapsed Sidebar --- */
+/* ========================================= */
+
+.sidebar.collapsed a[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 75px; /* Position to the right of the sidebar */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #34495e;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.sidebar.collapsed a[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(10px);
 }

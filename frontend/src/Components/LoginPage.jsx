@@ -1,14 +1,17 @@
+// src/Components/LoginPage.jsx
+
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext'; // 1. IMPORT the useAuth hook
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom'; // 1. IMPORT the useNavigate hook
 import '../Styles/LoginPage.css';
 
-const LoginPage = () => { // 2. REMOVE onLogin from the props
-    const { login } = useAuth(); // 3. GET the login function from the context
+const LoginPage = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate(); // 2. INITIALIZE the navigate function
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    // Hardcoded credentials
     const HARDCODED_USERNAME = 'user';
     const HARDCODED_PASSWORD = 'password123';
 
@@ -16,13 +19,13 @@ const LoginPage = () => { // 2. REMOVE onLogin from the props
         e.preventDefault();
         if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
             setError('');
-            login(); // 4. CALL the login function from the context
+            login();
+            navigate('/dashboard'); // 3. REDIRECT to the dashboard on success
         } else {
             setError('Invalid username or password.');
         }
     };
 
-    // The rest of your component remains the same...
     return (
         <div className="login-page-container">
             <div className="login-card">
