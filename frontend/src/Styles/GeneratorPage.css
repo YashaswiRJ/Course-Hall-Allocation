@@ -119,3 +119,34 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+.file-input-wrapper {
+  margin-top: 10px;
+}
+.file-input-wrapper input[type="file"] {
+  display: none;
+}
+.file-input-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    color: #7f8c8d;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.file-input-label .file-input-icon {
+    font-size: 1.2rem;
+}
+.file-input-label:hover {
+    background-color: #eaf5ff;
+    border-color: #3498db;
+    color: #3498db;
+}

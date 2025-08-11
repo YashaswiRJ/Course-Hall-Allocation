@@ -60,12 +60,12 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
           </li>
 
           {/* Timeline Viewer Link */}
-          <li className={location.pathname === '/timeline-viewer' ? 'active' : ''}>
+          {/* <li className={location.pathname === '/timeline-viewer' ? 'active' : ''}>
             <Link to="/timeline-viewer" data-tooltip="Timeline Viewer">
               <span className="icon">🕒</span>
               <span className="text">Timeline Viewer</span>
             </Link>
-          </li>
+          </li> */}
 
           {/* Generate Schedule Link */}
           <li className={location.pathname === '/generate-schedule' ? 'active' : ''}>
