@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-
-// =================================================================
-// THIS IS THE LINE YOU NEED TO ADD:
-// It tells React to load and apply the styles from Login.css
-// to this component.
+import { useAuth } from '../context/AuthContext'; // 1. IMPORT the useAuth hook
 import '../Styles/LoginPage.css';
-// =================================================================
 
-// --- Login Page Component ---
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => { // 2. REMOVE onLogin from the props
+    const { login } = useAuth(); // 3. GET the login function from the context
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -21,13 +16,13 @@ const LoginPage = ({ onLogin }) => {
         e.preventDefault();
         if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
             setError('');
-            onLogin(); // Callback to update the parent component's state
+            login(); // 4. CALL the login function from the context
         } else {
             setError('Invalid username or password.');
         }
     };
 
-    // The className attributes now match the CSS selectors in LoginPage.css
+    // The rest of your component remains the same...
     return (
         <div className="login-page-container">
             <div className="login-card">

@@ -1,0 +1,140 @@
+/* --- Main Container for the Timeline Viewer --- */
+.timeline-viewer-container {
+    width: 100%;
+}
+
+.timeline-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eef2f7;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+    margin-top: 20px;
+}
+
+/* Re-using day selector styles from the previous component for consistency */
+.day-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.day-btn {
+    padding: 10px 25px;
+    border: 1px solid #dfe4ea;
+    background-color: #f8f9fa;
+    color: #5a6872;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+}
+.day-btn:hover {
+    background-color: #eef2f7;
+    border-color: #ced4da;
+}
+.day-btn.active {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border-color: #3498db;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- Timeline Layout --- */
+.timeline-wrapper {
+    display: flex;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.hour-markers {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px; /* Align with headers */
+    flex-shrink: 0;
+}
+
+.hour-marker {
+    height: 60px; /* Corresponds to 1 hour */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 15px;
+    color: #95a5a6;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-top: 1px solid #f1f5f9;
+}
+.hour-marker:first-child {
+    border-top: none;
+}
+
+.timeline-grid {
+    display: flex;
+    flex-grow: 1;
+    min-width: 600px;
+}
+
+.hall-column {
+    flex: 1;
+    min-width: 150px;
+    border-left: 1px solid #eef2f7;
+    display: flex;
+    flex-direction: column;
+}
+
+.hall-header {
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    color: #34495e;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eef2f7;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.hall-timeline {
+    position: relative;
+    flex-grow: 1;
+    background-image: linear-gradient(to bottom, #f9fafb 1px, transparent 1px);
+    background-size: 100% 30px; /* Creates half-hour lines */
+}
+
+/* --- Lecture Block Styling --- */
+.lecture-block {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    background-color: rgba(52, 152, 219, 0.85);
+    border-left: 4px solid #2980b9;
+    color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.lecture-block:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 5;
+}
+
+.block-course {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.block-time {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}

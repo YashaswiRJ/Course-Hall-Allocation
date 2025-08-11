@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { generateSchedule } from '../services/apiService'; // Using a single, flexible service function
+import { generateSchedule } from '../services/apiService'; // Using the single, flexible service function
 import '../Styles/GeneratorPage.css';
 
+// A reusable sub-component for selecting the data source
 const DataSourceSelector = ({ title, storageKey, source, setSource, onFileChange, selectedFile }) => {
     const [isDataAvailable, setIsDataAvailable] = useState(false);
 
@@ -52,34 +53,34 @@ const GeneratorPage = () => {
         setResult(null);
 
         try {
-            // Determine course data source
+            // Determine the payload for course data
             let coursePayload = null;
             if (courseDataSource === 'upload') {
                 if (!courseFile) throw new Error('Please select a course file to upload.');
                 coursePayload = courseFile;
             } else {
                 const data = localStorage.getItem('courseScheduleData');
-                if (!data) throw new Error('No saved course data found.');
+                if (!data) throw new Error('No saved course data found in local storage.');
                 coursePayload = JSON.parse(data);
             }
 
-            // Determine hall data source
+            // Determine the payload for hall data
             let hallPayload = null;
             if (hallDataSource === 'upload') {
                 if (!hallFile) throw new Error('Please select a lecture hall file to upload.');
                 hallPayload = hallFile;
             } else {
                 const data = localStorage.getItem('lectureHallManagerData');
-                if (!data) throw new Error('No saved lecture hall data found.');
+                if (!data) throw new Error('No saved lecture hall data found in local storage.');
                 hallPayload = JSON.parse(data);
             }
             
-            // Call the single, flexible API service function
+            // Call the single, flexible API service function with the determined payloads
             const response = await generateSchedule(coursePayload, hallPayload);
             setResult(response);
 
         } catch (err) {
-            setError(err.message || 'An unexpected error occurred.');
+            setError(err.message + 'Achenno' || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
         }

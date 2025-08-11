@@ -1,0 +1,147 @@
+/* --- Main Container for the Stats Viewer Page --- */
+.stats-viewer-container {
+    width: 100%;
+}
+
+/* --- Card holding the schedule content --- */
+.schedule-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eef2f7;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+    margin-top: 20px;
+}
+
+/* --- Day Selector Buttons (No changes) --- */
+.day-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    padding: 10px 25px;
+    border: 1px solid #dfe4ea;
+    background-color: #f8f9fa;
+    color: #5a6872;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.day-btn:hover {
+    background-color: #eef2f7;
+    border-color: #ced4da;
+}
+
+.day-btn.active {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border-color: #3498db;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- UPDATED: Timetable Grid with visible lines --- */
+.timetable-grid-container {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    border: 1px solid #c7cdd4; /* Outer border for the grid */
+    border-radius: 8px;
+}
+
+.timetable-grid {
+    display: grid;
+    /* Columns are set dynamically in the component */
+    min-width: 1800px; /* Wider to accommodate more granular slots */
+}
+
+/* --- UPDATED: Grid Headers (Time and Halls) --- */
+.grid-header,
+.hall-label,
+.grid-cell {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #d8dde3; 
+    /* Lighter, dotted line for intermediate slots */
+    border-right: 1px dotted #e0e4e8;
+}
+
+.grid-header {
+    background-color: #f1f5f9;
+    color: #34495e;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* --- UPDATED: Bolder hour lines for headers and cells --- */
+.time-header.hour-end,
+.grid-cell.hour-end {
+    /* Bolder, solid line for full hours */
+    border-right: 2px solid #b0b9c4; 
+}
+
+
+/* --- UPDATED: Hall Label Styling --- */
+.hall-label {
+    background-color: #f8f9fa;
+    color: #34495e;
+    font-weight: 600;
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    border-right: 2px solid #b0b9c4; /* Match bold hour line */
+}
+
+/* --- UPDATED: Course Cells --- */
+.grid-cell {
+    background-color: #ffffff;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.grid-cell.allocated {
+    background-color: #3498db;
+    color: white;
+    border-color: #2980b9;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 4px;
+    margin: 2px; /* Add margin to distinguish merged cells */
+    border-right: 1px solid #2980b9; /* Ensure allocated cells have a consistent border */
+}
+
+.course-code {
+    font-weight: 700;
+}
+
+.course-time {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* --- Clean up borders at the edges --- */
+/* Number of slots (66) + 1 hall label column = 67 */
+.timetable-grid > *:nth-last-child(-n+67) { 
+    border-bottom: none;
+}
+.timetable-grid > *:nth-child(67n) { 
+    border-right: none;
+}

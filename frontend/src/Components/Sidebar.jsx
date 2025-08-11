@@ -35,6 +35,22 @@ const Sidebar = ({ onLogout, isCollapsed, onToggle }) => {
             </Link>
           </li>
 
+          {/* Schedule Viewer Link (Grid) */}
+          <li className={location.pathname === '/schedule-viewer' ? 'active' : ''}>
+            <Link to="/schedule-viewer">
+              <span className="icon">📅</span>
+              <span className="text">Grid Viewer</span>
+            </Link>
+          </li>
+
+          {/* --- NEW: Timeline Viewer Link --- */}
+          <li className={location.pathname === '/timeline-viewer' ? 'active' : ''}>
+            <Link to="/timeline-viewer">
+              <span className="icon">🕒</span>
+              <span className="text">Timeline Viewer</span>
+            </Link>
+          </li>
+
           {/* Generate Schedule Link */}
           <li className={location.pathname === '/generate-schedule' ? 'active' : ''}>
               <Link to="/generate-schedule">

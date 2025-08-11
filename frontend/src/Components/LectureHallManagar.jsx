@@ -1,57 +1,36 @@
+// === LectureHallManager.jsx (Updated) ===
 import React, { useState, useMemo, useEffect } from 'react';
 import '../Styles/LectureHallManager.css';
-
-// The key we will use to save and retrieve hall data in localStorage
-const LECTURE_HALL_STORAGE_KEY = 'lectureHallManagerData';
-
-// Helper to generate initial dummy data
-const generateInitialHalls = () => {
-  const halls = [];
-  for (let i = 1; i <= 20; i++) {
-    halls.push({
-      id: i,
-      name: `L${String(i).padStart(2, '0')}`,
-      capacity: Math.floor(Math.random() * (600 - 200 + 1)) + 200,
-      schedule: {
-        monday: [{ open: '08:00', close: '12:00' }, { open: '13:00', close: '17:00' }],
-        tuesday: [{ open: '09:00', close: '17:00' }],
-        wednesday: [{ open: '08:00', close: '17:00' }],
-        thursday: [{ open: '09:00', close: '13:00' }, { open: '14:00', close: '18:00' }],
-        friday: [{ open: '08:00', close: '17:00' }],
-      },
-    });
-  }
-  return halls;
-};
+import { getLectureHalls, createLectureHall, updateLectureHall, deleteLectureHall } from '../services/apiService'; 
 
 // Main Component
 const LectureHallManager = () => {
-  // Load initial state from localStorage, or generate if it doesn't exist
-  const [halls, setHalls] = useState(() => {
-    try {
-        const savedHalls = localStorage.getItem(LECTURE_HALL_STORAGE_KEY);
-        // If data exists, parse it. Otherwise, generate initial data.
-        return savedHalls ? JSON.parse(savedHalls) : generateInitialHalls();
-    } catch (error) {
-        console.error("Error reading lecture halls from localStorage", error);
-        return generateInitialHalls();
-    }
-  });
-
-  // useEffect to update localStorage whenever the halls state changes
-  useEffect(() => {
-    try {
-        localStorage.setItem(LECTURE_HALL_STORAGE_KEY, JSON.stringify(halls));
-    } catch (error) {
-        console.error("Error saving lecture halls to localStorage", error);
-    }
-  }, [halls]); // This effect runs every time the 'halls' state is updated
-
+  const [halls, setHalls] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHall, setCurrentHall] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [hallsPerPage, setHallsPerPage] = useState(15);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const fetchHalls = async () => {
+      try {
+          setLoading(true);
+          setError(null);
+          const data = await getLectureHalls();
+          setHalls(data);
+      } catch (err) {
+          setError('Failed to load data from the server. Please check your connection and try again.');
+          console.error(err);
+      } finally {
+          setLoading(false);
+      }
+  };
+
+  useEffect(() => {
+    fetchHalls();
+  }, []);
 
   const filteredHalls = useMemo(() => {
     return halls.filter(hall =>
@@ -74,9 +53,22 @@ const LectureHallManager = () => {
     setIsModalOpen(true);
   };
 
+  const handleDelete = async (hallId) => {
+      if (window.confirm('Are you sure you want to delete this lecture hall? This action cannot be undone.')) {
+          try {
+              await deleteLectureHall(hallId);
+              fetchHalls();
+          } catch (err) {
+              alert('Failed to delete the hall.');
+              console.error(err);
+          }
+      }
+  };
+
   const handleAddNew = () => {
     setCurrentHall({
-      id: null, name: '', capacity: 300,
+      name: '', 
+      capacity: 100,
       schedule: {
         monday: [{ open: '08:00', close: '17:00' }],
         tuesday: [{ open: '08:00', close: '17:00' }],
@@ -93,19 +85,28 @@ const LectureHallManager = () => {
     setCurrentHall(null);
   };
 
-  const handleSave = () => {
-    if (currentHall.id) {
-      setHalls(halls.map((hall) => (hall.id === currentHall.id ? currentHall : hall)));
-    } else {
-      const newHall = { ...currentHall, id: halls.length > 0 ? Math.max(...halls.map(h => h.id)) + 1 : 1 };
-      setHalls([...halls, newHall]);
+  const handleSave = async () => {
+    if (!currentHall.name || !currentHall.capacity) {
+        alert('Hall Name and Capacity are required.');
+        return;
     }
-    handleCloseModal();
+    try {
+        if (currentHall.id) {
+            await updateLectureHall(currentHall.id, currentHall);
+        } else {
+            await createLectureHall(currentHall);
+        }
+        handleCloseModal();
+        fetchHalls();
+    } catch (err) {
+        alert('Failed to save the hall.');
+        console.error(err);
+    }
   };
   
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    setCurrentHall({ ...currentHall, [name]: value });
+    setCurrentHall({ ...currentHall, [name]: name === 'capacity' ? parseInt(value, 10) || 0 : value });
   };
 
   const handleTimeChange = (day, index, type, value) => {
@@ -130,6 +131,32 @@ const LectureHallManager = () => {
 
   const totalPages = Math.ceil(filteredHalls.length / hallsPerPage);
 
+  // --- RENDER LOGIC with new states ---
+
+  // Display a full-page loading spinner
+  if (loading) {
+    return (
+        <div className="state-container">
+            <div className="spinner"></div>
+        </div>
+    );
+  }
+
+  // Display a full-page error card
+  if (error) {
+      return (
+        <div className="state-container">
+            <div className="error-card">
+                <span className="error-icon">⚠️</span>
+                <h4>Oops! Something went wrong.</h4>
+                <p>{error}</p>
+                <button onClick={fetchHalls} className="btn-try-again">Try Again</button>
+            </div>
+        </div>
+      );
+  }
+
+  // Main component render
   return (
     <div className="lecture-hall-manager-card">
       <div className="card-header">
@@ -168,21 +195,28 @@ const LectureHallManager = () => {
             </tr>
           </thead>
           <tbody>
-            {currentTableData.map((hall) => (
-              <tr key={hall.id}>
-                <td>{hall.name}</td>
-                <td>{hall.capacity}</td>
-                <td>
-                  <button onClick={() => handleEdit(hall)} className="btn-edit">Edit</button>
-                </td>
-              </tr>
-            ))}
+            {currentTableData.length > 0 ? (
+                currentTableData.map((hall) => (
+                  <tr key={hall.id}>
+                    <td>{hall.name}</td>
+                    <td>{hall.capacity}</td>
+                    <td className="actions-cell">
+                      <button onClick={() => handleEdit(hall)} className="btn-edit">Edit</button>
+                      <button onClick={() => handleDelete(hall.id)} className="btn-delete">Delete</button>
+                    </td>
+                  </tr>
+                ))
+            ) : (
+                <tr className="empty-table-message">
+                    <td colSpan="3">No lecture halls found. Try adding a new one!</td>
+                </tr>
+            )}
           </tbody>
         </table>
       </div>
 
       <div className="pagination">
-        <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
+        <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1 || totalPages === 0}>
           Previous
         </button>
         <span>Page {currentPage} of {totalPages > 0 ? totalPages : 1}</span>

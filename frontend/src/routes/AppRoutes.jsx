@@ -10,6 +10,8 @@ import LectureHallManager from '../Components/LectureHallManagar';
 import UploadPage from '../Components/UploadPage'; 
 import UploadCentralPage from '../Components/UploadCentralPage';
 import GeneratorPage from '../Components/GeneratorPage';
+import StatsViewer from '../Components/StatsViewer';
+import TimelineViewer from '../Components/TimelineViewer';
 
 const AppRoutes = () => {
     const { isLoggedIn } = useAuth();
@@ -53,6 +55,8 @@ const AppRoutes = () => {
                                 requiredColumns={['Course Code', 'Forbidden Hall']}
                             />} 
                         />
+                        <Route path="/schedule-viewer" element={<StatsViewer />} />
+                        <Route path="/timeline-viewer" element={<TimelineViewer />} />
                     </Routes>
                 </Layout>
             ) : (

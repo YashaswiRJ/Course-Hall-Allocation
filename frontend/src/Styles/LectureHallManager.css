@@ -1,4 +1,4 @@
-/* --- Professional Styles for Lecture Hall Manager --- */
+/* === LectureHallManager.css (Updated) === */
 
 /* Main container with a clean, modern card aesthetic */
 .lecture-hall-manager-card {
@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px; /* Consistent spacing between sections */
+  transition: all 0.3s ease;
 }
 
 /* Header section for title and primary action button */
@@ -134,6 +135,10 @@ th {
   letter-spacing: 0.5px;
 }
 
+tr {
+    transition: background-color 0.2s ease;
+}
+
 tr:nth-child(even) {
   background-color: #f7f9fc;
 }
@@ -142,21 +147,46 @@ tr:hover {
   background-color: #f1f5f9;
 }
 
-.btn-edit {
-  background-color: #ecf0f1;
-  color: #34495e;
+/* UPDATED: Container for action buttons */
+.actions-cell {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete {
   border: 1px solid #bdc3c7;
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  background-color: #ecf0f1;
+  color: #34495e;
 }
 
 .btn-edit:hover {
   background-color: #34495e;
   color: white;
+  transform: translateY(-1px);
 }
+
+/* NEW: Styles for the delete button */
+.btn-delete {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.btn-delete:hover {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+    transform: translateY(-1px);
+}
+
 
 /* --- Pagination Controls --- */
 .pagination {
@@ -301,11 +331,12 @@ fieldset {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 .btn-add-slot:hover {
   background-color: #27ae60;
   color: white;
+  transform: scale(1.1);
 }
 .btn-remove-slot {
   background-color: #f8d7da;
@@ -315,10 +346,12 @@ fieldset {
 .btn-remove-slot:hover {
   background-color: #e74c3c;
   color: white;
+  transform: scale(1.1);
 }
 .btn-remove-slot:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .schedule-row {
@@ -378,4 +411,87 @@ fieldset {
 @keyframes modal-fade-in {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ========================================= */
+/* --- NEW: Loading and Error State Styles --- */
+/* ========================================= */
+
+.state-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px;
+    text-align: center;
+    min-height: 400px;
+    width: 100%;
+}
+
+/* Spinner for loading state */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 7px solid #f3f3f3;
+    border-top: 7px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Card for error state */
+.error-card {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-card .error-icon {
+    font-size: 3rem;
+    color: #ef4444;
+}
+
+.error-card h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #991b1b;
+}
+
+.error-card p {
+    margin: 0;
+    color: #b91c1c;
+}
+
+.error-card .btn-try-again {
+    background-color: #dc2626;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.error-card .btn-try-again:hover {
+    background-color: #b91c1c;
+}
+
+/* NEW: Styles for empty table message */
+.empty-table-message td {
+    text-align: center;
+    padding: 60px;
+    color: #95a5a6;
+    font-size: 1.1rem;
 }
