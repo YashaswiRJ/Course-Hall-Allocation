@@ -1,30 +1,30 @@
-// === Sidebar.jsx (Updated) ===
+// src/Components/Sidebar.jsx
 
 import React, { useState, useEffect } from 'react';
-// UPDATED: Import useNavigate for redirection and useAuth for logout
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import '../Styles/Sidebar.css';
 
-// UPDATED: Removed onLogout from props as the component now handles it internally
 const Sidebar = ({ isCollapsed, onToggle }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logout } = useAuth(); // NEW: Get logout function from context
+  const { logout } = useAuth();
 
-  // State to manage the collapsible upload menu
   const [isUploadMenuOpen, setUploadMenuOpen] = useState(
     location.pathname.startsWith('/upload')
   );
+  // --- NEW: State to track if a result exists ---
+  const [hasResult, setHasResult] = useState(false);
 
-  // Effect to open the menu when navigating to a sub-page
   useEffect(() => {
     if (location.pathname.startsWith('/upload')) {
       setUploadMenuOpen(true);
     }
+    // Check for saved results when the component mounts or location changes
+    const savedResult = localStorage.getItem('latestScheduleResult');
+    setHasResult(!!savedResult);
   }, [location.pathname]);
 
-  // NEW: Handler for logging out and redirecting
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -32,58 +32,51 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
 
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+      {/* ... header and toggle button ... */}
       <div className="sidebar-header">
         <h2>Admin</h2>
-        {/* The toggle button is now positioned via CSS relative to the main layout */}
       </div>
-
       <button onClick={onToggle} className="sidebar-toggle">
         {isCollapsed ? '→' : '←'}
       </button>
 
       <nav className="sidebar-nav">
         <ul>
-          {/* Dashboard Link */}
+          {/* ... other links ... */}
           <li className={location.pathname === '/dashboard' ? 'active' : ''}>
             <Link to="/dashboard" data-tooltip="Dashboard">
               <span className="icon">📊</span>
               <span className="text">Dashboard</span>
             </Link>
           </li>
-
-          {/* Schedule Viewer Link (Grid) */}
           <li className={location.pathname === '/schedule-viewer' ? 'active' : ''}>
             <Link to="/schedule-viewer" data-tooltip="Grid Viewer">
               <span className="icon">📅</span>
               <span className="text">Grid Viewer</span>
             </Link>
           </li>
-
-          {/* Timeline Viewer Link */}
-          {/* <li className={location.pathname === '/timeline-viewer' ? 'active' : ''}>
-            <Link to="/timeline-viewer" data-tooltip="Timeline Viewer">
-              <span className="icon">🕒</span>
-              <span className="text">Timeline Viewer</span>
-            </Link>
-          </li> */}
-
-          {/* Generate Schedule Link */}
           <li className={location.pathname === '/generate-schedule' ? 'active' : ''}>
               <Link to="/generate-schedule" data-tooltip="Generate Schedule">
                   <span className="icon">🚀</span>
                   <span className="text">Generate Schedule</span>
               </Link>
           </li>
+          
+          {/* --- NEW: View Last Result Link --- */}
+          <li className={`${location.pathname === '/results' ? 'active' : ''} ${!hasResult ? 'disabled' : ''}`}>
+            <Link to={hasResult ? "/results" : "#"} className={!hasResult ? 'disabled-link' : ''} data-tooltip="View Last Result">
+              <span className="icon">📄</span>
+              <span className="text">View Last Result</span>
+            </Link>
+          </li>
 
-          {/* Lecture Halls Link */}
           <li className={location.pathname === '/lecture-halls' ? 'active' : ''}>
             <Link to="/lecture-halls" data-tooltip="Lecture Halls">
               <span className="icon">🏛️</span>
               <span className="text">Lecture Halls</span>
             </Link>
           </li>
-          
-          {/* Collapsible Upload Files Menu */}
+          {/* ... collapsible menu and other links ... */}
           <li className={`collapsible-menu ${location.pathname.startsWith('/upload') ? 'active-parent' : ''}`}>
             <div className="collapsible-menu-header">
                 <Link to="/upload-files" className="main-link" data-tooltip="Upload Files">
@@ -97,7 +90,6 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
                     ›
                 </span>
             </div>
-            {/* UPDATED: Submenu uses a class for smooth open/close animation */}
             <ul className={`submenu ${isUploadMenuOpen ? 'open' : ''}`}>
               <li className={location.pathname === '/upload/course-schedule' ? 'active' : ''}>
                 <Link to="/upload/course-schedule" data-tooltip="Course Schedule">
@@ -119,8 +111,6 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               </li>
             </ul>
           </li>
-
-          {/* Users Link */}
           <li className={location.pathname === '/users' ? 'active' : ''}>
             <Link to="/users" data-tooltip="Users">
               <span className="icon">👥</span>
@@ -130,9 +120,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
         </ul>
       </nav>
 
-      {/* Footer Logout Button */}
       <div className="sidebar-footer">
-        {/* UPDATED: Button now calls the internal handleLogout function */}
         <button onClick={handleLogout} className="logout-button" data-tooltip="Logout">
           <span className="icon">🚪</span>
           <span className="text">Logout</span>

@@ -253,3 +253,18 @@
     opacity: 1;
     transform: translateY(-50%) translateX(10px);
 }
+
+.sidebar-nav li.disabled {
+  opacity: 0.5;
+}
+
+.sidebar-nav a.disabled-link {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.sidebar-nav a.disabled-link:hover {
+  background-color: transparent;
+  transform: none;
+  color: #bdc3c7; 
+}

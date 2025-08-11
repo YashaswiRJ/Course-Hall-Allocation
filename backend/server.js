@@ -171,7 +171,7 @@ app.delete('/api/lecture-halls/:id', async (req, res) => {
 function runCppEngine(inputData) {
     return new Promise((resolve, reject) => {
         const executableName = process.platform === 'win32' ? 'schedule_engine.exe' : 'schedule_engine';
-        const cppExecutable = path.join(__dirname, '..', 'cpp_core', executableName);
+        const cppExecutable = path.join(__dirname, '..', 'cpp_core', 'build', 'Debug',  executableName);
         if (!fs.existsSync(cppExecutable)) {
             return reject(new Error(`Executable not found at path: ${cppExecutable}`));
         }
@@ -198,42 +198,89 @@ function runCppEngine(inputData) {
         cppProcess.stdin.end();
     });
 }
-app.post('/api/generate-schedule', upload.fields([{ name: 'courseFile' }, { name: 'hallFile' }]), async (req, res) => {
-    let courseData, hallData;
-    const filesToCleanup = [];
+// app.post('/api/generate-schedule', upload.fields([{ name: 'courseFile' }, { name: 'hallFile' }]), async (req, res) => {
+//     let courseData, hallData;
+//     const filesToCleanup = [];
+//     try {
+//         if (req.files && req.files.courseFile) {
+//             const filePath = req.files.courseFile[0].path;
+//             filesToCleanup.push(filePath);
+//             const workbook = XLSX.readFile(filePath);
+//             courseData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+//         } else if (req.body.courseData) {
+//             courseData = JSON.parse(req.body.courseData);
+//         } else {
+//             throw new Error('Course data is missing from the request.');
+//         }
+//         if (req.files && req.files.hallFile) {
+//             const filePath = req.files.hallFile[0].path;
+//             filesToCleanup.push(filePath);
+//             const workbook = XLSX.readFile(filePath);
+//             hallData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+//         } else if (req.body.hallData) {
+//             hallData = JSON.parse(req.body.hallData);
+//         } else {
+//             throw new Error('Lecture hall data is missing from the request.');
+//         }
+//         const inputForCpp = { courseData, lectureHalls: hallData };
+//         const result = await runCppEngine(inputForCpp);
+//         res.json(result);
+//     } catch (error) {
+//         console.error('Error in /api/generate-schedule:', error.message);
+//         res.status(500).json({ error: 'An error occurred on the server.', details: error.message });
+//     } finally {
+//         filesToCleanup.forEach(filePath => {
+//             if (fs.existsSync(filePath)) {
+//                 fs.unlinkSync(filePath);
+//             }
+//         });
+//     }
+// });
+
+app.post('/api/generate-schedule', upload.single('courseFile'), async (req, res) => {
+    let courseData;
+    const cleanupPath = req.file ? req.file.path : null;
+
     try {
-        if (req.files && req.files.courseFile) {
-            const filePath = req.files.courseFile[0].path;
-            filesToCleanup.push(filePath);
-            const workbook = XLSX.readFile(filePath);
+        // 1. Get Course Data (from file upload or request body)
+        if (req.file) {
+            const workbook = XLSX.readFile(req.file.path);
             courseData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
         } else if (req.body.courseData) {
+            // Assumes courseData is sent as a JSON string in the body
             courseData = JSON.parse(req.body.courseData);
         } else {
-            throw new Error('Course data is missing from the request.');
+            throw new Error('Course data is missing. Please upload a file or provide courseData in the body.');
         }
-        if (req.files && req.files.hallFile) {
-            const filePath = req.files.hallFile[0].path;
-            filesToCleanup.push(filePath);
-            const workbook = XLSX.readFile(filePath);
-            hallData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-        } else if (req.body.hallData) {
-            hallData = JSON.parse(req.body.hallData);
-        } else {
-            throw new Error('Lecture hall data is missing from the request.');
-        }
-        const inputForCpp = { courseData, lectureHalls: hallData };
+
+        // 2. Fetch LIVE Lecture Hall Data from Supabase
+        const { data: hallData, error: hallsError } = await supabase
+            .from('lecture_halls')
+            .select('name, capacity'); // Only fetch the fields the C++ engine needs
+        if (hallsError) throw hallsError;
+
+        // 3. Prepare the final input for the C++ engine
+        const inputForCpp = {
+            courseData: courseData,
+            lectureHalls: hallData
+        };
+
+        // 4. Run the C++ engine (your existing function is perfect)
+        console.log("Running C++ engine with input...");
         const result = await runCppEngine(inputForCpp);
+        console.log("C++ engine finished successfully.");
+
+        // 5. Send the result back to the frontend
         res.json(result);
+
     } catch (error) {
         console.error('Error in /api/generate-schedule:', error.message);
         res.status(500).json({ error: 'An error occurred on the server.', details: error.message });
     } finally {
-        filesToCleanup.forEach(filePath => {
-            if (fs.existsSync(filePath)) {
-                fs.unlinkSync(filePath);
-            }
-        });
+        // 6. Clean up the uploaded file if it exists
+        if (cleanupPath && fs.existsSync(cleanupPath)) {
+            fs.unlinkSync(cleanupPath);
+        }
     }
 });
 

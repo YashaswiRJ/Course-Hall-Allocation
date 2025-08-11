@@ -1,16 +1,13 @@
-// GeneratorPage.jsx (Updated)
-
-import React, { useState, useEffect } from 'react';
-// UPDATED: Import getLectureHalls to fetch data from the database
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { generateSchedule, getLectureHalls } from '../services/apiService';
 import '../Styles/GeneratorPage.css';
 
-// A reusable sub-component for selecting the data source
+// This reusable sub-component allows users to select their data source.
 const DataSourceSelector = ({ title, savedDataLabel, storageKey, source, setSource, onFileChange, selectedFile }) => {
-    const [isLocalStorageAvailable, setIsLocalStorageAvailable] = useState(false);
+    const [isLocalStorageAvailable, setIsLocalStorageAvailable] = React.useState(false);
 
-    // This check is now only relevant for data sources that use localStorage (like courses)
-    useEffect(() => {
+    React.useEffect(() => {
         if (storageKey) {
             const savedData = localStorage.getItem(storageKey);
             setIsLocalStorageAvailable(savedData && JSON.parse(savedData).length > 0);
@@ -34,7 +31,6 @@ const DataSourceSelector = ({ title, savedDataLabel, storageKey, source, setSour
                 </label>
             </div>
             {source === 'upload' && (
-                // UPDATED: Replaced default file input with a modern, styled version
                 <div className="file-input-wrapper">
                     <label htmlFor={title} className="file-input-label">
                         <span className="file-input-icon">📤</span>
@@ -49,24 +45,22 @@ const DataSourceSelector = ({ title, savedDataLabel, storageKey, source, setSour
 
 
 const GeneratorPage = () => {
-    // UPDATED: Set the default hall data source to 'saved' (database)
-    const [courseDataSource, setCourseDataSource] = useState('upload');
-    const [hallDataSource, setHallDataSource] = useState('saved'); 
-    const [courseFile, setCourseFile] = useState(null);
-    const [hallFile, setHallFile] = useState(null);
+    const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [result, setResult] = useState(null);
-    const [error, setError] = useState('');
+    const [courseDataSource, setCourseDataSource] = React.useState('upload');
+    const [hallDataSource, setHallDataSource] = React.useState('saved');
+    const [courseFile, setCourseFile] = React.useState(null);
+    const [hallFile, setHallFile] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [error, setError] = React.useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
-        setResult(null);
 
         try {
-            // --- Determine the payload for course data (uses localStorage) ---
+            // Determine the payload for course data (from file or localStorage)
             let coursePayload = null;
             if (courseDataSource === 'upload') {
                 if (!courseFile) throw new Error('Please select a course file to upload.');
@@ -77,22 +71,26 @@ const GeneratorPage = () => {
                 coursePayload = JSON.parse(data);
             }
 
-            // --- UPDATED: Determine the payload for hall data (uses database) ---
+            // Determine the payload for hall data (from file or database)
             let hallPayload = null;
             if (hallDataSource === 'upload') {
                 if (!hallFile) throw new Error('Please select a lecture hall file to upload.');
                 hallPayload = hallFile;
-            } else { // 'saved' -> This now means fetch from the database
-                console.log('Fetching lecture halls from the database...');
+            } else { // 'saved' means fetch from the database via the API service
                 hallPayload = await getLectureHalls();
                 if (!hallPayload || hallPayload.length === 0) {
                     throw new Error('No lecture hall data found in the database.');
                 }
             }
-            
-            console.log('Sending data to C++ engine...');
+
+            // Call the API service to generate the schedule
             const response = await generateSchedule(coursePayload, hallPayload);
-            setResult(response);
+
+            // Save the successful result to localStorage to enable "View Last Result" links
+            localStorage.setItem('latestScheduleResult', JSON.stringify(response));
+
+            // On success, navigate to the results page and pass the response data
+            navigate('/results', { state: { schedule: response } });
 
         } catch (err) {
             setError(err.message || 'An unexpected error occurred.');
@@ -111,7 +109,7 @@ const GeneratorPage = () => {
             <div className="generator-card">
                 <form onSubmit={handleSubmit}>
                     <div className="upload-area">
-                        <DataSourceSelector 
+                        <DataSourceSelector
                             title="Course Schedule Data"
                             savedDataLabel="Use Saved Data"
                             storageKey="courseScheduleData"
@@ -120,10 +118,9 @@ const GeneratorPage = () => {
                             onFileChange={(e) => setCourseFile(e.target.files[0])}
                             selectedFile={courseFile}
                         />
-                        <DataSourceSelector 
+                        <DataSourceSelector
                             title="Lecture Hall Data"
                             savedDataLabel="Use Database Data"
-                            // No storageKey needed as we fetch from DB
                             source={hallDataSource}
                             setSource={setHallDataSource}
                             onFileChange={(e) => setHallFile(e.target.files[0])}
@@ -140,17 +137,6 @@ const GeneratorPage = () => {
                 <div className="response-box error-box">
                     <h4>Error</h4>
                     <p>{error}</p>
-                </div>
-            )}
-
-            {result && (
-                <div className="response-box result-box">
-                    <h4>Generation Result</h4>
-                    <p>{result.message || 'Schedule generated successfully.'}</p>
-                    {/* Only show the pre block if there are assignments */}
-                    {result.generated_assignments && result.generated_assignments.length > 0 &&
-                        <pre>{JSON.stringify(result.generated_assignments, null, 2)}</pre>
-                    }
                 </div>
             )}
         </div>
