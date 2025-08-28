@@ -1,52 +1,101 @@
-#ifndef DATA_STRUCTURES_HPP
-#define DATA_STRUCTURES_HPP
+#pragma once
 
-#include <string>
-#include <vector>
-#include <map>
+#include <bits/stdc++.h>
+using namespace std;
 
-// Represents the day of the week for clarity.
-// Monday = 0, Tuesday = 1, ..., Friday = 4
-enum class Day { M, T, W, Th, F, Unknown };
-
-// Represents a single time block, e.g., 09:00 - 10:00.
 struct TimeSlot {
-    int start_time_minutes; // Time in minutes from midnight (e.g., 9:00 AM is 540)
-    int end_time_minutes;   // e.g., 10:00 AM is 600
+    /*
+    The data structure storing the timeslot has 3 members:
+    - day (string)
+    - start_time (int)
+    - end_time (int)
 
-    // A simple check to see if two time slots overlap.
-    bool overlaps_with(const TimeSlot& other) const {
-        return std::max(start_time_minutes, other.start_time_minutes) < std::min(end_time_minutes, other.end_time_minutes);
-    }
+    Members:
+    - day: Day of the week (e.g., "M", "T", "W", "Th", "F")
+    - start_time: Start time in HHMM format (e.g., 930 = 09:30)
+    - end_time: End time in HHMM format (e.g., 1100 = 11:00)
+    
+    The last two digits represent the minutes.
+    */
+
+    string day;
+    int start_time;
+    int end_time;
+
+    // Constructor
+    TimeSlot(const string& Day, int Start_time, int End_time)
+        : day(Day), start_time(Start_time), end_time(End_time) {}
 };
 
-// Represents a university course to be scheduled.
-struct Course {
-    std::string id;       // The unique course code, e.g., "CSO201"
-    std::string name;     // The full name of the course for reference
-    int student_count;    // Number of registered students, used for capacity checks
+class Course {
+public:
+    /*
+    The Course class stores details about a course and its scheduled slots.
 
-    // A course can have multiple time slots on different days.
-    // For example, one lecture on Monday and another on Wednesday.
-    std::map<Day, TimeSlot> required_slots;
+    Members:
+    - course_code: The official course code + the section ('_' in case of no section) (e.g., "CS201_", "ESC111MC", "TA111A").
+    - course_name: The full name of the course (e.g., "Theory of Computation").
+    - student_registered: Total number of students registered for the course.
+    - lecture_slots: A list (vector) of TimeSlot objects for lecture timings.
+    - tutorial_slots: A list (vector) of TimeSlot objects for tutorial timings.
+    - tutorial_count: Number of tutorial groups allocated for this course.
+    - lecture_times: Vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
+    - tutorial_times: Vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
+
+    Constructor:
+    Initializes a Course object with the provided details.
+    Parameters are not necessarily passed by const reference (for strings and vectors) 
+    */
+    string course_code;
+    string course_name;
+    int student_registered;
+    vector<TimeSlot> lecture_slots;
+    vector<TimeSlot> tutorial_slots;
+    int tutorial_count;
+    vector<int> lecture_times;
+    vector<int> tutorial_times;
+
+    // Constructor
+    Course(string& Course_code,
+            string& Course_name,
+            int Student_registered,
+            vector<TimeSlot>& Lecture_slots,
+            vector<TimeSlot>& Tutorial_slots,
+            int Tutorial_count)
+
+        : course_code(Course_code),
+            course_name(Course_name),
+            student_registered(Student_registered),
+            lecture_slots(Lecture_slots),
+            tutorial_slots(Tutorial_slots),
+            tutorial_count(Tutorial_count) {}
 };
 
-// Represents a lecture hall where courses can be held.
-struct LectureHall {
-    std::string name;       // The name of the hall, e.g., "L01"
-    int capacity;           // The maximum number of students it can hold
+class Venue {
+    /*
+    The Venue class represents a lecture hall or tutorial room.
 
-    // Keeps track of which time slots are booked on which days.
-    std::map<Day, std::vector<TimeSlot>> bookings;
+    Members:
+    - venue_name: The name of the lecture hall 
+                    (e.g., "L01", "DJAC: 203H").
+    - capacity: The total number of students that can be accommodated.
+    - location: The building or area where the lecture hall is located
+                (e.g., "LHC", "TB", "DJAC", "WL").
+    - availability: An unordered_map<int, bool> that stores availability 
+                    of the hall for different time slots.
+                    (Key: integer time slot ID, Value: true if available).
+    */
+public:
+    string venue_name;
+    int capacity;
+    string location;
+    unordered_map<int, bool> availability;
+
+    // Constructor
+    Venue(const string& Venue_name,
+            int Capacity,
+            const string& Location)
+        : venue_name(Venue_name),
+            capacity(Capacity),
+            location(Location) {}
 };
-
-// Represents a successful assignment of a course to a hall.
-struct Assignment {
-    std::string course_id;
-    std::string course_name;
-    std::string hall_name;
-    Day day;
-    TimeSlot slot;
-};
-
-#endif // DATA_STRUCTURES_HPP
