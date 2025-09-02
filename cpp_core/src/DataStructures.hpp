@@ -1,12 +1,13 @@
 #pragma once
 
-#include <bits/stdc++.h>
-using namespace std;
+#include <string>
+#include <vector>
+#include <unordered_map>
 
 struct TimeSlot {
     /*
     The data structure storing the timeslot has 3 members:
-    - day (string)
+    - day (std::string)
     - start_time (int)
     - end_time (int)
 
@@ -18,12 +19,12 @@ struct TimeSlot {
     The last two digits represent the minutes.
     */
 
-    string day;
+    std::string day;
     int start_time;
     int end_time;
 
     // Constructor
-    TimeSlot(const string& Day, int Start_time, int End_time)
+    TimeSlot(const std::string& Day, int Start_time, int End_time)
         : day(Day), start_time(Start_time), end_time(End_time) {}
 };
 
@@ -36,31 +37,35 @@ public:
     - course_code: The official course code + the section ('_' in case of no section) (e.g., "CS201_", "ESC111MC", "TA111A").
     - course_name: The full name of the course (e.g., "Theory of Computation").
     - student_registered: Total number of students registered for the course.
-    - lecture_slots: A list (vector) of TimeSlot objects for lecture timings.
-    - tutorial_slots: A list (vector) of TimeSlot objects for tutorial timings.
+    - lecture_slots: A list (std::vector) of TimeSlot objects for lecture timings.
+    - tutorial_slots: A list (std::vector) of TimeSlot objects for tutorial timings.
     - tutorial_count: Number of tutorial groups allocated for this course.
-    - lecture_times: Vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
-    - tutorial_times: Vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
+    - lecture_times: std::vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
+    - tutorial_times: std::vector of slot start times normalized to half-hour quanta (e.g., 17:10 → 17:00).
+    - assignment: std::string representing Venue of Lecture Allocated
+    - tutotial_assignment: std::vector of std::string representing Venues of Tutorials Allocated
 
     Constructor:
     Initializes a Course object with the provided details.
-    Parameters are not necessarily passed by const reference (for strings and vectors) 
+    Parameters are not necessarily passed by const reference (for std::strings and std::vectors) 
     */
-    string course_code;
-    string course_name;
+    std::string course_code;
+    std::string course_name;
     int student_registered;
-    vector<TimeSlot> lecture_slots;
-    vector<TimeSlot> tutorial_slots;
+    std::vector<TimeSlot> lecture_slots;
+    std::vector<TimeSlot> tutorial_slots;
     int tutorial_count;
-    vector<int> lecture_times;
-    vector<int> tutorial_times;
+    std::vector<int> lecture_times;
+    std::vector<int> tutorial_times;
+    std::string assignment;
+    std::vector<std::string> tutorial_assignment;
 
     // Constructor
-    Course(string& Course_code,
-            string& Course_name,
+    Course(std::string& Course_code,
+            std::string& Course_name,
             int Student_registered,
-            vector<TimeSlot>& Lecture_slots,
-            vector<TimeSlot>& Tutorial_slots,
+            std::vector<TimeSlot>& Lecture_slots,
+            std::vector<TimeSlot>& Tutorial_slots,
             int Tutorial_count)
 
         : course_code(Course_code),
@@ -86,15 +91,15 @@ class Venue {
                     (Key: integer time slot ID, Value: true if available).
     */
 public:
-    string venue_name;
+    std::string venue_name;
     int capacity;
-    string location;
-    unordered_map<int, bool> availability;
+    std::string location;
+    std::unordered_map<int, bool> availability;
 
     // Constructor
-    Venue(const string& Venue_name,
+    Venue(const std::string& Venue_name,
             int Capacity,
-            const string& Location)
+            const std::string& Location)
         : venue_name(Venue_name),
             capacity(Capacity),
             location(Location) {}
