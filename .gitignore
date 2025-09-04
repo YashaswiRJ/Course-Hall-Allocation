@@ -1,0 +1,4 @@
+# .gitignore
+
+# Firebase / Google Cloud credentials
+backend/firebase-service-account.json.json

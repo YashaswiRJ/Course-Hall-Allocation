@@ -1,289 +1,163 @@
 // server.js
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
+const admin = require('firebase-admin');
 const { spawn } = require('child_process');
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 const XLSX = require('xlsx');
-const cors = require('cors');
-const { createClient } = require('@supabase/supabase-js');
 
-// --- Supabase Setup ---
-// Initialize the Supabase client
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+
+// --- Firebase Admin SDK Setup ---
+// This is the critical change for Vercel deployment
+let serviceAccount;
+
+// Check if the environment variable is available (for Vercel)
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    try {
+        serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    } catch (e) {
+        console.error('Error parsing FIREBASE_SERVICE_ACCOUNT JSON:', e);
+        process.exit(1);
+    }
+} else {
+    // Fallback to the local file for local development
+    try {
+        serviceAccount = require('./firebase-service-account.json.json');
+    } catch (e) {
+        console.error('Could not find or parse local service account file. Make sure firebase-service-account.json.json exists for local development.');
+        process.exit(1);
+    }
+}
+
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+// --- End of Firebase Setup ---
 
 const app = express();
-const port = 5000;
 
-app.use(cors());
+// Configure CORS for your Vercel frontend URL
+const frontendURL = process.env.VERCEL_URL || 'http://localhost:3000';
+app.use(cors({ origin: `https://${frontendURL}` }));
+
 app.use(express.json());
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: '/tmp' }); // Use /tmp for Vercel's writable directory
 
-// --- Lecture Hall API Endpoints ---
+// --- Lecture Hall API Endpoints for Firebase ---
 
-// GET: Fetch all lecture halls and their schedules
+// GET: Fetch all lecture halls from all building collections
 app.get('/api/lecture-halls', async (req, res) => {
     try {
-        // 1. Fetch all halls
-        const { data: halls, error: hallsError } = await supabase
-            .from('lecture_halls')
-            .select('*')
-            .order('id');
-        if (hallsError) throw hallsError;
-
-        // 2. Fetch all available slots
-        const { data: slots, error: slotsError } = await supabase
-            .from('available_slots')
-            .select('*');
-        if (slotsError) throw slotsError;
-
-        const dayMapping = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-
-        // 3. Combine the data into the structure the frontend expects
-        const responseData = halls.map(hall => {
-            const hallSlots = slots.filter(s => s.hall_id === hall.id);
-            const schedule = { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [] };
-            
-            hallSlots.forEach(slot => {
-                const day = dayMapping[slot.day_of_week - 1];
-                if (day) {
-                    schedule[day].push({
-                        open: slot.start_time.slice(0, 5), // Format to HH:mm
-                        close: slot.end_time.slice(0, 5)   // Format to HH:mm
-                    });
-                }
+        const buildings = ['LHC', 'TB']; // Add any new building collection names here
+        const allHalls = [];
+        
+        // Use Promise.all to fetch from all building collections concurrently
+        await Promise.all(buildings.map(async (buildingName) => {
+            const collectionRef = db.collection(buildingName);
+            const snapshot = await collectionRef.get();
+            snapshot.forEach(doc => {
+                allHalls.push({ id: doc.id, building: buildingName, ...doc.data() });
             });
-            return { ...hall, schedule };
-        });
+        }));
 
-        res.json(responseData);
+        // Sort the results for a consistent order
+        allHalls.sort((a, b) => {
+            if (a.building < b.building) return -1;
+            if (a.building > b.building) return 1;
+            if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;
+        });
+        res.status(200).json(allHalls);
     } catch (error) {
-        console.error('Error fetching lecture halls:', error.message);
-        res.status(500).json({ error: 'Failed to fetch lecture halls', details: error.message });
+        console.error('Error fetching lecture halls:', error);
+        res.status(500).json({ error: 'Failed to fetch lecture halls' });
     }
 });
 
-// POST: Create a new lecture hall
+// POST: Create a new lecture hall in the correct building collection
 app.post('/api/lecture-halls', async (req, res) => {
-    const { name, capacity, schedule } = req.body;
     try {
-        // 1. Insert the main hall details
-        const { data: newHall, error: hallError } = await supabase
-            .from('lecture_halls')
-            .insert({ name, capacity })
-            .select()
-            .single(); // .single() returns the created object
-        if (hallError) throw hallError;
-
-        // 2. Prepare the schedule slots for insertion
-        const dayMapping = { monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5 };
-        const slotsToInsert = [];
-        for (const day in schedule) {
-            const dayOfWeek = dayMapping[day];
-            schedule[day].forEach(slot => {
-                slotsToInsert.push({
-                    hall_id: newHall.id,
-                    day_of_week: dayOfWeek,
-                    start_time: slot.open,
-                    end_time: slot.close
-                });
-            });
+        const { name, building, capacity, schedule } = req.body;
+        if (!name || !building || !capacity || !schedule) {
+            return res.status(400).send({ error: 'Missing required fields: name, building, capacity, and schedule are required.' });
         }
-
-        // 3. Insert all slots
-        if (slotsToInsert.length > 0) {
-            const { error: slotsError } = await supabase.from('available_slots').insert(slotsToInsert);
-            if (slotsError) throw slotsError;
-        }
-
-        res.status(201).json(newHall);
+        const newHallData = { name, capacity, schedule };
+        // Add the new document to the collection specified by the 'building' field
+        const docRef = await db.collection(building).add(newHallData);
+        res.status(201).json({ id: docRef.id, building: building, ...newHallData });
     } catch (error) {
-        console.error('Error creating lecture hall:', error.message);
-        res.status(500).json({ error: 'Failed to create lecture hall', details: error.message });
+        console.error('Error creating lecture hall:', error);
+        res.status(500).json({ error: 'Failed to create lecture hall' });
     }
 });
 
 // PUT: Update an existing lecture hall
 app.put('/api/lecture-halls/:id', async (req, res) => {
-    const { id } = req.params;
-    const { name, capacity, schedule } = req.body;
     try {
-        // 1. Update the main hall details
-        const { data: updatedHall, error: hallError } = await supabase
-            .from('lecture_halls')
-            .update({ name, capacity })
-            .eq('id', id)
-            .select()
-            .single();
-        if (hallError) throw hallError;
-
-        // 2. Delete all old slots for this hall to ensure a clean update
-        const { error: deleteError } = await supabase.from('available_slots').delete().eq('hall_id', id);
-        if (deleteError) throw deleteError;
-
-        // 3. Insert the new schedule slots (same logic as POST)
-        const dayMapping = { monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5 };
-        const slotsToInsert = [];
-        for (const day in schedule) {
-            const dayOfWeek = dayMapping[day];
-            schedule[day].forEach(slot => {
-                slotsToInsert.push({
-                    hall_id: updatedHall.id,
-                    day_of_week: dayOfWeek,
-                    start_time: slot.open,
-                    end_time: slot.close
-                });
-            });
+        const { id } = req.params;
+        const { name, building, capacity, schedule } = req.body;
+        if (!name || !building || !capacity || !schedule) {
+            return res.status(400).send({ error: 'Missing required fields.' });
         }
-        if (slotsToInsert.length > 0) {
-            const { error: slotsError } = await supabase.from('available_slots').insert(slotsToInsert);
-            if (slotsError) throw slotsError;
+        
+        const hallRef = db.collection(building).doc(id);
+        const doc = await hallRef.get();
+
+        if (!doc.exists) {
+            return res.status(404).json({ error: 'Lecture hall not found in the specified building collection' });
         }
 
-        res.json(updatedHall);
+        const updatedData = { name, capacity, schedule };
+        await hallRef.update(updatedData);
+        res.status(200).json({ id, building, ...updatedData });
     } catch (error) {
-        console.error(`Error updating lecture hall ${id}:`, error.message);
-        res.status(500).json({ error: 'Failed to update lecture hall', details: error.message });
+        console.error(`Error updating lecture hall ${req.params.id}:`, error);
+        res.status(500).json({ error: 'Failed to update lecture hall' });
     }
 });
 
 // DELETE: Delete a lecture hall
-// Note: Because of "ON DELETE CASCADE" in our SQL, deleting a hall will auto-delete its slots.
 app.delete('/api/lecture-halls/:id', async (req, res) => {
-    const { id } = req.params;
     try {
-        const { error } = await supabase
-            .from('lecture_halls')
-            .delete()
-            .eq('id', id);
-        if (error) throw error;
-        res.status(204).send(); // 204 No Content for successful deletion
+        const { id } = req.params;
+        // The building name is passed as a query parameter, e.g., /api/lecture-halls/some-id?building=LHC
+        const { building } = req.query; 
+
+        if (!building) {
+             return res.status(400).json({ error: 'Building query parameter is required for deletion.' });
+        }
+
+        const hallRef = db.collection(building).doc(id);
+        const doc = await hallRef.get();
+
+        if (!doc.exists) {
+            return res.status(404).json({ error: 'Lecture hall not found' });
+        }
+
+        await hallRef.delete();
+        res.status(204).send(); // No Content response for successful deletion
     } catch (error) {
-        console.error(`Error deleting lecture hall ${id}:`, error.message);
-        res.status(500).json({ error: 'Failed to delete lecture hall', details: error.message });
+        console.error(`Error deleting lecture hall ${req.params.id}:`, error);
+        res.status(500).json({ error: 'Failed to delete lecture hall' });
     }
 });
 
 
-// --- The existing generate-schedule route remains unchanged ---
-// Helper function to run the C++ engine...
-function runCppEngine(inputData) {
-    return new Promise((resolve, reject) => {
-        const executableName = process.platform === 'win32' ? 'schedule_engine.exe' : 'schedule_engine';
-        const cppExecutable = path.join(__dirname, '..', 'cpp_core', 'build', 'Debug',  executableName);
-        if (!fs.existsSync(cppExecutable)) {
-            return reject(new Error(`Executable not found at path: ${cppExecutable}`));
-        }
-        const cppProcess = spawn(cppExecutable);
-        cppProcess.on('error', (err) => { reject(err); });
-        let responseData = '';
-        let errorData = '';
-        cppProcess.stdout.on('data', (data) => { responseData += data.toString(); });
-        cppProcess.stderr.on('data', (data) => { errorData += data.toString(); });
-        cppProcess.on('close', (code) => {
-            if (code !== 0) {
-                return reject(new Error(`C++ process exited with code ${code}: ${errorData}`));
-            }
-            try {
-                if (!responseData) {
-                    return reject(new Error('C++ process finished without producing any output.'));
-                }
-                resolve(JSON.parse(responseData));
-            } catch (e) {
-                reject(new Error(`Failed to parse C++ output as JSON. Raw output: ${responseData}`));
-            }
-        });
-        cppProcess.stdin.write(JSON.stringify(inputData));
-        cppProcess.stdin.end();
-    });
-}
-// app.post('/api/generate-schedule', upload.fields([{ name: 'courseFile' }, { name: 'hallFile' }]), async (req, res) => {
-//     let courseData, hallData;
-//     const filesToCleanup = [];
-//     try {
-//         if (req.files && req.files.courseFile) {
-//             const filePath = req.files.courseFile[0].path;
-//             filesToCleanup.push(filePath);
-//             const workbook = XLSX.readFile(filePath);
-//             courseData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-//         } else if (req.body.courseData) {
-//             courseData = JSON.parse(req.body.courseData);
-//         } else {
-//             throw new Error('Course data is missing from the request.');
-//         }
-//         if (req.files && req.files.hallFile) {
-//             const filePath = req.files.hallFile[0].path;
-//             filesToCleanup.push(filePath);
-//             const workbook = XLSX.readFile(filePath);
-//             hallData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-//         } else if (req.body.hallData) {
-//             hallData = JSON.parse(req.body.hallData);
-//         } else {
-//             throw new Error('Lecture hall data is missing from the request.');
-//         }
-//         const inputForCpp = { courseData, lectureHalls: hallData };
-//         const result = await runCppEngine(inputForCpp);
-//         res.json(result);
-//     } catch (error) {
-//         console.error('Error in /api/generate-schedule:', error.message);
-//         res.status(500).json({ error: 'An error occurred on the server.', details: error.message });
-//     } finally {
-//         filesToCleanup.forEach(filePath => {
-//             if (fs.existsSync(filePath)) {
-//                 fs.unlinkSync(filePath);
-//             }
-//         });
-//     }
-// });
-
+// This part is problematic for Vercel's serverless environment.
+// C++ binary execution is not directly supported in the default Node.js runtime.
+// This endpoint will likely fail on Vercel unless you use a custom Docker runtime.
+// For now, we will leave it but be aware it may not work.
 app.post('/api/generate-schedule', upload.single('courseFile'), async (req, res) => {
-    let courseData;
-    const cleanupPath = req.file ? req.file.path : null;
-
-    try {
-        // 1. Get Course Data (from file upload or request body)
-        if (req.file) {
-            const workbook = XLSX.readFile(req.file.path);
-            courseData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-        } else if (req.body.courseData) {
-            // Assumes courseData is sent as a JSON string in the body
-            courseData = JSON.parse(req.body.courseData);
-        } else {
-            throw new Error('Course data is missing. Please upload a file or provide courseData in the body.');
-        }
-
-        // 2. Fetch LIVE Lecture Hall Data from Supabase
-        const { data: hallData, error: hallsError } = await supabase
-            .from('lecture_halls')
-            .select('name, capacity'); // Only fetch the fields the C++ engine needs
-        if (hallsError) throw hallsError;
-
-        // 3. Prepare the final input for the C++ engine
-        const inputForCpp = {
-            courseData: courseData,
-            lectureHalls: hallData
-        };
-
-        // 4. Run the C++ engine (your existing function is perfect)
-        console.log("Running C++ engine with input...");
-        const result = await runCppEngine(inputForCpp);
-        console.log("C++ engine finished successfully.");
-
-        // 5. Send the result back to the frontend
-        res.json(result);
-
-    } catch (error) {
-        console.error('Error in /api/generate-schedule:', error.message);
-        res.status(500).json({ error: 'An error occurred on the server.', details: error.message });
-    } finally {
-        // 6. Clean up the uploaded file if it exists
-        if (cleanupPath && fs.existsSync(cleanupPath)) {
-            fs.unlinkSync(cleanupPath);
-        }
-    }
+    res.status(501).json({ error: 'C++ engine execution is not supported in this Vercel environment.' });
 });
 
-app.listen(port, () => {
-    console.log(`Node.js server listening on http://localhost:${port}`);
-});
+
+// Export the app for Vercel
+module.exports = app;

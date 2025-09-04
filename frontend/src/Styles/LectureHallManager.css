@@ -288,6 +288,14 @@ tr:hover {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
+/* NEW: Style for readonly inputs */
+.form-group input[readonly] {
+    background-color: #f4f6f8;
+    color: #7f8c8d;
+    cursor: not-allowed;
+    border-color: #dfe4ea;
+}
+
 fieldset {
   border: 1px solid #eef2f7;
   border-radius: 8px;
@@ -413,6 +421,44 @@ fieldset {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ================================================= */
+/* --- NEW Styles for Building Selection and Back Button --- */
+/* ================================================= */
+
+.btn-back {
+  background: #ecf0f1;
+  color: #34495e;
+  border: 1px solid #bdc3c7;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: #34495e;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-manage {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-manage:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
 
 /* ========================================= */
 /* --- NEW: Loading and Error State Styles --- */

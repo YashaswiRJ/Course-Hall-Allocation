@@ -1,13 +1,15 @@
-// apiService.js
+// src/services/apiService.js
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// IMPORTANT: The base URL is now relative. Vercel will handle the routing.
+const API_BASE_URL = '/api';
 
-// --- Lecture Hall Service Functions ---
+// --- Lecture Hall Service Functions (Updated for Firebase Backend) ---
 
 const getLectureHalls = async () => {
     const response = await fetch(`${API_BASE_URL}/lecture-halls`);
     if (!response.ok) {
-        throw new Error('Failed to fetch lecture halls.');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to fetch lecture halls.');
     }
     return response.json();
 };
@@ -19,7 +21,8 @@ const createLectureHall = async (hallData) => {
         body: JSON.stringify(hallData),
     });
     if (!response.ok) {
-        throw new Error('Failed to create lecture hall.');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to create lecture hall.');
     }
     return response.json();
 };
@@ -31,35 +34,32 @@ const updateLectureHall = async (id, hallData) => {
         body: JSON.stringify(hallData),
     });
     if (!response.ok) {
-        throw new Error('Failed to update lecture hall.');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to update lecture hall.');
     }
     return response.json();
 };
 
-const deleteLectureHall = async (id) => {
-    const response = await fetch(`${API_BASE_URL}/lecture-halls/${id}`, {
+// MODIFIED: Now requires the building name to construct the correct request
+const deleteLectureHall = async (id, building) => {
+    // The building is sent as a query parameter as required by the server
+    const response = await fetch(`${API_BASE_URL}/lecture-halls/${id}?building=${building}`, {
         method: 'DELETE',
     });
     if (!response.ok) {
-        throw new Error('Failed to delete lecture hall.');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to delete lecture hall.');
     }
-    // DELETE requests often return no content, so we don't return response.json()
+    // DELETE requests often return no content
 };
 
 
-// --- Existing Schedule Generator Function ---
-const generateSchedule = async (coursePayload, hallPayload) => {
+// --- Schedule Generator Function (Updated for Firebase Backend) ---
+// This function no longer needs hall data, as the server gets it from Firebase.
+const generateSchedule = async (courseFile) => {
     const formData = new FormData();
-    if (coursePayload instanceof File) {
-        formData.append('courseFile', coursePayload);
-    } else {
-        formData.append('courseData', JSON.stringify(coursePayload));
-    }
-    if (hallPayload instanceof File) {
-        formData.append('hallFile', hallPayload);
-    } else {
-        formData.append('hallData', JSON.stringify(hallPayload));
-    }
+    formData.append('courseFile', courseFile);
+
     try {
         const response = await fetch(`${API_BASE_URL}/generate-schedule`, {
             method: 'POST',
@@ -77,11 +77,9 @@ const generateSchedule = async (coursePayload, hallPayload) => {
 };
 
 export {
-    // New exports
     getLectureHalls,
     createLectureHall,
     updateLectureHall,
     deleteLectureHall,
-    // Existing export
     generateSchedule,
 };
