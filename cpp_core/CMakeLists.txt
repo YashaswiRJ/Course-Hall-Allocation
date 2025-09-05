@@ -17,8 +17,6 @@ set(EXECUTABLE_NAME schedule_engine)
 # if other files are added to the directory.
 set(SOURCES
     src/main.cpp
-    src/InputParser.cpp
-    src/Scheduler.cpp
 )
 
 # --- Include the nlohmann/json library ---

@@ -9,32 +9,14 @@ const multer = require('multer');
 const fs = require('fs');
 const XLSX = require('xlsx');
 
-
 // --- Firebase Admin SDK Setup ---
-// This is the critical change for Vercel deployment
-let serviceAccount;
-
-// Check if the environment variable is available (for Vercel)
-if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-    try {
-        serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-    } catch (e) {
-        console.error('Error parsing FIREBASE_SERVICE_ACCOUNT JSON:', e);
-        process.exit(1);
-    }
-} else {
-    // Fallback to the local file for local development
-    try {
-        serviceAccount = require('./firebase-service-account.json.json');
-    } catch (e) {
-        console.error('Could not find or parse local service account file. Make sure firebase-service-account.json.json exists for local development.');
-        process.exit(1);
-    }
-}
-
+// This version is simplified for local development.
+// Ensure your service account key file is named 'firebase-service-account.json'.
+const serviceAccount = require('./firebase-service-account.json');
+const { constrainedMemory } = require('process');
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
@@ -42,12 +24,14 @@ const db = admin.firestore();
 
 const app = express();
 
-// Configure CORS for your Vercel frontend URL
-const frontendURL = process.env.VERCEL_URL || 'http://localhost:3000';
-app.use(cors({ origin: `https://${frontendURL}` }));
+// Configure CORS for your local frontend (assuming it runs on port 3000)
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use(express.json());
-const upload = multer({ dest: '/tmp' }); // Use /tmp for Vercel's writable directory
+
+// Use a local 'uploads' directory for file storage.
+// IMPORTANT: Make sure you create the 'uploads' folder in your project directory.
+const upload = multer({ dest: 'uploads/' });
 
 // --- Lecture Hall API Endpoints for Firebase ---
 
@@ -70,7 +54,7 @@ app.get('/api/lecture-halls', async (req, res) => {
         allHalls.sort((a, b) => {
             if (a.building < b.building) return -1;
             if (a.building > b.building) return 1;
-            if (a.name < b.name) return -1;
+            if (a.name < a.name) return -1;
             if (a.name > b.name) return 1;
             return 0;
         });
@@ -131,7 +115,7 @@ app.delete('/api/lecture-halls/:id', async (req, res) => {
         const { building } = req.query; 
 
         if (!building) {
-             return res.status(400).json({ error: 'Building query parameter is required for deletion.' });
+            return res.status(400).json({ error: 'Building query parameter is required for deletion.' });
         }
 
         const hallRef = db.collection(building).doc(id);
@@ -149,15 +133,55 @@ app.delete('/api/lecture-halls/:id', async (req, res) => {
     }
 });
 
+// Endpoint to run the C++ scheduler binary
+app.post('/api/generate-schedule', (req, res) => {
+    // 1. Get the course data from the request body
+    const courseNHallData = req.body;
+    // if (!courseNHallData || !Array.isArray(courseNHallData)) {
+    //     return res.status(400).json({ error: 'Invalid or missing course data.' });
+    // }
 
-// This part is problematic for Vercel's serverless environment.
-// C++ binary execution is not directly supported in the default Node.js runtime.
-// This endpoint will likely fail on Vercel unless you use a custom Docker runtime.
-// For now, we will leave it but be aware it may not work.
-app.post('/api/generate-schedule', upload.single('courseFile'), async (req, res) => {
-    res.status(501).json({ error: 'C++ engine execution is not supported in this Vercel environment.' });
+    // 2. Spawn the C++ process (it no longer needs command-line arguments)
+    const executablePath = path.join(__dirname, '../cpp_core/build/Debug/Schedule_engine.exe');
+    const schedulerProcess = spawn(executablePath);
+
+    console.log('Here we go!');
+    // 3. Write the JSON data to the C++ process's standard input
+    schedulerProcess.stdin.write(JSON.stringify(req.body));
+    schedulerProcess.stdin.end(); // Signal that you're done sending data
+
+    let outputJson = '';
+    let errorData = '';
+
+    // 4. Listen for the resulting JSON on standard output
+    schedulerProcess.stdout.on('data', (data) => {
+        outputJson += data.toString();
+    });
+
+    schedulerProcess.stderr.on('data', (data) => {
+        errorData += data.toString();
+    });
+
+    schedulerProcess.on('close', (code) => {
+        if (code !== 0) {
+            console.error(`Scheduler Error: ${errorData}`);
+            return res.status(500).json({ error: 'Failed to generate schedule', details: errorData });
+        }
+        
+        try {
+            // 5. Parse the JSON output from the C++ program and send it to the client
+            const schedule = JSON.parse(outputJson);
+            res.status(200).json(schedule);
+        } catch (error) {
+            console.error('Error parsing schedule output from C++ program:', error);
+            res.status(500).json({ error: 'Failed to process schedule output.' });
+        }
+    });
 });
 
 
-// Export the app for Vercel
-module.exports = app;
+// --- Start the server ---
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
+});

@@ -1,6 +1,6 @@
-^C:\USERS\HP\DOWNLOADS\QUADLHC\CPP_CORE\BUILD\CMAKEFILES\74E241E559C2B25C467419096D611FEA\GENERATE.STAMP.RULE
+^C:\USERS\HP\DOWNLOADS\QUADCHA\COURSE-HALL-ALLOCATION\CPP_CORE\BUILD\CMAKEFILES\137CAA5123C9CF8D792A41408BA3713C\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Hp/Downloads/QuadLHC/cpp_core -BC:/Users/Hp/Downloads/QuadLHC/cpp_core/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/ScheduleEngine.sln
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core -BC:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/ScheduleEngine.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

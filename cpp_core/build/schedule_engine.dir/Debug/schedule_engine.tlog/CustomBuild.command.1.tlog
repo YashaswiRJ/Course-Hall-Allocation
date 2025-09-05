@@ -1,6 +1,6 @@
-^C:\USERS\HP\DOWNLOADS\QUADLHC\CPP_CORE\CMAKELISTS.TXT
+^C:\USERS\HP\DOWNLOADS\QUADCHA\COURSE-HALL-ALLOCATION\CPP_CORE\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Hp/Downloads/QuadLHC/cpp_core -BC:/Users/Hp/Downloads/QuadLHC/cpp_core/build --check-stamp-file C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core -BC:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build --check-stamp-file C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

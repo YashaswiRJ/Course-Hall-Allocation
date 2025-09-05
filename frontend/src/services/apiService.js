@@ -1,7 +1,4 @@
-// src/services/apiService.js
-
-// IMPORTANT: The base URL is now relative. Vercel will handle the routing.
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // --- Lecture Hall Service Functions (Updated for Firebase Backend) ---
 
@@ -56,15 +53,24 @@ const deleteLectureHall = async (id, building) => {
 
 // --- Schedule Generator Function (Updated for Firebase Backend) ---
 // This function no longer needs hall data, as the server gets it from Firebase.
-const generateSchedule = async (courseFile) => {
-    const formData = new FormData();
-    formData.append('courseFile', courseFile);
+const generateSchedule = async (courseDataArray, hallDataArray) => {
+    // The payload is the raw course data.
+    const payload = {
+        courseData: courseDataArray,
+        hallData: hallDataArray
+    };
 
     try {
         const response = await fetch(`${API_BASE_URL}/generate-schedule`, {
             method: 'POST',
-            body: formData,
+            // Set headers to indicate you're sending JSON
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // Stringify the JavaScript object to send it as a JSON string
+            body: JSON.stringify(payload),
         });
+
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({ error: 'An unknown server error occurred.' }));
             throw new Error(errorData.details || errorData.error || `HTTP error! Status: ${response.status}`);

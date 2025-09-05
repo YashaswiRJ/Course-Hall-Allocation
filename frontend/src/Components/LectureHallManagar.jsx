@@ -8,8 +8,10 @@ const API_BASE_URL = 'http://localhost:5000/api';
 const getLectureHalls = async () => {
     const response = await fetch(`${API_BASE_URL}/lecture-halls`);
     if (!response.ok) {
+        console.log('Lec fetched');
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || 'Failed to fetch lecture halls.');
+        console.log("Error hai!");
+        throw new Error(errorData.error || 'yFailed to fetch lecture halls.');
     }
     return response.json();
 };
@@ -338,6 +340,7 @@ const LectureHallManager = () => {
             const data = await getLectureHalls();
             setHalls(data);
         } catch (err) {
+            console.log(err);
             setError('Failed to load data from the server. Please check your connection and try again.');
             console.error(err);
         } finally {

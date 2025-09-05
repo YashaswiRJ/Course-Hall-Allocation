@@ -36,9 +36,9 @@ const AppRoutes = () => {
                                 title="Course Schedule File"
                                 storageKey="courseScheduleData"
                                 requiredColumns={[
-                                    'Course Name/Group Name', 'Slot Name', 'Units(Credits)', 'Course Type',
-                                    'Instructor', 'Instructor Email', 'Lecture Schedule', 'Tutorial Schedule',
-                                    'Tutorial Group', 'Practical Schedule', 'Registered Student'
+                                    'Course Name', 'Course Code', 'Sections', 'Modular Course',
+                                    'Modular Binding', 'Lecture Schedule', 'Tutorial Schedule',
+                                    'Tutorial Count', 'Students Registered'
                                 ]}
                             />}
                         />

@@ -70,7 +70,6 @@ const GeneratorPage = () => {
                 if (!data) throw new Error('No saved course data found in your browser.');
                 coursePayload = JSON.parse(data);
             }
-
             // Determine the payload for hall data (from file or database)
             let hallPayload = null;
             if (hallDataSource === 'upload') {
@@ -78,12 +77,15 @@ const GeneratorPage = () => {
                 hallPayload = hallFile;
             } else { // 'saved' means fetch from the database via the API service
                 hallPayload = await getLectureHalls();
+                console.log('kdhj', hallPayload);
                 if (!hallPayload || hallPayload.length === 0) {
+                    console.log('Errot');
                     throw new Error('No lecture hall data found in the database.');
                 }
             }
 
             // Call the API service to generate the schedule
+            console.log('Trying running!');
             const response = await generateSchedule(coursePayload, hallPayload);
 
             // Save the successful result to localStorage to enable "View Last Result" links
@@ -93,7 +95,7 @@ const GeneratorPage = () => {
             navigate('/results', { state: { schedule: response } });
 
         } catch (err) {
-            setError(err.message || 'An unexpected error occurred.');
+            setError(err.message+'Hook' || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
         }

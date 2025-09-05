@@ -1,0 +1,1331 @@
+🚀 C++ program received and parsed JSON successfully!
+✅ Received Data:
+{
+    "courseData": [
+        {
+            "Course Code": "MTH111M",
+            "Course Name": "Intro to Real Analysis",
+            "Lecture Schedule": "MWF 09:00-10:00",
+            "Modular Binding": "MTH112MD",
+            "Modular Course": 1,
+            "Sections": "A",
+            "Students Registered": 308,
+            "Tutorial Count": 10,
+            "Tutorial Schedule": "Th 14:00-15:15"
+        },
+        {
+            "Course Code": "MTH111M",
+            "Course Name": "Intro to Real Analysis",
+            "Lecture Schedule": "MWF 09:00-10:00",
+            "Modular Binding": "MTH112MC",
+            "Modular Course": 1,
+            "Sections": "B",
+            "Students Registered": 332,
+            "Tutorial Count": 10,
+            "Tutorial Schedule": "Th 14:00-15:15"
+        },
+        {
+            "Course Code": "MTH112M",
+            "Course Name": "Intro to Multivariate Calculus",
+            "Lecture Schedule": "MWF 09:00-10:00",
+            "Modular Binding": "MTH111MB",
+            "Modular Course": 2,
+            "Sections": "C",
+            "Students Registered": 305,
+            "Tutorial Count": 10,
+            "Tutorial Schedule": "Th 14:00-15:15"
+        },
+        {
+            "Course Code": "MTH112M",
+            "Course Name": "Intro to Multivariate Calculus",
+            "Lecture Schedule": "MWF 09:00-10:00",
+            "Modular Binding": "MTH111MA",
+            "Modular Course": 2,
+            "Sections": "D",
+            "Students Registered": 318,
+            "Tutorial Count": 9,
+            "Tutorial Schedule": "Th 14:00-15:15"
+        },
+        {
+            "Course Code": "CS201",
+            "Course Name": "Discrete Mathematics",
+            "Lecture Schedule": "Th 14:00-15:15",
+            "Modular Course": 0,
+            "Students Registered": 163
+        },
+        {
+            "Course Code": "CS345",
+            "Course Name": "Design and Analysis of Algorithms",
+            "Lecture Schedule": "M 17:00-17:50",
+            "Modular Course": 0,
+            "Students Registered": 231
+        },
+        {
+            "Course Code": "CS340",
+            "Course Name": "Theory of Computation",
+            "Lecture Schedule": "T 12:00-13:15",
+            "Modular Course": 0,
+            "Students Registered": 165
+        },
+        {
+            "Course Code": "CS330",
+            "Course Name": "Operating System",
+            "Lecture Schedule": "W 8:00-8:50",
+            "Modular Course": 0,
+            "Students Registered": 145
+        },
+        {
+            "Course Code": "CS253",
+            "Course Name": "Software Development and Operations",
+            "Lecture Schedule": "F 10:00-11:30",
+            "Modular Course": 0,
+            "Students Registered": 168
+        },
+        {
+            "Course Code": "CS220",
+            "Course Name": "Computer Design and Architecture",
+            "Lecture Schedule": "T 12:00-12:50",
+            "Modular Course": 0,
+            "Students Registered": 169
+        },
+        {
+            "Course Code": "ESC111M",
+            "Course Name": "Fundamentals of Computing-1",
+            "Lecture Schedule": "M 09:00-10:00, W 14:00-15:30",
+            "Modular Binding": "ESC112M",
+            "Modular Course": 1,
+            "Students Registered": 620,
+            "Tutorial Count": 20,
+            "Tutorial Schedule": "T 14:00-15:15"
+        },
+        {
+            "Course Code": "ESC112M",
+            "Course Name": "Fundamentals of Computing-2",
+            "Lecture Schedule": "M 09:00-10:00, W 14:00-15:30",
+            "Modular Binding": "ESC111M",
+            "Modular Course": 2,
+            "Students Registered": 597,
+            "Tutorial Count": 17,
+            "Tutorial Schedule": "T 14:00-15:15"
+        }
+    ],
+    "hallData": [
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "45YPPBtsQiC5IJFnQSRH",
+            "name": "L10",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "8OCJStDsvlM9MzSFQhS2",
+            "name": "L19",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "8biBtinWCwg9tRSsHSVi",
+            "name": "L14",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "AJFwC1IbrKhJZAwYQ5MY",
+            "name": "L16",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "BxUaU3EJpILCpxHrllnT",
+            "name": "L07",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "IxwhPwl93vE2dL4bStUy",
+            "name": "L06",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "LwBZW8Dh0lQ32fw3sgkr",
+            "name": "L05",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "MbEHkRJjyE5tFu679TYe",
+            "name": "L08",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "NO4n2Y7lhdSsAu3gMsxk",
+            "name": "L12",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "OlOKU87xJvy995mw5CiY",
+            "name": "L18",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "PfQVHt6yKZR8niiyxaB5",
+            "name": "L13",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "QyLOvRE9eHTkumx6E66Q",
+            "name": "L17",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "VeXqpw4gNNGtDr1HXGcl",
+            "name": "L03",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "YJmWi3JQFudAl4q179YW",
+            "name": "L02",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "b0NowgKDOqTcnjsDALHk",
+            "name": "L09",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "icvbDQkuU2iMCeKet2We",
+            "name": "L20",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "izaCnGhYjXB3u0tDOnld",
+            "name": "L11",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "o1B1woWPTmYJWTZVZqmp",
+            "name": "L04",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 112,
+            "id": "uNlIK77Ou31CcJty0Xru",
+            "name": "L01",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "LHC",
+            "capacity": 50,
+            "id": "zW0ZDbrkrkBApkiAlsxb",
+            "name": "L15",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "41JLWZtz0qr6xUh2inU2",
+            "name": "TB102",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "9OsizuyMo6GNP3J0xCsk",
+            "name": "TB112",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "LUSSHJ3RYPWxuqeP9yqP",
+            "name": "TB101",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "R2PRwfSA6vhJWLjBOcWW",
+            "name": "TB105",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "UF9mwt1TDgI7Dld0Oc7P",
+            "name": "TB109",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "WdbHjGQjwqNsaX8JVVPB",
+            "name": "TB106",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "WtbZf0p3fzsmPfjq4dZU",
+            "name": "TB107",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "Ynp59UbiIvISzpNYS91u",
+            "name": "TB110",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "aFP7Q0m66KMFakbOweAB",
+            "name": "TB103",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "mGsZaVRnGCOFo7HQ6Gti",
+            "name": "TB104",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "mYxx5hfktjWgP83m4JtL",
+            "name": "TB108",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "sMer6JlN6RSCDAvNn3vE",
+            "name": "TB111",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        }
+    ]
+}
+📚 Found courses array with 12 items.

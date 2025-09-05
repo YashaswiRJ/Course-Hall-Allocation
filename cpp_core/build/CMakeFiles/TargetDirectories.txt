@@ -1,3 +1,3 @@
-C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/schedule_engine.dir
-C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/schedule_engine.dir
+C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/ZERO_CHECK.dir

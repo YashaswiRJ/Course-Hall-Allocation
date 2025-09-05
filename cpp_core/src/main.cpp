@@ -1,94 +1,57 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <set>
-#include "InputParser.h"
-#include "Scheduler.h"
-#include "../helpers/json.hpp"
+#include <io.h>      // for _dup2, _close
+#include <fcntl.h>   // for _open
+#include <cstdlib>
+#include "../helpers/json.hpp" // Make sure this path is correct
 
+// for convenience
 using json = nlohmann::json;
 
-// Helper functions (day_to_string, minutes_to_time_string) remain the same...
-std::string day_to_string(Day day) {
-    switch (day) {
-        case Day::M: return "Monday";
-        case Day::T: return "Tuesday";
-        case Day::W: return "Wednesday";
-        case Day::Th: return "Thursday";
-        case Day::F: return "Friday";
-        default: return "Unknown";
-    }
-}
-
-std::string minutes_to_time_string(int total_minutes) {
-    int hours = total_minutes / 60;
-    int minutes = total_minutes % 60;
-    char buffer[6];
-    sprintf(buffer, "%02d:%02d", hours, minutes);
-    return std::string(buffer);
-}
-
-
 int main() {
-    std::string json_input_string;
-    std::string line;
-    while (std::getline(std::cin, line)) {
-        json_input_string += line;
+    // The C++ program will now wait for input from stdin
+    // instead of looking for a file argument.
+    json j;
+
+    int fd = _open("outputYASH.txt", _O_WRONLY | _O_CREAT | _O_TRUNC, 0644);
+    if (fd < 0) {
+        perror("open");
+        exit(1);
     }
 
-    InputParser parser;
-    Scheduler scheduler;
-    std::vector<Course> courses;
-    std::vector<LectureHall> halls;
-
-    parser.parse(json_input_string, courses, halls);
-
-    std::vector<Assignment> assignments = scheduler.run_greedy_scheduler(courses, halls);
-
-    json output_json;
-    output_json["message"] = "Schedule generation complete.";
-    output_json["total_courses_processed"] = courses.size();
-    output_json["successful_assignments"] = assignments.size();
+    // Redirect stdout (1) to the file descriptor
+    if (_dup2(fd, 1) < 0) {
+        perror("dup2");
+        _close(fd);
+        exit(1);
+    }
     
-    // --- START OF NEW LOGIC ---
+    _close(fd);
 
-    // 1. Create a set of assigned course IDs for quick lookup
-    std::set<std::string> assigned_course_ids;
-    for (const auto& assignment : assignments) {
-        assigned_course_ids.insert(assignment.course_id);
-    }
+    try {
+        // Read directly from the standard input stream (std::cin)
+        std::cin >> j;
 
-    // 2. Find unassigned courses and add them to a new JSON array
-    json unassigned_courses_array = json::array();
-    for (const auto& course : courses) {
-        if (assigned_course_ids.find(course.id) == assigned_course_ids.end()) {
-            json unassigned_obj;
-            unassigned_obj["course_id"] = course.id;
-            unassigned_obj["course_name"] = course.name;
-            unassigned_obj["student_count"] = course.student_count;
-            unassigned_courses_array.push_back(unassigned_obj);
+        // --- Your verification logic starts here ---
+        // This part just prints what it received to confirm it's working.
+        
+        // Use std::cout for normal output that Node.js will capture.
+        std::cout << "🚀 C++ program received and parsed JSON successfully!\n";
+        std::cout << "✅ Received Data:\n" << j.dump(4) << "\n";
+
+        // Example: Check for a specific key to prove it's working
+        if (j.contains("courseData") && j.at("courseData").is_array()) {
+            std::cout << "📚 Found courses array with " << j.at("courseData").size() << " items.\n";
         }
+        
+        // In the future, you will return your final schedule JSON here.
+        // For now, we're just confirming receipt.
+        
+    } catch (const std::exception& e) {
+        // Use std::cerr for errors. Node.js will capture this in the 'stderr' event.
+        std::cerr << "JSON parse error in C++: " << e.what() << "\n";
+        return EXIT_FAILURE;
     }
-    
-    // --- END OF NEW LOGIC ---
 
-    json assignments_array = json::array();
-    for (const auto& assignment : assignments) {
-        json assignment_obj;
-        assignment_obj["course_id"] = assignment.course_id;
-        assignment_obj["course_name"] = assignment.course_name;
-        assignment_obj["hall_name"] = assignment.hall_name;
-        assignment_obj["day"] = day_to_string(assignment.day);
-        assignment_obj["start_time"] = minutes_to_time_string(assignment.slot.start_time_minutes);
-        assignment_obj["end_time"] = minutes_to_time_string(assignment.slot.end_time_minutes);
-        assignments_array.push_back(assignment_obj);
-    }
-    
-    output_json["generated_assignments"] = assignments_array;
-    // Add the new array to the final output
-    output_json["unassigned_courses"] = unassigned_courses_array;
-
-    std::cout << output_json.dump(4) << std::endl;
-
-    return 0;
+    return EXIT_SUCCESS;
 }

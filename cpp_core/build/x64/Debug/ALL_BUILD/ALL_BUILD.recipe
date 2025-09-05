@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Hp\Downloads\QuadLHC\cpp_core\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Hp\Downloads\QuadLHC\cpp_core\build\Debug\schedule_engine.exe</FullPath>
+      <FullPath>C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\build\Debug\schedule_engine.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Hp\Downloads\QuadLHC\cpp_core\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Hp\Downloads\QuadLHC\cpp_core\build\CMakeFiles\74e241e559c2b25c467419096d611fea\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\build\CMakeFiles\137caa5123c9cf8d792a41408ba3713c\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{E6322BA1-3BF2-3A50-ADE3-67596F685E9C}</UniqueIdentifier>
+      <UniqueIdentifier>{45C1A089-EB89-3872-A257-D48ED513F3EB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
