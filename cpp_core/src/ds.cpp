@@ -1,5 +1,6 @@
 #include "ds.hpp"
 #include <stdexcept>
+#include <algorithm>
 
 // Venue constructor implementation
 Venue::Venue(const nlohmann::json& j) : capacity(0) {
@@ -9,6 +10,10 @@ Venue::Venue(const nlohmann::json& j) : capacity(0) {
 
     if (j.contains("capacity") && j.at("capacity").is_number()) {
         this->capacity = j.at("capacity").get<int>();
+    }
+
+    if(j.contains("building") && j.at("building").is_string()){
+        this->building = j.at("building").get<std::string>();
     }
 
     if (j.contains("schedule")) {
@@ -66,4 +71,20 @@ void Venue::Operational_Time_Marker(const nlohmann::json& j, std::string day, in
             }
         }
     }
+}
+
+void Course::Append_course_code(const std::string new_code){
+    course_code = course_code + new_code;
+}
+
+void Course::Append_course_name(const std::string new_name){
+    course_name = course_name + new_name;
+}
+
+void Course::Update_max_registered_students(const int new_students_registered){
+    students_registered = std::max(students_registered, new_students_registered);
+}
+
+void Course::Update_max_tutorial_count(const int new_toturial_count){
+    tutorial_count = std::max(tutorial_count, new_toturial_count);
 }

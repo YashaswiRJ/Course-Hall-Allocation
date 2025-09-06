@@ -4,6 +4,10 @@
 #include <fcntl.h>   // for _open
 #include <cstdlib>
 #include "../helpers/json.hpp" // Make sure this path is correct
+#include "ds.hpp"
+#include "course_preprocessing.cpp"
+#include "course_processing.cpp"
+#include "venue_processing.cpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -28,30 +32,32 @@ int main() {
     
     _close(fd);
 
-    try {
-        // Read directly from the standard input stream (std::cin)
-        std::cin >> j;
+    std::cin >> j;
 
-        // --- Your verification logic starts here ---
-        // This part just prints what it received to confirm it's working.
-        
-        // Use std::cout for normal output that Node.js will capture.
-        std::cout << "🚀 C++ program received and parsed JSON successfully!\n";
-        std::cout << "✅ Received Data:\n" << j.dump(4) << "\n";
+    std::vector<Course> preprocessed_course_list; 
+    std::map<std::string, std::vector<Venue>> processed_venue_list;
+    std::vector<Lecture>  processed_lecture_lists;
+    std::vector<Tutorial> processed_tutorial_lists;
+    std::vector<std::string> lecture_building_priority_order;
+    std::vector<std::string> tutorial_building_priority_order;
 
-        // Example: Check for a specific key to prove it's working
-        if (j.contains("courseData") && j.at("courseData").is_array()) {
-            std::cout << "📚 Found courses array with " << j.at("courseData").size() << " items.\n";
-        }
-        
-        // In the future, you will return your final schedule JSON here.
-        // For now, we're just confirming receipt.
-        
-    } catch (const std::exception& e) {
-        // Use std::cerr for errors. Node.js will capture this in the 'stderr' event.
-        std::cerr << "JSON parse error in C++: " << e.what() << "\n";
-        return EXIT_FAILURE;
+    if(j.contains("courseData") && j.at("courseData").is_array()){
+        preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
     }
 
-    return EXIT_SUCCESS;
+    if(j.contains("hallData") && j.at("hallData").is_array()){
+        processed_venue_list = venue_processing(j.at("hallData").get<std::vector<json>>());
+    }
+
+    std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);
+
+    if(j.contains("lectureBuildingPriorityOrder") && j.at("lectureBuildingPriorityOrder").is_array()){
+        lecture_building_priority_order = j.at("lectureBuildingPriorityOrder").get<std::vector<std::string>>();
+    }
+
+    if(j.contains("tutorialBuildingPriorityOrder") && j.at("tutorialBuildingPriorityOrder").is_array()){
+        tutorial_building_priority_order = j.at("tutorialBuildingPriorityOrder").get<std::vector<std::string>>();
+    }
+
+    
 }
