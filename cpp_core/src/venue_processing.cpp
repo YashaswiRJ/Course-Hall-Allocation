@@ -14,5 +14,8 @@ std::map<std::string, std::vector<Venue>> venue_processing(const std::vector<nlo
         }
     }
 
+    for(auto building: venues){
+        std::sort(building.second.begin(), building.second.end(), Venue::compareByCapacity);
+    }
     return venues;
 }

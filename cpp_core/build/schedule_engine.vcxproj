@@ -361,6 +361,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\main.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\ds.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\helper.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_preprocessing.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_processing.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\venue_processing.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\lecture_allocation.cpp" />
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\tutorial_allocation.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

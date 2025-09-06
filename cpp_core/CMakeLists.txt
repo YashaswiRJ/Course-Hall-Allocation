@@ -15,8 +15,16 @@ set(EXECUTABLE_NAME schedule_engine)
 # Find all our source files in the src/ directory.
 # It's better to explicitly list the files for clarity and to avoid issues
 # if other files are added to the directory.
+
 set(SOURCES
     src/main.cpp
+    src/ds.cpp
+    src/helper.cpp
+    src/course_preprocessing.cpp
+    src/course_processing.cpp
+    src/venue_processing.cpp
+    src/lecture_allocation.cpp
+    src/tutorial_allocation.cpp
 )
 
 # --- Include the nlohmann/json library ---

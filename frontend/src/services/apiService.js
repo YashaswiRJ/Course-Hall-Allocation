@@ -1,6 +1,6 @@
 const API_BASE_URL = 'http://localhost:5000/api';
 
-// --- Lecture Hall Service Functions (Updated for Firebase Backend) ---
+// --- Lecture Hall Service Functions ---
 
 const getLectureHalls = async () => {
     const response = await fetch(`${API_BASE_URL}/lecture-halls`);
@@ -37,9 +37,7 @@ const updateLectureHall = async (id, hallData) => {
     return response.json();
 };
 
-// MODIFIED: Now requires the building name to construct the correct request
 const deleteLectureHall = async (id, building) => {
-    // The building is sent as a query parameter as required by the server
     const response = await fetch(`${API_BASE_URL}/lecture-halls/${id}?building=${building}`, {
         method: 'DELETE',
     });
@@ -47,27 +45,24 @@ const deleteLectureHall = async (id, building) => {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || 'Failed to delete lecture hall.');
     }
-    // DELETE requests often return no content
 };
 
-
-// --- Schedule Generator Function (Updated for Firebase Backend) ---
-// This function no longer needs hall data, as the server gets it from Firebase.
-const generateSchedule = async (courseDataArray, hallDataArray) => {
-    // The payload is the raw course data.
+// --- Schedule Generator Function (Updated to send separate priority lists) ---
+const generateSchedule = async (courseDataArray, hallDataArray, convenienceFactor, lectureBuildingPriorities, tutorialBuildingPriorities) => {
     const payload = {
         courseData: courseDataArray,
-        hallData: hallDataArray
+        hallData: hallDataArray,
+        convenienceFactor: convenienceFactor,
+        lectureBuildingPriorities: lectureBuildingPriorities,
+        tutorialBuildingPriorities: tutorialBuildingPriorities
     };
 
     try {
         const response = await fetch(`${API_BASE_URL}/generate-schedule`, {
             method: 'POST',
-            // Set headers to indicate you're sending JSON
             headers: {
                 'Content-Type': 'application/json',
             },
-            // Stringify the JavaScript object to send it as a JSON string
             body: JSON.stringify(payload),
         });
 
@@ -89,3 +84,4 @@ export {
     deleteLectureHall,
     generateSchedule,
 };
+

@@ -95,6 +95,10 @@ public:
         }
         return;
     }
+
+    static bool compareByCapacity(const Venue& a, const Venue& b) {
+        return a.capacity < b.capacity;
+    }
 };
 
 class Course {

@@ -33,6 +33,7 @@ int main() {
     _close(fd);
 
     std::cin >> j;
+    std::cout << j.dump(4);
 
     std::vector<Course> preprocessed_course_list; 
     std::map<std::string, std::vector<Venue>> processed_venue_list;
@@ -51,12 +52,12 @@ int main() {
 
     std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);
 
-    if(j.contains("lectureBuildingPriorityOrder") && j.at("lectureBuildingPriorityOrder").is_array()){
-        lecture_building_priority_order = j.at("lectureBuildingPriorityOrder").get<std::vector<std::string>>();
+    if(j.contains("lectureBuildingPriorities") && j.at("lectureBuildingPriorities").is_array()){
+        lecture_building_priority_order = j.at("lectureBuildingPriorities").get<std::vector<std::string>>();
     }
 
-    if(j.contains("tutorialBuildingPriorityOrder") && j.at("tutorialBuildingPriorityOrder").is_array()){
-        tutorial_building_priority_order = j.at("tutorialBuildingPriorityOrder").get<std::vector<std::string>>();
+    if(j.contains("tutorialBuildingPriorities") && j.at("tutorialBuildingPriorities").is_array()){
+        tutorial_building_priority_order = j.at("tutorialBuildingPriorities").get<std::vector<std::string>>();
     }
 
     

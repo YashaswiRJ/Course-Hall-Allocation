@@ -4,6 +4,27 @@
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\ds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\helper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_preprocessing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_processing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\venue_processing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\lecture_allocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\tutorial_allocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\CMakeLists.txt" />
