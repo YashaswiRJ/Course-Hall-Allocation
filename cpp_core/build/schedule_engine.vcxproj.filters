@@ -7,9 +7,6 @@
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\ds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\helper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_preprocessing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -17,6 +14,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\venue_processing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\lecture_allocation.cpp">
@@ -27,9 +27,35 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\ds.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_preprocessing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\course_processing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\venue_processing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\helper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\lecture_allocation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\tutorial_allocation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <CustomBuild Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{1D1B4E4B-0644-361A-BECB-B83AB1AC7936}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{C4BC9444-F4AF-3F7B-AEE7-CA9EB05A8CD4}</UniqueIdentifier>
     </Filter>

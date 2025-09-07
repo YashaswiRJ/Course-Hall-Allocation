@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ds.hpp"
 #include <stdexcept>
 #include <algorithm>

@@ -5,9 +5,11 @@
 #include <cstdlib>
 #include "../helpers/json.hpp" // Make sure this path is correct
 #include "ds.hpp"
-#include "course_preprocessing.cpp"
-#include "course_processing.cpp"
-#include "venue_processing.cpp"
+#include "course_preprocessing.hpp"
+#include "course_processing.hpp"
+#include "venue_processing.hpp"
+#include "lecture_allocation.hpp"
+#include "tutorial_allocation.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -41,6 +43,7 @@ int main() {
     std::vector<Tutorial> processed_tutorial_lists;
     std::vector<std::string> lecture_building_priority_order;
     std::vector<std::string> tutorial_building_priority_order;
+    int convenience_factor = 0;
 
     if(j.contains("courseData") && j.at("courseData").is_array()){
         preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
@@ -60,5 +63,23 @@ int main() {
         tutorial_building_priority_order = j.at("tutorialBuildingPriorities").get<std::vector<std::string>>();
     }
 
-    
+    if(j.contains("convenienceFactor") && j.at("convenienceFactor").is_string()){
+        convenience_factor = std::stoi(j.at("convenience_factor").get<std::string>());
+    }
+    core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
+
+    json output_json;
+    output_json["lectureSchedule"] = json::array();
+
+    // for(auto lec: processed_lecture_lists){
+    //     output_json["lectureSchedule"].push_back({
+    //         {"Course Name", lec.course_name},
+    //         {"Course Code", lec.course_code},
+    //         {"Lecture Hall Assigned", lec.assignment}
+    //     });
+    // }
+
+    std::cout << output_json.dump(4) << std::endl;
+
+    return 0;
 }

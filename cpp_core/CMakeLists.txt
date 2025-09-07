@@ -4,39 +4,40 @@ cmake_minimum_required(VERSION 3.10)
 # Set the project name.
 project(ScheduleEngine)
 
-# Set the C++ standard to C++17. This is a good modern standard.
+# Set the C++ standard to C++17.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Define the name of the executable file that will be created.
-# This is the file your Node.js server will run.
+# Define the name of the executable file.
 set(EXECUTABLE_NAME schedule_engine)
 
-# Find all our source files in the src/ directory.
-# It's better to explicitly list the files for clarity and to avoid issues
-# if other files are added to the directory.
-
+# Explicitly list ALL your source (.cpp) files.
+# NOTE: helper.cpp has been removed as its code is now inline in helper.hpp
 set(SOURCES
     src/main.cpp
+    src/ds.hpp
+    src/course_preprocessing.hpp
+    src/course_processing.hpp
+    src/venue_processing.hpp
+    src/helper.hpp
+    src/lecture_allocation.hpp
+    src/tutorial_allocation.hpp
     src/ds.cpp
-    src/helper.cpp
     src/course_preprocessing.cpp
     src/course_processing.cpp
     src/venue_processing.cpp
+    src/helper.cpp
     src/lecture_allocation.cpp
     src/tutorial_allocation.cpp
 )
 
-# --- Include the nlohmann/json library ---
-# For a header-only library like this, we just need to tell CMake
-# where to find the header files. We'll assume json.hpp is in a 'helpers'
-# directory alongside your 'src' directory.
+# Tell CMake where to find include files for the nlohmann/json library.
 include_directories(helpers)
 
-# Create the executable by linking our source files.
+# Create the executable from the listed source files.
 add_executable(${EXECUTABLE_NAME} ${SOURCES})
 
-# Tell CMake where to find our header files.
+# Tell CMake where to find our project's own header files (e.g., ds.hpp).
 target_include_directories(${EXECUTABLE_NAME} PUBLIC "src")
 
 # On Windows, add the .exe extension automatically.
@@ -45,4 +46,5 @@ if(WIN32)
 endif()
 
 # A message to show when configuration is done.
-message(STATUS "Configuration complete. Executable will be named: ${EXECUTABLE_NAME}")
+message(STATUS "Configuration complete. Run 'cmake --build .' to compile ${EXECUTABLE_NAME}")
+

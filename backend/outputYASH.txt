@@ -1,5 +1,5 @@
 {
-    "convenienceFactor": 79,
+    "convenienceFactor": 50,
     "courseData": [
         {
             "Course Code": "MTH111M",

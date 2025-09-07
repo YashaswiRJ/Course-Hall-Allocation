@@ -1,7 +1,9 @@
+#pragma once
+
 #include <vector>
 #include <string>
 #include "ds.hpp"
-#include "helper.cpp"
+#include "helper.hpp"
 #include <map>
 
 std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &course_list){
