@@ -22,6 +22,8 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         int students_registered;
         int tutorial_count;
         bool is_modular;
+        std::string string_lecture_schedule;
+        std::string string_tutorial_schedule;
 
         if(course_list[ind].contains("Modular Course") && std::stoi(course_list[ind].at("Modular Course").get<std::string>()) == 2){
             modular_second_part.push_back(course_list[ind]); 
@@ -43,11 +45,13 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         if(course_list[ind].contains("Lecture Schedule")){
             lecture_schedule = timeString_to_timeINT(course_list[ind].at("Lecture Schedule"));
             sort(lecture_schedule.begin(), lecture_schedule.end());
+            string_lecture_schedule = course_list[ind].at("Lecture Schedule");
         }
 
         if(course_list[ind].contains("Tutorial Schedule")){
             tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
             sort(tutorial_schedule.begin(), tutorial_schedule.end());
+            string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
         }
 
         if(course_list[ind].contains("Students Registered")){
@@ -68,7 +72,7 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             is_modular = true;
         }
 
-        Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular);
+        Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
         lecture_tutorial_lists.push_back(course);
     }
 
@@ -80,6 +84,8 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         int students_registered;
         int tutorial_count;
         bool is_modular;
+        std::string string_lecture_schedule;
+        std::string string_tutorial_schedule;
 
         if(course_list[ind].contains("Course Name")){
             course_name = course_list[ind].at("Course Name");
@@ -96,11 +102,13 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         if(course_list[ind].contains("Lecture Schedule")){
             lecture_schedule = timeString_to_timeINT(course_list[ind].at("Lecture Schedule"));
             sort(lecture_schedule.begin(), lecture_schedule.end());
+            string_lecture_schedule = course_list[ind].at("Lecture Schedule");
         }
 
         if(course_list[ind].contains("Tutorial Schedule")){
             tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
             sort(tutorial_schedule.begin(), tutorial_schedule.end());
+            string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
         }
 
         if(course_list[ind].contains("Students Registered")){
@@ -124,7 +132,7 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             lecture_tutorial_lists[index].Update_max_registered_students(students_registered);
             lecture_tutorial_lists[index].Update_max_tutorial_count(tutorial_count);
         } else {
-            Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular);
+            Course course = Course("#" + course_code, "#" + course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
             lecture_tutorial_lists.push_back(course);
         }
     }

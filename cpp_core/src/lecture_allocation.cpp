@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include "ds.hpp"
 
-bool check_availibility(std::unordered_map<int, int> &is_available, std::vector<int> &lecture_schedule){
+bool check_availability(std::unordered_map<int, int> &is_available, std::vector<int> &lecture_schedule){
     for(auto time: lecture_schedule){
         if(is_available[time] == 0)return false;
     }
@@ -28,9 +28,9 @@ void core_lecture_allocation_logic(std::vector<Lecture> &lectures, std::map<std:
                 if(venue == venues[priority].end())break;
                 
                 //check_logic if the venue can be given to the lecture
-                if(check_availibility(venue->is_available, lecture.lecture_schedule)){
+                if(check_availability(venue->is_available, lecture.lecture_schedule)){
                     lecture.assignLectureHall(venue->hall_name);
-                    venue->assignLectureTutorial(lecture);
+                    venue->assignLecture(lecture);
                     break;
                 }
                 venue++;
@@ -44,9 +44,9 @@ void core_lecture_allocation_logic(std::vector<Lecture> &lectures, std::map<std:
                     while(true){
                         if(venue->capacity < lecture.students_registered)break;
 
-                        if(check_availibility(venue->is_available, lecture.lecture_schedule)){
+                        if(check_availability(venue->is_available, lecture.lecture_schedule)){
                             lecture.assignLectureHall(venue->hall_name);
-                            venue->assignLectureTutorial(lecture);
+                            venue->assignLecture(lecture);
                             break;
                         }
 

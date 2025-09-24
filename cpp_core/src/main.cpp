@@ -10,6 +10,7 @@
 #include "venue_processing.hpp"
 #include "lecture_allocation.hpp"
 #include "tutorial_allocation.hpp"
+#include "output_processing.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -67,9 +68,12 @@ int main() {
         convenience_factor = std::stoi(j.at("convenience_factor").get<std::string>());
     }
     core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
+    core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
 
-    json output_json;
-    output_json["lectureSchedule"] = json::array();
+    json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
+
+    // json output_json;
+    // output_json["lectureSchedule"] = json::array();
 
     // for(auto lec: processed_lecture_lists){
     //     output_json["lectureSchedule"].push_back({
