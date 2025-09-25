@@ -12,8 +12,7 @@ import UploadCentralPage from '../Components/UploadCentralPage';
 import GeneratorPage from '../Components/GeneratorPage';
 import StatsViewer from '../Components/StatsViewer';
 import TimelineViewer from '../Components/TimelineViewer';
-// --- 1. IMPORT THE NEW RESULTS PAGE ---
-import ResultsPage from '../Components/ResultsPage'; // Assuming ResultsPage.jsx is in the same folder
+import ResultsPage from '../Components/ResultsPage';
 
 
 const AppRoutes = () => {
@@ -45,9 +44,12 @@ const AppRoutes = () => {
                         <Route
                             path="/upload/constraints"
                             element={<UploadPage
-                                title="Constraint File"
-                                storageKey="constraintData"
-                                requiredColumns={['Constraint Type', 'Details']}
+                                title="Pre-allocated Constraint File"
+                                storageKey="preallocatedData"
+                                requiredColumns={[
+                                    'Course Name', 'Course Code', 'Section', 
+                                    'Lecture Hall Allocated', 'Type', 'Schedule', 'Modular Course', 'Students Registered'
+                                ]}
                             />}
                         />
                         <Route
@@ -60,8 +62,6 @@ const AppRoutes = () => {
                         />
                         <Route path="/schedule-viewer" element={<StatsViewer />} />
                         <Route path="/timeline-viewer" element={<TimelineViewer />} />
-                        
-                        {/* --- 2. ADD THE NEW ROUTE HERE --- */}
                         <Route path="/results" element={<ResultsPage />} />
 
                     </Routes>

@@ -53,7 +53,8 @@ const UploadPage = ({ title, storageKey, requiredColumns }) => {
                 const workbook = XLSX.read(data, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[sheetName];
-                const json = XLSX.utils.sheet_to_json(worksheet);
+                // UPDATED: Ensure blank cells are read as empty strings
+                const json = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
 
                 if (json.length === 0) {
                     throw new Error("The selected file is empty or could not be read.");

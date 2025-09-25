@@ -111,7 +111,7 @@
     "hallData": [
         {
             "building": "LHC",
-            "capacity": 50,
+            "capacity": 100,
             "id": "IxwhPwl93vE2dL4bStUy",
             "name": "L06",
             "schedule": {
@@ -119,6 +119,10 @@
                     {
                         "close": "17:00",
                         "open": "08:00"
+                    },
+                    {
+                        "close": "17:00",
+                        "open": "18:00"
                     }
                 ],
                 "monday": [
@@ -847,73 +851,4 @@
                     {
                         "close": "17:00",
                         "open": "08:00"
-                    }
-                ],
-                "thursday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "tuesday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "wednesday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ]
-            }
-        },
-        {
-            "building": "TB",
-            "capacity": 50,
-            "id": "sMer6JlN6RSCDAvNn3vE",
-            "name": "TB111",
-            "schedule": {
-                "friday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "monday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "thursday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "tuesday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ],
-                "wednesday": [
-                    {
-                        "close": "17:00",
-                        "open": "08:00"
-                    }
-                ]
-            }
-        }
-    ],
-    "lectureBuildingPriorities": [
-        "LHC",
-        "TB"
-    ],
-    "tutorialBuildingPriorities": [
-        "TB",
-        "LHC"
-    ]
-}
+                    

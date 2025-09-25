@@ -66,6 +66,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -98,9 +99,9 @@ events:
       The output was:
       0
       MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-      Build started 11-08-2025 18:20:28.
+      Build started 25-09-2025 19:20:56.
       
-      Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -113,7 +114,7 @@ events:
         CMakeCCompilerId.c
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.exe
+        CompilerIdC.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -121,13 +122,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.79
+      Time Elapsed 00:00:01.36
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -135,7 +136,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/4.1.0/CompilerIdC/CompilerIdC.exe
+        C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/4.1.0/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "find-v1"
@@ -182,6 +183,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -196,7 +198,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/link.com"
     found: "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/link.exe"
@@ -233,6 +234,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -294,6 +296,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -308,7 +311,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lld-link.exe"
@@ -379,6 +381,9 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
       - "C:/msys64/ucrt64/bin/lld-link.com"
       - "C:/msys64/ucrt64/bin/lld-link.exe"
       - "C:/msys64/ucrt64/bin/lld-link"
@@ -421,9 +426,6 @@ events:
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link.com"
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link.exe"
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link"
-      - "C:/Program Files/CMake/bin/lld-link.com"
-      - "C:/Program Files/CMake/bin/lld-link.exe"
-      - "C:/Program Files/CMake/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
@@ -458,6 +460,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -517,6 +520,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -531,7 +535,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/link.com"
     found: "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/link.exe"
@@ -568,6 +571,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -627,6 +631,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -641,7 +646,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/mt.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/mt.exe"
@@ -712,6 +716,9 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt"
+      - "C:/Program Files/CMake/bin/mt.com"
+      - "C:/Program Files/CMake/bin/mt.exe"
+      - "C:/Program Files/CMake/bin/mt"
       - "C:/msys64/ucrt64/bin/mt.com"
       - "C:/msys64/ucrt64/bin/mt.exe"
       - "C:/msys64/ucrt64/bin/mt"
@@ -754,9 +761,6 @@ events:
       - "C:/Program Files/Git/usr/bin/core_perl/mt.com"
       - "C:/Program Files/Git/usr/bin/core_perl/mt.exe"
       - "C:/Program Files/Git/usr/bin/core_perl/mt"
-      - "C:/Program Files/CMake/bin/mt.com"
-      - "C:/Program Files/CMake/bin/mt.exe"
-      - "C:/Program Files/CMake/bin/mt"
     found: false
     search_context:
       ENV{PATH}:
@@ -791,6 +795,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -850,6 +855,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -864,7 +870,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lib.com"
     found: "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lib.exe"
@@ -901,6 +906,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -975,6 +981,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -1007,9 +1014,9 @@ events:
       The output was:
       0
       MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-      Build started 11-08-2025 18:20:32.
+      Build started 25-09-2025 19:20:58.
       
-      Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
@@ -1022,7 +1029,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -1030,13 +1037,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.83
+      Time Elapsed 00:00:01.00
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1044,7 +1051,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/4.1.0/CompilerIdCXX/CompilerIdCXX.exe
+        C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/4.1.0/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "find-v1"
@@ -1091,6 +1098,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -1105,7 +1113,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
     searched_directories:
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lld-link.exe"
@@ -1176,6 +1183,9 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
       - "C:/msys64/ucrt64/bin/lld-link.com"
       - "C:/msys64/ucrt64/bin/lld-link.exe"
       - "C:/msys64/ucrt64/bin/lld-link"
@@ -1218,9 +1228,6 @@ events:
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link.com"
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link.exe"
       - "C:/Program Files/Git/usr/bin/core_perl/lld-link"
-      - "C:/Program Files/CMake/bin/lld-link.com"
-      - "C:/Program Files/CMake/bin/lld-link.exe"
-      - "C:/Program Files/CMake/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
@@ -1255,6 +1262,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -1316,6 +1324,7 @@ events:
       - "C:/Program Files/nodejs/"
       - "C:/Program Files/dotnet/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/msys64/ucrt64/bin/"
       - "C:/Users/Hp/AppData/Local/Microsoft/WindowsApps/"
       - "C:/ProgramData/HP/atom/bin/"
@@ -1330,7 +1339,6 @@ events:
       - "C:/Users/Hp/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/Git/usr/bin/vendor_perl/"
       - "C:/Program Files/Git/usr/bin/core_perl/"
-      - "C:/Program Files/CMake/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -1410,6 +1418,9 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc"
+      - "C:/Program Files/CMake/bin/rc.com"
+      - "C:/Program Files/CMake/bin/rc.exe"
+      - "C:/Program Files/CMake/bin/rc"
       - "C:/msys64/ucrt64/bin/rc.com"
       - "C:/msys64/ucrt64/bin/rc.exe"
       - "C:/msys64/ucrt64/bin/rc"
@@ -1452,9 +1463,6 @@ events:
       - "C:/Program Files/Git/usr/bin/core_perl/rc.com"
       - "C:/Program Files/Git/usr/bin/core_perl/rc.exe"
       - "C:/Program Files/Git/usr/bin/core_perl/rc"
-      - "C:/Program Files/CMake/bin/rc.com"
-      - "C:/Program Files/CMake/bin/rc.exe"
-      - "C:/Program Files/CMake/bin/rc"
       - "C:/Program Files/bin/rc.com"
       - "C:/Program Files/bin/rc.exe"
       - "C:/Program Files/bin/rc"
@@ -1525,6 +1533,7 @@ events:
         - "C:\\Program Files\\nodejs"
         - "C:\\Program Files\\dotnet"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\msys64\\ucrt64\\bin"
         - "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\ProgramData\\Hp\\atom\\bin"
@@ -1556,8 +1565,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-n3krnq"
-      binary: "C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-n3krnq"
+      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-jajriw"
+      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-jajriw"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1566,40 +1575,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-n3krnq'
+        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-jajriw'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_546fb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ca8a0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-        Build started 11-08-2025 18:20:35.
+        Build started 25-09-2025 19:21:00.
         
-        Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3krnq\\cmTC_546fb.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jajriw\\cmTC_ca8a0.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_546fb.dir\\Debug\\".
+          Creating directory "cmTC_ca8a0.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3krnq\\Debug\\".
-          Creating directory "cmTC_546fb.dir\\Debug\\cmTC_546fb.tlog\\".
+          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jajriw\\Debug\\".
+          Creating directory "cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_546fb.dir\\Debug\\cmTC_546fb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_546fb.dir\\Debug\\cmTC_546fb.tlog\\unsuccessfulbuild".
+          Creating "cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_546fb.dir\\Debug\\\\" /Fd"cmTC_546fb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_ca8a0.dir\\Debug\\\\" /Fd"cmTC_ca8a0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34810 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_546fb.dir\\Debug\\\\" /Fd"cmTC_546fb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_ca8a0.dir\\Debug\\\\" /Fd"cmTC_ca8a0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3krnq\\Debug\\cmTC_546fb.exe" /INCREMENTAL /ILK:"cmTC_546fb.dir\\Debug\\cmTC_546fb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-n3krnq/Debug/cmTC_546fb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-n3krnq/Debug/cmTC_546fb.lib" /MACHINE:X64  /machine:x64 cmTC_546fb.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_546fb.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3krnq\\Debug\\cmTC_546fb.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jajriw\\Debug\\cmTC_ca8a0.exe" /INCREMENTAL /ILK:"cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-jajriw/Debug/cmTC_ca8a0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-jajriw/Debug/cmTC_ca8a0.lib" /MACHINE:X64  /machine:x64 cmTC_ca8a0.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_ca8a0.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jajriw\\Debug\\cmTC_ca8a0.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_546fb.dir\\Debug\\cmTC_546fb.tlog\\unsuccessfulbuild".
-          Touching "cmTC_546fb.dir\\Debug\\cmTC_546fb.tlog\\cmTC_546fb.lastbuildstate".
-        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3krnq\\cmTC_546fb.vcxproj" (default targets).
+          Deleting file "cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.tlog\\unsuccessfulbuild".
+          Touching "cmTC_ca8a0.dir\\Debug\\cmTC_ca8a0.tlog\\cmTC_ca8a0.lastbuildstate".
+        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jajriw\\cmTC_ca8a0.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.73
+        Time Elapsed 00:00:01.13
         
       exitCode: 0
   -
@@ -1639,8 +1648,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-mt0lt0"
-      binary: "C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-mt0lt0"
+      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-zoyt4t"
+      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-zoyt4t"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1650,40 +1659,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-mt0lt0'
+        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-zoyt4t'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_af403.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ac831.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-        Build started 11-08-2025 18:20:39.
+        Build started 25-09-2025 19:21:02.
         
-        Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mt0lt0\\cmTC_af403.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zoyt4t\\cmTC_ac831.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_af403.dir\\Debug\\".
+          Creating directory "cmTC_ac831.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mt0lt0\\Debug\\".
-          Creating directory "cmTC_af403.dir\\Debug\\cmTC_af403.tlog\\".
+          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zoyt4t\\Debug\\".
+          Creating directory "cmTC_ac831.dir\\Debug\\cmTC_ac831.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_af403.dir\\Debug\\cmTC_af403.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_af403.dir\\Debug\\cmTC_af403.tlog\\unsuccessfulbuild".
+          Creating "cmTC_ac831.dir\\Debug\\cmTC_ac831.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ac831.dir\\Debug\\cmTC_ac831.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_af403.dir\\Debug\\\\" /Fd"cmTC_af403.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_ac831.dir\\Debug\\\\" /Fd"cmTC_ac831.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34810 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_af403.dir\\Debug\\\\" /Fd"cmTC_af403.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_ac831.dir\\Debug\\\\" /Fd"cmTC_ac831.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mt0lt0\\Debug\\cmTC_af403.exe" /INCREMENTAL /ILK:"cmTC_af403.dir\\Debug\\cmTC_af403.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-mt0lt0/Debug/cmTC_af403.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadLHC/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-mt0lt0/Debug/cmTC_af403.lib" /MACHINE:X64  /machine:x64 cmTC_af403.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_af403.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mt0lt0\\Debug\\cmTC_af403.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zoyt4t\\Debug\\cmTC_ac831.exe" /INCREMENTAL /ILK:"cmTC_ac831.dir\\Debug\\cmTC_ac831.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-zoyt4t/Debug/cmTC_ac831.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-zoyt4t/Debug/cmTC_ac831.lib" /MACHINE:X64  /machine:x64 cmTC_ac831.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_ac831.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zoyt4t\\Debug\\cmTC_ac831.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_af403.dir\\Debug\\cmTC_af403.tlog\\unsuccessfulbuild".
-          Touching "cmTC_af403.dir\\Debug\\cmTC_af403.tlog\\cmTC_af403.lastbuildstate".
-        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadLHC\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mt0lt0\\cmTC_af403.vcxproj" (default targets).
+          Deleting file "cmTC_ac831.dir\\Debug\\cmTC_ac831.tlog\\unsuccessfulbuild".
+          Touching "cmTC_ac831.dir\\Debug\\cmTC_ac831.tlog\\cmTC_ac831.lastbuildstate".
+        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zoyt4t\\cmTC_ac831.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.81
+        Time Elapsed 00:00:01.02
         
       exitCode: 0
   -

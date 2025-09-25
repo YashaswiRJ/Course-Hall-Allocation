@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// UPDATED: Import the correct, dedicated CSS file
 import '../Styles/UploadCentralPage.css'; 
 
 const UploadCentralPage = () => {
@@ -11,7 +10,6 @@ const UploadCentralPage = () => {
         <p>Select a category to upload your file.</p>
       </header>
 
-      {/* UPDATED: Uses the new container and card structure */}
       <div className="upload-cards-container">
         {/* Course Schedule Card */}
         <Link to="/upload/course-schedule" className="upload-card course">
@@ -21,11 +19,11 @@ const UploadCentralPage = () => {
           <span className="go-to-link">Upload File →</span>
         </Link>
 
-        {/* Constraint File Card */}
+        {/* Constraint File Card -- UPDATED */}
         <Link to="/upload/constraints" className="upload-card constraint">
           <div className="upload-card-icon">⚙️</div>
-          <h3>Constraint File</h3>
-          <p className="description">Upload the file defining specific constraints for scheduling.</p>
+          <h3>Pre-allocated Slots</h3>
+          <p className="description">Upload a file with courses that are already assigned to a specific hall and time.</p>
           <span className="go-to-link">Upload File →</span>
         </Link>
 

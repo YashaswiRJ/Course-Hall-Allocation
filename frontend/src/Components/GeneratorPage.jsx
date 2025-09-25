@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as XLSX from 'xlsx';
 import { generateSchedule, getLectureHalls } from '../services/apiService';
 import '../Styles/GeneratorPage.css';
 
 // Reusable component for selecting data source
 const DataSourceSelector = ({ title, savedDataLabel, storageKey, source, setSource, onFileChange, selectedFile }) => {
-    // ... (omitted for brevity - no changes from previous version)
     const [isLocalStorageAvailable, setIsLocalStorageAvailable] = useState(false);
 
     useEffect(() => {
@@ -119,14 +119,19 @@ const BuildingPriorityManager = ({ title, priorities, setPriorities, allBuilding
 const GeneratorPage = () => {
     const navigate = useNavigate();
 
+    // Data source states
     const [courseDataSource, setCourseDataSource] = useState('upload');
     const [hallDataSource, setHallDataSource] = useState('saved');
+    const [constraintDataSource, setConstraintDataSource] = useState('saved');
+
+    // File states
     const [courseFile, setCourseFile] = useState(null);
     const [hallFile, setHallFile] = useState(null);
+    const [constraintFile, setConstraintFile] = useState(null);
+
+    // UI and options states
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-
-    // Updated state for new features
     const [convenienceFactor, setConvenienceFactor] = useState(50);
     const [allBuildings, setAllBuildings] = useState([]);
     const [lecturePriorities, setLecturePriorities] = useState([]);
@@ -151,26 +156,55 @@ const GeneratorPage = () => {
         setConvenienceFactor(value);
     };
 
+    // Helper function to parse uploaded Excel/CSV files into JSON
+    const parseFileToJson = (file) => {
+        return new Promise((resolve, reject) => {
+            if (!file) {
+                return resolve([]);
+            }
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const data = new Uint8Array(event.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    // UPDATED: Ensure blank cells are read as empty strings
+                    const json = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
+                    resolve(json);
+                } catch (err) {
+                    reject(new Error("Error parsing the file."));
+                }
+            };
+            reader.onerror = () => {
+                reject(new Error("Failed to read the file."));
+            };
+            reader.readAsArrayBuffer(file);
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
 
         try {
-            let coursePayload = null;
+            // 1. Get Course Data
+            let coursePayload = [];
             if (courseDataSource === 'upload') {
                 if (!courseFile) throw new Error('Please select a course file to upload.');
-                coursePayload = courseFile;
+                coursePayload = await parseFileToJson(courseFile);
             } else {
                 const data = localStorage.getItem('courseScheduleData');
                 if (!data) throw new Error('No saved course data found in your browser.');
                 coursePayload = JSON.parse(data);
             }
 
-            let hallPayload = null;
+            // 2. Get Lecture Hall Data
+            let hallPayload = [];
             if (hallDataSource === 'upload') {
                 if (!hallFile) throw new Error('Please select a lecture hall file to upload.');
-                hallPayload = hallFile;
+                hallPayload = await parseFileToJson(hallFile);
             } else {
                 hallPayload = await getLectureHalls();
                 if (!hallPayload || hallPayload.length === 0) {
@@ -178,7 +212,19 @@ const GeneratorPage = () => {
                 }
             }
 
-            const response = await generateSchedule(coursePayload, hallPayload, convenienceFactor, lecturePriorities, tutorialPriorities);
+            // 3. Get Pre-allocated Constraint Data (Optional)
+            let constraintPayload = [];
+            if (constraintDataSource === 'upload') {
+                constraintPayload = await parseFileToJson(constraintFile);
+            } else {
+                const data = localStorage.getItem('preallocatedData');
+                if (data) {
+                    constraintPayload = JSON.parse(data);
+                }
+            }
+
+            // 4. Call API and navigate
+            const response = await generateSchedule(coursePayload, hallPayload, convenienceFactor, lecturePriorities, tutorialPriorities, constraintPayload);
             localStorage.setItem('latestScheduleResult', JSON.stringify(response));
             navigate('/results', { state: { schedule: response } });
 
@@ -215,6 +261,15 @@ const GeneratorPage = () => {
                             setSource={setHallDataSource}
                             onFileChange={(e) => setHallFile(e.target.files[0])}
                             selectedFile={hallFile}
+                        />
+                        <DataSourceSelector
+                            title="Pre-allocated Constraints (Optional)"
+                            savedDataLabel="Use Saved Constraints"
+                            storageKey="preallocatedData"
+                            source={constraintDataSource}
+                            setSource={setConstraintDataSource}
+                            onFileChange={(e) => setConstraintFile(e.target.files[0])}
+                            selectedFile={constraintFile}
                         />
                     </div>
 

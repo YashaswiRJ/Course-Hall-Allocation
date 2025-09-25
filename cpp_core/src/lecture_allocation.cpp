@@ -17,7 +17,7 @@ void core_lecture_allocation_logic(std::vector<Lecture> &lectures, std::map<std:
     
     std::sort(lectures.begin(), lectures.end(), Lecture::compareByStudents);
     
-    for(auto lecture: lectures){
+    for(auto &lecture: lectures){
         
         int convenient_size = (lecture.students_registered * (convenience_factor + 100))/100;
         for(auto priority: lecture_building_priority_order){

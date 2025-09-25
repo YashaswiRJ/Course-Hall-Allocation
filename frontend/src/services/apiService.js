@@ -48,13 +48,14 @@ const deleteLectureHall = async (id, building) => {
 };
 
 // --- Schedule Generator Function (Updated to send separate priority lists) ---
-const generateSchedule = async (courseDataArray, hallDataArray, convenienceFactor, lectureBuildingPriorities, tutorialBuildingPriorities) => {
+const generateSchedule = async (courseDataArray, hallDataArray, convenienceFactor, lectureBuildingPriorities, tutorialBuildingPriorities, preallocatedConstraints) => {
     const payload = {
         courseData: courseDataArray,
         hallData: hallDataArray,
         convenienceFactor: convenienceFactor,
         lectureBuildingPriorities: lectureBuildingPriorities,
-        tutorialBuildingPriorities: tutorialBuildingPriorities
+        tutorialBuildingPriorities: tutorialBuildingPriorities,
+        preallocatedConstraints: preallocatedConstraints
     };
 
     try {
