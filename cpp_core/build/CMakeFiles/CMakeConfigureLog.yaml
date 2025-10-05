@@ -99,7 +99,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-      Build started 05-10-2025 22:27:22.
+      Build started 06-10-2025 00:18:44.
       
       Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -128,7 +128,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.74
+      Time Elapsed 00:00:01.21
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -1014,7 +1014,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-      Build started 05-10-2025 22:27:24.
+      Build started 06-10-2025 00:18:48.
       
       Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\4.1.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -1043,7 +1043,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.66
+      Time Elapsed 00:00:01.30
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1565,8 +1565,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-etgfrm"
-      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-etgfrm"
+      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-ziocur"
+      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-ziocur"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1575,40 +1575,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-etgfrm'
+        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-ziocur'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_354e8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ca779.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-        Build started 05-10-2025 22:27:27.
+        Build started 06-10-2025 00:18:50.
         
-        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-etgfrm\\cmTC_354e8.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ziocur\\cmTC_ca779.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_354e8.dir\\Debug\\".
+          Creating directory "cmTC_ca779.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-etgfrm\\Debug\\".
-          Creating directory "cmTC_354e8.dir\\Debug\\cmTC_354e8.tlog\\".
+          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ziocur\\Debug\\".
+          Creating directory "cmTC_ca779.dir\\Debug\\cmTC_ca779.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_354e8.dir\\Debug\\cmTC_354e8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_354e8.dir\\Debug\\cmTC_354e8.tlog\\unsuccessfulbuild".
+          Creating "cmTC_ca779.dir\\Debug\\cmTC_ca779.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ca779.dir\\Debug\\cmTC_ca779.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_354e8.dir\\Debug\\\\" /Fd"cmTC_354e8.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_ca779.dir\\Debug\\\\" /Fd"cmTC_ca779.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34810 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_354e8.dir\\Debug\\\\" /Fd"cmTC_354e8.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_ca779.dir\\Debug\\\\" /Fd"cmTC_ca779.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-etgfrm\\Debug\\cmTC_354e8.exe" /INCREMENTAL /ILK:"cmTC_354e8.dir\\Debug\\cmTC_354e8.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-etgfrm/Debug/cmTC_354e8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-etgfrm/Debug/cmTC_354e8.lib" /MACHINE:X64  /machine:x64 cmTC_354e8.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_354e8.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-etgfrm\\Debug\\cmTC_354e8.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ziocur\\Debug\\cmTC_ca779.exe" /INCREMENTAL /ILK:"cmTC_ca779.dir\\Debug\\cmTC_ca779.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-ziocur/Debug/cmTC_ca779.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-ziocur/Debug/cmTC_ca779.lib" /MACHINE:X64  /machine:x64 cmTC_ca779.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_ca779.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ziocur\\Debug\\cmTC_ca779.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_354e8.dir\\Debug\\cmTC_354e8.tlog\\unsuccessfulbuild".
-          Touching "cmTC_354e8.dir\\Debug\\cmTC_354e8.tlog\\cmTC_354e8.lastbuildstate".
-        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-etgfrm\\cmTC_354e8.vcxproj" (default targets).
+          Deleting file "cmTC_ca779.dir\\Debug\\cmTC_ca779.tlog\\unsuccessfulbuild".
+          Touching "cmTC_ca779.dir\\Debug\\cmTC_ca779.tlog\\cmTC_ca779.lastbuildstate".
+        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ziocur\\cmTC_ca779.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.56
+        Time Elapsed 00:00:01.13
         
       exitCode: 0
   -
@@ -1648,8 +1648,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-8te1kr"
-      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-8te1kr"
+      source: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-b3ndp5"
+      binary: "C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-b3ndp5"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1659,40 +1659,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-8te1kr'
+        Change Dir: 'C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-b3ndp5'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c22e7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a8be8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.19+0d9f5a35a for .NET Framework
-        Build started 05-10-2025 22:27:29.
+        Build started 06-10-2025 00:18:52.
         
-        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8te1kr\\cmTC_c22e7.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b3ndp5\\cmTC_a8be8.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_c22e7.dir\\Debug\\".
+          Creating directory "cmTC_a8be8.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8te1kr\\Debug\\".
-          Creating directory "cmTC_c22e7.dir\\Debug\\cmTC_c22e7.tlog\\".
+          Creating directory "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b3ndp5\\Debug\\".
+          Creating directory "cmTC_a8be8.dir\\Debug\\cmTC_a8be8.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_c22e7.dir\\Debug\\cmTC_c22e7.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_c22e7.dir\\Debug\\cmTC_c22e7.tlog\\unsuccessfulbuild".
+          Creating "cmTC_a8be8.dir\\Debug\\cmTC_a8be8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a8be8.dir\\Debug\\cmTC_a8be8.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c22e7.dir\\Debug\\\\" /Fd"cmTC_c22e7.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_a8be8.dir\\Debug\\\\" /Fd"cmTC_a8be8.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34810 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c22e7.dir\\Debug\\\\" /Fd"cmTC_c22e7.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_a8be8.dir\\Debug\\\\" /Fd"cmTC_a8be8.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8te1kr\\Debug\\cmTC_c22e7.exe" /INCREMENTAL /ILK:"cmTC_c22e7.dir\\Debug\\cmTC_c22e7.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-8te1kr/Debug/cmTC_c22e7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-8te1kr/Debug/cmTC_c22e7.lib" /MACHINE:X64  /machine:x64 cmTC_c22e7.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_c22e7.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8te1kr\\Debug\\cmTC_c22e7.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b3ndp5\\Debug\\cmTC_a8be8.exe" /INCREMENTAL /ILK:"cmTC_a8be8.dir\\Debug\\cmTC_a8be8.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-b3ndp5/Debug/cmTC_a8be8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/Hp/Downloads/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/CMakeScratch/TryCompile-b3ndp5/Debug/cmTC_a8be8.lib" /MACHINE:X64  /machine:x64 cmTC_a8be8.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_a8be8.vcxproj -> C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b3ndp5\\Debug\\cmTC_a8be8.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_c22e7.dir\\Debug\\cmTC_c22e7.tlog\\unsuccessfulbuild".
-          Touching "cmTC_c22e7.dir\\Debug\\cmTC_c22e7.tlog\\cmTC_c22e7.lastbuildstate".
-        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8te1kr\\cmTC_c22e7.vcxproj" (default targets).
+          Deleting file "cmTC_a8be8.dir\\Debug\\cmTC_a8be8.tlog\\unsuccessfulbuild".
+          Touching "cmTC_a8be8.dir\\Debug\\cmTC_a8be8.tlog\\cmTC_a8be8.lastbuildstate".
+        Done Building Project "C:\\Users\\Hp\\Downloads\\QuadCHA\\Course-Hall-Allocation\\cpp_core\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b3ndp5\\cmTC_a8be8.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.56
+        Time Elapsed 00:00:01.12
         
       exitCode: 0
   -

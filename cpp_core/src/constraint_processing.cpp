@@ -1,23 +1,19 @@
+#pragma once
+
 #include <map>
 #include <string>
 #include <vector>
 #include "helper.hpp"
 #include "ds.hpp"
+#include "../helpers/json.hpp"
 
-void constraint_processing(std::map<std::string, std::vector<Venue>> processed_venue_list, const nlohmann::json &constraint_list){
-
-    for(auto &venues: processed_venue_list){
-        for(auto &venue: venues.second){
-            // venue.
-        }
-    }
-
+void constraint_processing(std::map<std::string, std::vector<Venue>> &processed_venue_list,  std::vector<nlohmann::json> &constraint_list){
     // Iterate through each constraint
     for (const auto &constraint : constraint_list) {
         std::string course_code = constraint.at("Course Code").get<std::string>() + constraint.at("Section").get<std::string>();
         std::vector<int> schedule = timeString_to_timeINT(constraint.at("Schedule").get<std::string>());
         std::string lec_hall_aloc = constraint.at("Lecture Hall Allocated").get<std::string>();
-        std::string type = constraint.at("Type");
+        std::string type = constraint.at("Type").get<std::string>();
         
         for(auto &venues: processed_venue_list){
             for(auto &venue: venues.second){

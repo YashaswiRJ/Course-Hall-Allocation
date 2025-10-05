@@ -1,5 +1,5 @@
 {
-    "convenienceFactor": 50,
+    "convenienceFactor": 22,
     "courseData": [
         {
             "Course Code": "MTH111M",
@@ -924,7 +924,7 @@
         {
             "Course Code": "CS201",
             "Course Name": "Discrete Mathematics",
-            "Lecture Hall Allocated": 0,
+            "Lecture Hall Allocated": "L08",
             "Modular Course": 0,
             "Schedule": "Th 14:00-15:15",
             "Section": "",
@@ -933,9 +933,7 @@
         }
     ],
     "tutorialBuildingPriorities": [
-        "LHC",
-        "TB"
+        "TB",
+        "LHC"
     ]
-}лллллллл00ОДЫ  лллллллллллллллллллллллллллллллллллллллллллллллллллллллл║Ужim
-9
-null
+}лллллллл00ОДЫ  лллллллллллллллллллллллллллллллллллллллллллллллллллллллл	ТЪ│T

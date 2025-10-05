@@ -53,7 +53,7 @@ int main() {
         preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
     }
 
-    std::cout << preprocessed_course_list.size() << std::endl;
+    // std::cout << preprocessed_course_list.size() << std::endl;
 
     /*
     === DEBUG MODE ===
@@ -113,7 +113,7 @@ int main() {
     === CONSTRAINT HANDLING ===
     */
     if(j.contains("preallocatedConstraints") && j.at("preallocatedConstraints").is_array()){
-        constraint_processing(processed_venue_list, j.at("preallocatedConstraints"));
+        constraint_processing(processed_venue_list, j.at("preallocatedConstraints").get<std::vector<json>>());
     }
     
 
@@ -133,11 +133,31 @@ int main() {
     core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
     core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
 
-    json output_json; // = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
+    json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 
     // json output_json;
     // output_json["lectureSchedule"] = json::array();
+    // output_json["venue_final"] = json::array();
 
+    // for(auto &venues: processed_venue_list){
+    //     for(auto &venue: venues.second){
+    //         std::vector<std::pair<int, std::string>> vec_assign;
+    //         std::vector<std::pair<int, std::string>> vec_type;
+    //         for(int i=1; i<=5; i++){
+    //             for(int j = 8; j <= 17; j++){
+    //                 vec_assign.push_back(make_pair(10000*i + j*100, venue.assignment[10000*i+j*100]));
+    //                 vec_assign.push_back(make_pair(10000*i + j*100 + 30, venue.assignment[10000*i+j*100+30]));
+    //                 vec_type.push_back(make_pair(10000*i + j*100, venue.assignment_type[10000*i+j*100]));
+    //                 vec_type.push_back(make_pair(10000*i + j*100 + 30, venue.assignment_type[10000*i+j*100+30]));
+    //             }
+    //         }
+    //         output_json["venue_final"].push_back({
+    //             {"Hall Name", venue.hall_name},
+    //             {"Allotment", vec_assign},
+    //             {"Type", vec_type}
+    //         });
+    //     }
+    // }
     // for(auto lec: processed_lecture_lists){
     //     output_json["lectureSchedule"].push_back({
     //         {"Course Name", lec.course_name},
@@ -146,7 +166,7 @@ int main() {
     //     });
     // }
 
-    std::cout << output_json << std::endl;
+    std::cout << output_json.dump(4)<< std::endl;
     std::cout.flush();
 
     return 0;
