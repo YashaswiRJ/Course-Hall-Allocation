@@ -19,6 +19,7 @@ set(SOURCES
     src/course_preprocessing.hpp
     src/course_processing.hpp
     src/venue_processing.hpp
+    src/constraint_processing.hpp
     src/helper.hpp
     src/lecture_allocation.hpp
     src/tutorial_allocation.hpp
@@ -27,6 +28,7 @@ set(SOURCES
     src/course_preprocessing.cpp
     src/course_processing.cpp
     src/venue_processing.cpp
+    src/constraint_processing.cpp
     src/helper.cpp
     src/lecture_allocation.cpp
     src/tutorial_allocation.cpp

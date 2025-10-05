@@ -49,94 +49,155 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             string_lecture_schedule = course_list[ind].at("Lecture Schedule");
         }
 
-        // if(course_list[ind].contains("Tutorial Schedule")){
-        //     tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
-        //     sort(tutorial_schedule.begin(), tutorial_schedule.end());
-        //     string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
-        // }
+        if(course_list[ind].contains("Tutorial Schedule")){
+            tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
+            sort(tutorial_schedule.begin(), tutorial_schedule.end());
+            string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
+        }
 
-        // if(course_list[ind].contains("Students Registered")){
-        //     students_registered = (course_list[ind].at("Students Registered").get<int>());
-        // } else {
-        //     students_registered = 0;
-        // }
+        if(course_list[ind].contains("Students Registered")){
+            students_registered = (course_list[ind].at("Students Registered").get<int>());
+        } else {
+            students_registered = 0;
+        }
 
-        // if(course_list[ind].contains("Tutorial Count")){
-        //     tutorial_count = (course_list[ind].at("Tutorial Count").get<int>());
+        if(course_list[ind].contains("Tutorial Count")){
+            tutorial_count = (course_list[ind].at("Tutorial Count").get<int>());
 
-        // } else {
-        //     tutorial_count = 0;
-        // }
+        } else {
+            tutorial_count = 0;
+        }
         
-        // if(course_list[ind].contains("Modular Course") && (course_list[ind].at("Modular Course").get<int>()) == 1){
-        //     modular_first_index[course_code] = lecture_tutorial_lists.size() - 1;
-        //     is_modular = true;
-        // }
+        if(course_list[ind].contains("Modular Course") && (course_list[ind].at("Modular Course").get<int>()) == 1){
+            modular_first_index[course_code] = lecture_tutorial_lists.size();
+            is_modular = true;
+        }
 
         Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
         lecture_tutorial_lists.push_back(course);
     }
 
-    // for(int ind = 0; ind < modular_second_part.size(); ind++){
-    //     std::string course_code;
-    //     std::string course_name;
-    //     std::vector<int> lecture_schedule;
-    //     std::vector<int> tutorial_schedule;
-    //     int students_registered;
-    //     int tutorial_count;
-    //     bool is_modular;
-    //     std::string string_lecture_schedule;
-    //     std::string string_tutorial_schedule;
+    for(int ind = 0; ind < modular_second_part.size(); ind++){
+        std::string course_code;
+        std::string course_name;
+        std::vector<int> lecture_schedule;
+        std::vector<int> tutorial_schedule;
+        int students_registered;
+        int tutorial_count;
+        bool is_modular;
+        std::string string_lecture_schedule;
+        std::string string_tutorial_schedule;
 
-    //     if(course_list[ind].contains("Course Name")){
-    //         course_name = course_list[ind].at("Course Name");
-    //     }
+        if(modular_second_part[ind].contains("Course Name")){
+            course_name = modular_second_part[ind].at("Course Name");
+        }
 
-    //     if(course_list[ind].contains("Course Code")){
-    //         course_code = course_list[ind].at("Course Code");
-    //     }
+        if(modular_second_part[ind].contains("Course Code")){
+            course_code = modular_second_part[ind].at("Course Code");
+        }
 
-    //     if(course_list[ind].contains("Section")){
-    //         course_code = course_code + "_" + course_list[ind].at("Section").get<std::string>();
-    //     }
+        if(modular_second_part[ind].contains("Section")){
+            course_code = course_code + "_" + modular_second_part[ind].at("Section").get<std::string>();
+        }
 
-    //     if(course_list[ind].contains("Lecture Schedule")){
-    //         lecture_schedule = timeString_to_timeINT(course_list[ind].at("Lecture Schedule"));
-    //         sort(lecture_schedule.begin(), lecture_schedule.end());
-    //         string_lecture_schedule = course_list[ind].at("Lecture Schedule");
-    //     }
+        if(modular_second_part[ind].contains("Lecture Schedule")){
+            lecture_schedule = timeString_to_timeINT(modular_second_part[ind].at("Lecture Schedule"));
+            sort(lecture_schedule.begin(), lecture_schedule.end());
+            string_lecture_schedule = modular_second_part[ind].at("Lecture Schedule");
+        }
 
-    //     if(course_list[ind].contains("Tutorial Schedule")){
-    //         tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
-    //         sort(tutorial_schedule.begin(), tutorial_schedule.end());
-    //         string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
-    //     }
+        if(modular_second_part[ind].contains("Tutorial Schedule")){
+            tutorial_schedule = timeString_to_timeINT(modular_second_part[ind].at("Tutorial Schedule"));
+            sort(tutorial_schedule.begin(), tutorial_schedule.end());
+            string_tutorial_schedule = modular_second_part[ind].at("Tutorial Schedule");
+        }
 
-    //     if(course_list[ind].contains("Students Registered")){
-    //         students_registered = (course_list[ind].at("Students Registered").get<int>());
-    //     } else {
-    //         students_registered = 0;
-    //     }
+        if(modular_second_part[ind].contains("Students Registered")){
+            students_registered = (modular_second_part[ind].at("Students Registered").get<int>());
+        } else {
+            students_registered = 0;
+        }
 
-    //     if(course_list[ind].contains("Tutorial Count")){
-    //         tutorial_count = (course_list[ind].at("Tutorial Count").get<int>());
-    //     } else {
-    //         tutorial_count = 0;
-    //     }
+        if(modular_second_part[ind].contains("Tutorial Count")){
+            tutorial_count = (modular_second_part[ind].at("Tutorial Count").get<int>());
+        } else {
+            tutorial_count = 0;
+        }
 
-    //     is_modular = true;
+        is_modular = true;
 
-    //     if(course_list[ind].contains("Modular Course")){
-    //         int index = modular_first_index[course_list[ind].at("Modular Bindings")];
-    //         lecture_tutorial_lists[index].Append_course_code("#" + course_code);
-    //         lecture_tutorial_lists[index].Append_course_name("#" + course_name);
-    //         lecture_tutorial_lists[index].Update_max_registered_students(students_registered);
-    //         lecture_tutorial_lists[index].Update_max_tutorial_count(tutorial_count);
-    //     } else {
-    //         Course course = Course("#" + course_code, "#" + course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
-    //         lecture_tutorial_lists.push_back(course);
-    //     }
-    // }
+        if(modular_second_part[ind].contains("Modular Binding")){
+            int index = modular_first_index[modular_second_part[ind].at("Modular Binding")];
+            lecture_tutorial_lists[index].Append_course_code("#" + course_code);
+            lecture_tutorial_lists[index].Append_course_name("#" + course_name);
+            lecture_tutorial_lists[index].Update_max_registered_students(students_registered);
+            lecture_tutorial_lists[index].Update_max_tutorial_count(tutorial_count);
+        } else {
+            Course course = Course("#" + course_code, "#" + course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
+            lecture_tutorial_lists.push_back(course);
+        }
+    }
 
     return lecture_tutorial_lists;
 }
+
+// for(int ind = 0; ind < modular_second_part.size(); ind++){
+//         std::string course_code;
+//         std::string course_name;
+//         std::vector<int> lecture_schedule;
+//         std::vector<int> tutorial_schedule;
+//         int students_registered;
+//         int tutorial_count;
+//         bool is_modular;
+//         std::string string_lecture_schedule;
+//         std::string string_tutorial_schedule;
+
+//         if(course_list[ind].contains("Course Name")){
+//             course_name = course_list[ind].at("Course Name");
+//         }
+
+//         if(course_list[ind].contains("Course Code")){
+//             course_code = course_list[ind].at("Course Code");
+//         }
+
+//         if(course_list[ind].contains("Section")){
+//             course_code = course_code + "_" + course_list[ind].at("Section").get<std::string>();
+//         }
+
+//         if(course_list[ind].contains("Lecture Schedule")){
+//             lecture_schedule = timeString_to_timeINT(course_list[ind].at("Lecture Schedule"));
+//             sort(lecture_schedule.begin(), lecture_schedule.end());
+//             string_lecture_schedule = course_list[ind].at("Lecture Schedule");
+//         }
+
+//         if(course_list[ind].contains("Tutorial Schedule")){
+//             tutorial_schedule = timeString_to_timeINT(course_list[ind].at("Tutorial Schedule"));
+//             sort(tutorial_schedule.begin(), tutorial_schedule.end());
+//             string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
+//         }
+
+//         if(course_list[ind].contains("Students Registered")){
+//             students_registered = (course_list[ind].at("Students Registered").get<int>());
+//         } else {
+//             students_registered = 0;
+//         }
+
+//         if(course_list[ind].contains("Tutorial Count")){
+//             tutorial_count = (course_list[ind].at("Tutorial Count").get<int>());
+//         } else {
+//             tutorial_count = 0;
+//         }
+
+//         is_modular = true;
+
+//         // if(course_list[ind].contains("Modular Course")){
+//         //     int index = modular_first_index[course_list[ind].at("Modular Bindings")];
+//         //     lecture_tutorial_lists[index].Append_course_code("#" + course_code);
+//         //     lecture_tutorial_lists[index].Append_course_name("#" + course_name);
+//         //     lecture_tutorial_lists[index].Update_max_registered_students(students_registered);
+//         //     lecture_tutorial_lists[index].Update_max_tutorial_count(tutorial_count);
+//         // } else {
+//         //     Course course = Course("#" + course_code, "#" + course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
+//         //     lecture_tutorial_lists.push_back(course);
+//         // }
+//     }

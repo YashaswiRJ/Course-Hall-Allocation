@@ -191,7 +191,7 @@
         },
         {
             "building": "LHC",
-            "capacity": 50,
+            "capacity": 500,
             "id": "VeXqpw4gNNGtDr1HXGcl",
             "name": "L03",
             "schedule": {
@@ -205,6 +205,10 @@
                     {
                         "close": "17:00",
                         "open": "08:00"
+                    },
+                    {
+                        "close": "20:00",
+                        "open": "18:00"
                     }
                 ],
                 "thursday": [
@@ -851,4 +855,87 @@
                     {
                         "close": "17:00",
                         "open": "08:00"
-                    
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        },
+        {
+            "building": "TB",
+            "capacity": 50,
+            "id": "sMer6JlN6RSCDAvNn3vE",
+            "name": "TB111",
+            "schedule": {
+                "friday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "monday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "thursday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "tuesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ],
+                "wednesday": [
+                    {
+                        "close": "17:00",
+                        "open": "08:00"
+                    }
+                ]
+            }
+        }
+    ],
+    "lectureBuildingPriorities": [
+        "LHC",
+        "TB"
+    ],
+    "preallocatedConstraints": [
+        {
+            "Course Code": "CS201",
+            "Course Name": "Discrete Mathematics",
+            "Lecture Hall Allocated": 0,
+            "Modular Course": 0,
+            "Schedule": "Th 14:00-15:15",
+            "Section": "",
+            "Students Registered": 163,
+            "Type": "Lecture"
+        }
+    ],
+    "tutorialBuildingPriorities": [
+        "LHC",
+        "TB"
+    ]
+}лллллллл00ОДЫ  лллллллллллллллллллллллллллллллллллллллллллллллллллллллл║Ужim
+9
+null

@@ -8,6 +8,7 @@
 #include "course_preprocessing.hpp"
 #include "course_processing.hpp"
 #include "venue_processing.hpp"
+#include "constraint_processing.hpp"
 #include "lecture_allocation.hpp"
 #include "tutorial_allocation.hpp"
 #include "output_processing.hpp"
@@ -37,6 +38,7 @@ int main() {
 
     std::cin >> j;
     std::cout << j.dump(4);
+    std::cout << []{ time_t t = time(nullptr) + 19800; char buf[32]; strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S IST", localtime(&t)); return buf; }() << std::endl;
     _sleep(5);
 
     std::vector<Course> preprocessed_course_list; 
@@ -65,20 +67,20 @@ int main() {
     std::string string_lecture_schedule;
     std::string string_tutorial_schedule;
     */
-    // json o1 = json::array();
-    // for(auto course: preprocessed_course_list){
-    //     o1.push_back({
-    //         {"course_code", course.course_code},
-    //         {"course_name", course.course_name},
-    //         {"lect_sched", course.lecture_schedule},
-    //         {"tut_sched", course.tutorial_schedule},
-    //         {"tut_count", course.tutorial_count},
-    //         {"stud_count", course.students_registered},
-    //         {"is_modular", course.is_modular},
-    //         {"str_lect", course.string_lecture_schedule},
-    //         {"str_tut", course.string_tutorial_schedule}
-    //     });
-    // }
+    json o1 = json::array();
+    for(auto course: preprocessed_course_list){
+        o1.push_back({
+            {"course_code", course.course_code},
+            {"course_name", course.course_name},
+            {"lect_sched", course.lecture_schedule},
+            {"tut_sched", course.tutorial_schedule},
+            {"tut_count", course.tutorial_count},
+            {"stud_count", course.students_registered},
+            {"is_modular", course.is_modular},
+            {"str_lect", course.string_lecture_schedule},
+            {"str_tut", course.string_tutorial_schedule}
+        });
+    }
     // std::cout<<o1.dump(4)<<std::endl;
 
     if(j.contains("hallData") && j.at("hallData").is_array()){
@@ -104,23 +106,32 @@ int main() {
             });
         }
     }
-    std::cout << o3.dump(4) << std::endl;
+    // std::cout << o3.dump(4) << std::endl;
 
-    // std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);
 
-    // if(j.contains("lectureBuildingPriorities") && j.at("lectureBuildingPriorities").is_array()){
-    //     lecture_building_priority_order = j.at("lectureBuildingPriorities").get<std::vector<std::string>>();
-    // }
+    /*
+    === CONSTRAINT HANDLING ===
+    */
+    if(j.contains("preallocatedConstraints") && j.at("preallocatedConstraints").is_array()){
+        constraint_processing(processed_venue_list, j.at("preallocatedConstraints"));
+    }
+    
 
-    // if(j.contains("tutorialBuildingPriorities") && j.at("tutorialBuildingPriorities").is_array()){
-    //     tutorial_building_priority_order = j.at("tutorialBuildingPriorities").get<std::vector<std::string>>();
-    // }
+    std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);
 
-    // if(j.contains("convenienceFactor") && j.at("convenienceFactor").is_string()){
-    //     convenience_factor = std::stoi(j.at("convenienceFactor").get<std::string>());
-    // }
-    // core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
-    // core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
+    if(j.contains("lectureBuildingPriorities") && j.at("lectureBuildingPriorities").is_array()){
+        lecture_building_priority_order = j.at("lectureBuildingPriorities").get<std::vector<std::string>>();
+    }
+
+    if(j.contains("tutorialBuildingPriorities") && j.at("tutorialBuildingPriorities").is_array()){
+        tutorial_building_priority_order = j.at("tutorialBuildingPriorities").get<std::vector<std::string>>();
+    }
+
+    if(j.contains("convenienceFactor") && j.at("convenienceFactor").is_string()){
+        convenience_factor = std::stoi(j.at("convenienceFactor").get<std::string>());
+    }
+    core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
+    core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
 
     json output_json; // = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 

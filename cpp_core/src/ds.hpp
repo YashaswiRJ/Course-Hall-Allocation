@@ -45,7 +45,7 @@ class Tutorial {
 public:
     std::string course_code;
     std::string course_name;
-    std::vector<int> tutoial_schedule;
+    std::vector<int> tutorial_schedule;
     int students_registered;
     int tutorial_count;
     std::vector<std::string> assignment;
@@ -55,7 +55,7 @@ public:
     Tutorial(const std::string Course_Name, const std::string Course_Code, const std::vector<int> Tutorial_Schedule, const int Students_Registered, const int Tutorial_Count, const bool Is_Modular, const std::string String_Tutorial_Schedule)
         : course_name(Course_Name),
             course_code(Course_Code),
-            tutoial_schedule(Tutorial_Schedule),
+            tutorial_schedule(Tutorial_Schedule),
             students_registered(Students_Registered),
             tutorial_count(Tutorial_Count),
             is_modular(Is_Modular),
@@ -111,7 +111,7 @@ public:
     }
 
     void assignTutorial(const Tutorial &tutorial){
-        for(auto time: tutorial.tutoial_schedule){
+        for(auto time: tutorial.tutorial_schedule){
             is_available[time] = 0;
             assignment[time] = tutorial.course_code;
             assignment_type[time] = "Tutorial";
