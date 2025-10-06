@@ -28,7 +28,7 @@
     <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\tutorial_allocation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\output_processing.cpp">
+    <ClCompile Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\output_formatter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,7 +57,7 @@
     <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\tutorial_allocation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\output_processing.hpp">
+    <ClInclude Include="C:\Users\Hp\Downloads\QuadCHA\Course-Hall-Allocation\cpp_core\src\output_formatter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

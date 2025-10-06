@@ -23,7 +23,7 @@ set(SOURCES
     src/helper.hpp
     src/lecture_allocation.hpp
     src/tutorial_allocation.hpp
-    src/output_processing.hpp
+    src/output_formatter.hpp
     src/ds.cpp
     src/course_preprocessing.cpp
     src/course_processing.cpp
@@ -32,7 +32,7 @@ set(SOURCES
     src/helper.cpp
     src/lecture_allocation.cpp
     src/tutorial_allocation.cpp
-    src/output_processing.cpp
+    src/output_formatter.cpp
 )
 
 # Tell CMake where to find include files for the nlohmann/json library.

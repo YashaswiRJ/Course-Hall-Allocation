@@ -11,7 +11,7 @@
 #include "constraint_processing.hpp"
 #include "lecture_allocation.hpp"
 #include "tutorial_allocation.hpp"
-#include "output_processing.hpp"
+#include "output_formatter.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -21,24 +21,24 @@ int main() {
     // instead of looking for a file argument.
     json j;
 
-    int fd = _open("outputYASH.txt", _O_WRONLY | _O_CREAT | _O_TRUNC, 0644);
-    if (fd < 0) {
-        perror("open");
-        exit(1);
-    }
+    // int fd = _open("outputYASH.txt", _O_WRONLY | _O_CREAT | _O_TRUNC, 0644);
+    // if (fd < 0) {
+    //     perror("open");
+    //     exit(1);
+    // }
 
     // Redirect stdout (1) to the file descriptor
-    if (_dup2(fd, 1) < 0) {
-        perror("dup2");
-        _close(fd);
-        exit(1);
-    }
+    // if (_dup2(fd, 1) < 0) {
+    //     perror("dup2");
+    //     _close(fd);
+    //     exit(1);
+    // }
     
-    _close(fd);
+    // _close(fd);
 
     std::cin >> j;
-    std::cout << j.dump(4);
-    std::cout << []{ time_t t = time(nullptr) + 19800; char buf[32]; strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S IST", localtime(&t)); return buf; }() << std::endl;
+    // std::cout << j.dump(4);
+    // std::cout << []{ time_t t = time(nullptr) + 19800; char buf[32]; strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S IST", localtime(&t)); return buf; }() << std::endl;
     _sleep(5);
 
     std::vector<Course> preprocessed_course_list; 
@@ -133,8 +133,9 @@ int main() {
     core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
     core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
 
-    json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
+    // json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 
+    json output_json = output_formatter(processed_venue_list, processed_lecture_lists, processed_tutorial_lists, j.at("preallocatedConstraints").get<std::vector<json>>());
     // json output_json;
     // output_json["lectureSchedule"] = json::array();
     // output_json["venue_final"] = json::array();

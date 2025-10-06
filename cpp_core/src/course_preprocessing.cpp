@@ -39,8 +39,8 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             course_code = course_list[ind].at("Course Code");
         }
 
-        if(course_list[ind].contains("Section")){
-            course_code = course_code + "_" + course_list[ind].at("Section").get<std::string>();
+        if(course_list[ind].contains("Sections") && course_list[ind].at("Sections").get<std::string>() != ""){
+            course_code = course_code + "_" + course_list[ind].at("Sections").get<std::string>();
         }
 
         if(course_list[ind].contains("Lecture Schedule")){
@@ -55,17 +55,16 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             string_tutorial_schedule = course_list[ind].at("Tutorial Schedule");
         }
 
-        if(course_list[ind].contains("Students Registered")){
+        if(course_list[ind].contains("Students Registered") && course_list[ind].at("Students Registered").is_number()){
             students_registered = (course_list[ind].at("Students Registered").get<int>());
         } else {
             students_registered = 0;
         }
 
-        if(course_list[ind].contains("Tutorial Count")){
-            tutorial_count = (course_list[ind].at("Tutorial Count").get<int>());
-
+        if(course_list[ind].contains("Tutorial Count") && course_list[ind].at("Tutorial Count").is_number()){
+            tutorial_count = course_list[ind].at("Tutorial Count").get<int>();
         } else {
-            tutorial_count = 0;
+            tutorial_count = 0; // Default to 0 if key is missing OR not a number
         }
         
         if(course_list[ind].contains("Modular Course") && (course_list[ind].at("Modular Course").get<int>()) == 1){
@@ -96,8 +95,8 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             course_code = modular_second_part[ind].at("Course Code");
         }
 
-        if(modular_second_part[ind].contains("Section")){
-            course_code = course_code + "_" + modular_second_part[ind].at("Section").get<std::string>();
+        if(modular_second_part[ind].contains("Sections") && modular_second_part[ind].at("Sections").get<std::string>() != ""){
+            course_code = course_code + "_" + modular_second_part[ind].at("Sections").get<std::string>();
         }
 
         if(modular_second_part[ind].contains("Lecture Schedule")){
@@ -112,16 +111,16 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             string_tutorial_schedule = modular_second_part[ind].at("Tutorial Schedule");
         }
 
-        if(modular_second_part[ind].contains("Students Registered")){
+        if(modular_second_part[ind].contains("Students Registered") && modular_second_part[ind].at("Students Registered").is_number()){
             students_registered = (modular_second_part[ind].at("Students Registered").get<int>());
         } else {
             students_registered = 0;
         }
 
-        if(modular_second_part[ind].contains("Tutorial Count")){
-            tutorial_count = (modular_second_part[ind].at("Tutorial Count").get<int>());
+        if(modular_second_part[ind].contains("Tutorial Count") && modular_second_part[ind].at("Tutorial Count").is_number()){
+            tutorial_count = course_list[ind].at("Tutorial Count").get<int>();
         } else {
-            tutorial_count = 0;
+            tutorial_count = 0; // Default to 0 if key is missing OR not a number
         }
 
         is_modular = true;

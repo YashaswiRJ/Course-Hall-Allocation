@@ -170,7 +170,10 @@ app.post('/api/generate-schedule', (req, res) => {
         
         try {
             // 5. Parse the JSON output from the C++ program and send it to the client
-            const schedule = JSON.parse(outputJson);
+            console.log('Trying....');
+            const sched = outputJson;
+            // const schedule = JSON.parse(outputJson);
+            console.log('Yeah', sched, 'mew');
             res.status(200).json(schedule);
         } catch (error) {
             console.error('Error parsing schedule output from C++ program:', error);
