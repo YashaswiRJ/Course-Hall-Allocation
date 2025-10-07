@@ -167,3 +167,113 @@
 .search-input {
     min-width: 250px;
 }
+
+/* --- Styles for View Toggle Switch --- */
+.view-toggle {
+    display: flex;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.view-toggle button {
+    padding: 8px 16px;
+    border: none;
+    background-color: transparent;
+    color: #495057;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9rem;
+}
+
+.view-toggle button.active {
+    background-color: #ffffff;
+    color: #3498db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Styles for Filter Controls container --- */
+.filter-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* --- Styles for Room View --- */
+.room-view-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 25px;
+    padding-top: 20px;
+}
+
+.room-card {
+    background-color: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.room-card h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2980b9;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.room-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.room-schedule-table th, 
+.room-schedule-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #f1f3f5;
+    font-size: 0.9rem;
+}
+
+.room-schedule-table th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.room-schedule-table td {
+    color: #555;
+}
+
+.room-schedule-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Styles for Room View Search Bar --- */
+.room-search-container {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.room-search-container .search-input {
+    width: 100%; /* Make search bar take full width */
+    max-width: 500px;
+    margin: 0 auto; /* Center the search bar */
+}
+
+/* --- Styles for Empty Room Message --- */
+.empty-room-message {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    font-style: italic;
+}

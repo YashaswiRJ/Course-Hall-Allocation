@@ -132,7 +132,7 @@ const GeneratorPage = () => {
     // UI and options states
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    const [convenienceFactor, setConvenienceFactor] = useState(50);
+    const [convenienceFactor, setConvenienceFactor] = useState(15);
     const [allBuildings, setAllBuildings] = useState([]);
     const [lecturePriorities, setLecturePriorities] = useState([]);
     const [tutorialPriorities, setTutorialPriorities] = useState([]);
@@ -141,6 +141,7 @@ const GeneratorPage = () => {
         const fetchBuildingNames = async () => {
             try {
                 const halls = await getLectureHalls();
+                localStorage.setItem('allLectureHalls', JSON.stringify(halls));
                 const uniqueBuildingNames = [...new Set(halls.map(hall => hall.building))];
                 setAllBuildings(uniqueBuildingNames.sort());
             } catch (err) {

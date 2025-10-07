@@ -66,20 +66,7 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
 
     std::map<std::string, bool> visited_lecture_code;
     std::map<std::string, bool> visited_tutorial_code; 
-    output_json["Allocation Result"].push_back({
-        {"lsize", lectures.size()},
-        {"tsize", tutorials.size()}
-    });
 
-    // for(auto lecture: lectures){
-    //     output_json["Allocation Result"].push_back({
-    //         {"course code", lecture.course_code},
-    //         {"course_name", lecture.course_name},
-    //         {"students reg", lecture.students_registered},
-    //         {"sched", lecture.string_lecture_schedule},
-    //         {"modular", lecture.is_modular}
-    //     });
-    // }
     for(auto building: allocated_venues){
 
         for(auto venue: building.second){

@@ -71,7 +71,12 @@ const generateSchedule = async (courseDataArray, hallDataArray, convenienceFacto
             const errorData = await response.json().catch(() => ({ error: 'An unknown server error occurred.' }));
             throw new Error(errorData.details || errorData.error || `HTTP error! Status: ${response.status}`);
         }
-        return await response.json();
+
+        const finalData = await response.json();
+        console.log('Final JSON data from server:', finalData); // This will show your schedule object
+        return finalData;
+        // console.log('Response here', typeof response, response);
+        // return await response.json();
     } catch (error) {
         console.error('Error in generateSchedule API:', error);
         throw error;
