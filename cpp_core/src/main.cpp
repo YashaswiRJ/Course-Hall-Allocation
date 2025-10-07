@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <io.h>      // for _dup2, _close
+#include <unistd.h>      // for _dup2, _close
 #include <fcntl.h>   // for _open
 #include <cstdlib>
 #include "../helpers/json.hpp" // Make sure this path is correct
@@ -39,7 +39,6 @@ int main() {
     std::cin >> j;
     // std::cout << j.dump(4);
     // std::cout << []{ time_t t = time(nullptr) + 19800; char buf[32]; strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S IST", localtime(&t)); return buf; }() << std::endl;
-    _sleep(5);
 
     std::vector<Course> preprocessed_course_list; 
     std::map<std::string, std::vector<Venue>> processed_venue_list;
@@ -50,7 +49,10 @@ int main() {
     int convenience_factor = 0;
 
     if(j.contains("courseData") && j.at("courseData").is_array()){
-        preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
+        // ✅ This is the fix: create a variable first
+        auto courseData = j.at("courseData").get<std::vector<json>>();
+        preprocessed_course_list = course_preprocessing_function(courseData);
+        // preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
     }
 
     // std::cout << preprocessed_course_list.size() << std::endl;
@@ -113,8 +115,13 @@ int main() {
     === CONSTRAINT HANDLING ===
     */
     if(j.contains("preallocatedConstraints") && j.at("preallocatedConstraints").is_array()){
-        constraint_processing(processed_venue_list, j.at("preallocatedConstraints").get<std::vector<json>>());
+        // constraint_processing(processed_venue_list, j.at("preallocatedConstraints").get<std::vector<json>>());
+        // ✅ Fix: Use a variable
+        auto constraint_list = j.at("preallocatedConstraints").get<std::vector<json>>();
+        constraint_processing(processed_venue_list, constraint_list);
     }
+
+    
     
 
     std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);

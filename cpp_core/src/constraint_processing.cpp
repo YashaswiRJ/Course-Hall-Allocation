@@ -1,5 +1,3 @@
-#pragma once
-
 #include <map>
 #include <string>
 #include <vector>
@@ -7,7 +5,7 @@
 #include "ds.hpp"
 #include "../helpers/json.hpp"
 
-void constraint_processing(std::map<std::string, std::vector<Venue>> &processed_venue_list,  std::vector<nlohmann::json> &constraint_list){
+void constraint_processing(std::map<std::string, std::vector<Venue>> &processed_venue_list,  std::vector<nlohmann::json> constraint_list){
     // Iterate through each constraint
     for (const auto &constraint : constraint_list) {
         std::string course_code = constraint.at("Course Code").get<std::string>() + constraint.at("Section").get<std::string>();

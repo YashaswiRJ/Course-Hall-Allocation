@@ -25,7 +25,7 @@ const db = admin.firestore();
 const app = express();
 
 // Configure CORS for your local frontend (assuming it runs on port 3000)
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'http://172.27.5.210:3000' }));
 
 app.use(express.json());
 
@@ -142,7 +142,7 @@ app.post('/api/generate-schedule', (req, res) => {
     // }
 
     // 2. Spawn the C++ process (it no longer needs command-line arguments)
-    const executablePath = path.join(__dirname, '../cpp_core/build/Debug/Schedule_engine.exe');
+    const executablePath = path.join(__dirname, '../cpp_core/build/schedule_engine');
     const schedulerProcess = spawn(executablePath);
 
     console.log('Here we go!');
