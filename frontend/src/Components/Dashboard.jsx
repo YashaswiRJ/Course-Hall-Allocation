@@ -1,37 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Styles/Dashboard.css';
 
 const Dashboard = () => {
-    // --- NEW: State to track if a result exists ---
+    const navigate = useNavigate();
     const [hasResult, setHasResult] = useState(false);
-    const [lastResultInfo, setLastResultInfo] = useState({ assignments: 0, courses: 0 });
+    const [lastResultInfo, setLastResultInfo] = useState({ assignments: 0, total: 0 });
 
     useEffect(() => {
-        const savedResult = localStorage.getItem('latestScheduleResult');
-        if (savedResult) {
+        const savedAssignments = localStorage.getItem('latestAllocationResult');
+        const savedUnallocated = localStorage.getItem('latestUnallocatedCourses');
+        
+        if (savedAssignments || savedUnallocated) {
             setHasResult(true);
-            const parsedResult = JSON.parse(savedResult);
+            const assignments = savedAssignments ? JSON.parse(savedAssignments) : [];
+            const unallocated = savedUnallocated ? JSON.parse(savedUnallocated) : [];
             setLastResultInfo({
-                assignments: parsedResult.successful_assignments || 0,
-                courses: parsedResult.total_courses_processed || 0
+                assignments: assignments.length,
+                total: assignments.length + unallocated.length,
             });
         }
     }, []);
 
+    const handleViewResultClick = () => {
+        navigate('/results');
+    };
+
     const ResultCard = () => (
-        <Link to="/results" className="card card-link purple">
+        <div onClick={handleViewResultClick} className="card card-link purple" style={{cursor: 'pointer'}}>
             <div className="card-icon-area">
                 <span className="icon">📄</span>
             </div>
             <div className="card-content">
                 <h3>View Last Result</h3>
                 <p className="description">
-                    {lastResultInfo.assignments} of {lastResultInfo.courses} courses were successfully assigned.
+                    {lastResultInfo.assignments} of {lastResultInfo.total} courses were successfully assigned.
                 </p>
                 <span className="go-to-link">View Details →</span>
             </div>
-        </Link>
+        </div>
     );
 
     const NoResultCard = () => (
@@ -55,7 +62,6 @@ const Dashboard = () => {
             </header>
 
             <div className="cards-container">
-                {/* Card 1: Lecture Hall Manager */}
                 <Link to="/lecture-halls" className="card card-link blue">
                     <div className="card-icon-area"><span className="icon">🏛️</span></div>
                     <div className="card-content">
@@ -65,7 +71,6 @@ const Dashboard = () => {
                     </div>
                 </Link>
 
-                {/* Card 2: Generate Schedule */}
                 <Link to="/generate-schedule" className="card card-link orange">
                     <div className="card-icon-area"><span className="icon">🚀</span></div>
                     <div className="card-content">
@@ -75,7 +80,6 @@ const Dashboard = () => {
                     </div>
                 </Link>
 
-                {/* Card 3: Upload Files */}
                 <Link to="/upload-files" className="card card-link green">
                     <div className="card-icon-area"><span className="icon">📤</span></div>
                     <div className="card-content">
@@ -85,7 +89,6 @@ const Dashboard = () => {
                     </div>
                 </Link>
 
-                {/* --- UPDATED: Card 4 is now dynamic --- */}
                 {hasResult ? <ResultCard /> : <NoResultCard />}
             </div>
         </>

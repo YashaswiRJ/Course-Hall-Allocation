@@ -19,7 +19,6 @@
     margin-bottom: 20px;
 }
 
-/* --- NEW: Styling for the card header to align title and filters --- */
 .assignments-card .card-header {
     display: flex;
     justify-content: space-between;
@@ -36,10 +35,11 @@
     padding: 0;
 }
 
-/* --- NEW: Styling for the filter controls --- */
 .filter-controls {
     display: flex;
     gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
 }
 
 .search-input, .hall-select {
@@ -60,7 +60,6 @@
     min-width: 250px;
 }
 
-/* Summary stats from previous step */
 .summary-stats {
     display: flex;
     justify-content: space-around;
@@ -69,19 +68,24 @@
 .stat-item .stat-value {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2980b9;
     display: block;
 }
+
+/* Color coding for summary stats */
+.stat-item .stat-value.success { color: #27ae60; }
+.stat-item .stat-value.warning { color: #e67e22; }
+.stat-item .stat-value:not(.success):not(.warning) { color: #2980b9; }
+
+
 .stat-item .stat-label {
     font-size: 1rem;
     color: #7f8c8d;
 }
 
-/* Table styles from previous step */
 .results-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Add margin to separate from pagination */
+    margin-bottom: 20px;
 }
 .results-table th, .results-table td {
     padding: 12px 15px;
@@ -97,7 +101,6 @@
     background-color: #f4f9ff;
 }
 
-/* --- NEW: Styling for pagination --- */
 .pagination-controls {
     display: flex;
     justify-content: center;
@@ -150,25 +153,6 @@
     background-color: #95a5a6;
 }
 
-.search-input, .hall-select, .day-select {
-    padding: 10px 15px;
-    border-radius: 6px;
-    border: 1px solid #dfe4ea;
-    font-size: 0.95rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.search-input:focus, .hall-select:focus, .day-select:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
-}
-
-.search-input {
-    min-width: 250px;
-}
-
-/* --- Styles for View Toggle Switch --- */
 .view-toggle {
     display: flex;
     background-color: #e9ecef;
@@ -194,17 +178,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Styles for Filter Controls container --- */
-.filter-controls {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-/* --- Styles for Room View --- */
 .room-view-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -255,25 +228,38 @@
     border-bottom: none;
 }
 
-/* --- Styles for Room View Search Bar --- */
 .room-search-container {
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     display: flex;
+    justify-content: center;
 }
 
 .room-search-container .search-input {
-    width: 100%; /* Make search bar take full width */
+    width: 100%;
     max-width: 500px;
-    margin: 0 auto; /* Center the search bar */
 }
 
-/* --- Styles for Empty Room Message --- */
-.empty-room-message {
+.empty-room-message, .empty-message {
     text-align: center;
     color: #7f8c8d;
-    padding: 20px;
+    padding: 30px;
     font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* --- NEW Styles for Unallocated View --- */
+.download-btn {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-left: auto; /* Pushes the button to the right */
+}
+
+.download-btn:hover {
+    background-color: #2ecc71;
 }

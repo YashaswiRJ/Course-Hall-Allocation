@@ -166,6 +166,93 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
     for(auto constraint: constraint_list){
         output_json["Allocation Result"].push_back(constraint);
     }
+
+    /* Code for catering unallocated course-lectures */
+    output_json["Unallocated Course"] = nlohmann::json::array();
+
+    for(auto &lecture: lectures){
+        if(lecture.assignment == ""){
+            std::string section_first;
+            std::string course_code_first;
+            std::string section_second;
+            std::string course_code_second;
+            std::tie(course_code_first, course_code_second) = retrieve_modular_pairs(lecture.course_code);
+            std::string course_name_first;
+            std::string course_name_second;
+            std::tie(course_name_first, course_name_second) = retrieve_modular_pairs(lecture.course_name);
+
+            if(course_code_first != ""){
+                std::tie(section_first, course_code_first) = retrieve_section_course_code(course_code_first);
+
+                output_json["Unallocated Course"].push_back({
+                    {"Course Code", course_code_first},
+                    {"Course Name", course_name_first},
+                    {"Modular Course", lecture.is_modular == true ? 1 : 0},
+                    {"Schedule", lecture.string_lecture_schedule},
+                    {"Section", section_first},
+                    {"Students Registered", lecture.students_registered},
+                    {"Type", "Lecture"}
+                });
+            }
+
+            if(course_code_second != ""){
+                std::tie(section_second, course_code_second) = retrieve_section_course_code(course_code_second);
+
+                output_json["Unallocated Course"].push_back({
+                    {"Course Code", course_code_second},
+                    {"Course Name", course_name_second},
+                    {"Modular Course", 2},
+                    {"Schedule", lecture.string_lecture_schedule},
+                    {"Section", section_second},
+                    {"Students Registered", lecture.students_registered},
+                    {"Type", "Lecture"}
+                });
+            }
+        }
+    }
+
+    for(auto &tutorial: tutorials){
+        if(tutorial.assignment.empty()){
+            std::string section_first;
+            std::string course_code_first;
+            std::string section_second;
+            std::string course_code_second;
+            std::tie(course_code_first, course_code_second) = retrieve_modular_pairs(tutorial.course_code);
+            std::string course_name_first;
+            std::string course_name_second;
+            std::tie(course_name_first, course_name_second) = retrieve_modular_pairs(tutorial.course_name);
+
+            if(course_code_first != ""){
+                std::tie(section_first, course_code_first) = retrieve_section_course_code(course_code_first);
+
+                output_json["Unallocated Course"].push_back({
+                    {"Course Code", course_code_first},
+                    {"Course Name", course_name_first},
+                    {"Modular Course", tutorial.is_modular == true ? 1 : 0},
+                    {"Schedule", tutorial.string_tutorial_schedule},
+                    {"Section", section_first},
+                    {"Students Registered", tutorial.students_registered},
+                    {"Tutorial Count", tutorial.tutorial_count},
+                    {"Type", "Tutorial"}
+                });
+            }
+
+            if(course_code_second != ""){
+                std::tie(section_second, course_code_second) = retrieve_section_course_code(course_code_second);
+
+                output_json["Unallocated Course"].push_back({
+                    {"Course Code", course_code_second},
+                    {"Course Name", course_name_second},
+                    {"Modular Course", 2},
+                    {"Schedule", tutorial.string_tutorial_schedule},
+                    {"Section", section_second},
+                    {"Students Registered", tutorial.students_registered},
+                    {"Tutorial Count", tutorial.tutorial_count},
+                    {"Type", "Tutorial"}
+                });
+            }
+        }
+    }
     return output_json;
     
 }

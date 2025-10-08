@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <unistd.h>      // for _dup2, _close
-#include <fcntl.h>   // for _open
+#include <unistd.h>      // for dup2, close
+#include <fcntl.h>   // for open
 #include <cstdlib>
 #include "../helpers/json.hpp" // Make sure this path is correct
 #include "ds.hpp"
@@ -38,7 +38,6 @@ int main() {
 
     std::cin >> j;
     // std::cout << j.dump(4);
-    // std::cout << []{ time_t t = time(nullptr) + 19800; char buf[32]; strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S IST", localtime(&t)); return buf; }() << std::endl;
 
     std::vector<Course> preprocessed_course_list; 
     std::map<std::string, std::vector<Venue>> processed_venue_list;
@@ -121,9 +120,6 @@ int main() {
         constraint_processing(processed_venue_list, constraint_list);
     }
 
-    
-    
-
     std::tie(processed_lecture_lists, processed_tutorial_lists) = course_processing(preprocessed_course_list);
 
     if(j.contains("lectureBuildingPriorities") && j.at("lectureBuildingPriorities").is_array()){
@@ -137,43 +133,17 @@ int main() {
     if(j.contains("convenienceFactor") && j.at("convenienceFactor").is_string()){
         convenience_factor = std::stoi(j.at("convenienceFactor").get<std::string>());
     }
+
+    json unallocated_course = json::object();
+    unallocated_course["Unallocated courses"] = json::array();
+
     core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
     core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
 
     // json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 
     json output_json = output_formatter(processed_venue_list, processed_lecture_lists, processed_tutorial_lists, j.at("preallocatedConstraints").get<std::vector<json>>());
-    // json output_json;
-    // output_json["lectureSchedule"] = json::array();
-    // output_json["venue_final"] = json::array();
-
-    // for(auto &venues: processed_venue_list){
-    //     for(auto &venue: venues.second){
-    //         std::vector<std::pair<int, std::string>> vec_assign;
-    //         std::vector<std::pair<int, std::string>> vec_type;
-    //         for(int i=1; i<=5; i++){
-    //             for(int j = 8; j <= 17; j++){
-    //                 vec_assign.push_back(make_pair(10000*i + j*100, venue.assignment[10000*i+j*100]));
-    //                 vec_assign.push_back(make_pair(10000*i + j*100 + 30, venue.assignment[10000*i+j*100+30]));
-    //                 vec_type.push_back(make_pair(10000*i + j*100, venue.assignment_type[10000*i+j*100]));
-    //                 vec_type.push_back(make_pair(10000*i + j*100 + 30, venue.assignment_type[10000*i+j*100+30]));
-    //             }
-    //         }
-    //         output_json["venue_final"].push_back({
-    //             {"Hall Name", venue.hall_name},
-    //             {"Allotment", vec_assign},
-    //             {"Type", vec_type}
-    //         });
-    //     }
-    // }
-    // for(auto lec: processed_lecture_lists){
-    //     output_json["lectureSchedule"].push_back({
-    //         {"Course Name", lec.course_name},
-    //         {"Course Code", lec.course_code},
-    //         {"Lecture Hall Assigned", lec.assignment}
-    //     });
-    // }
-
+    
     std::cout << output_json.dump(4)<< std::endl;
     std::cout.flush();
 

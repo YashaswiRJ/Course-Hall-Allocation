@@ -1,147 +1,215 @@
-/* --- Main Container for the Stats Viewer Page --- */
+/* --- Global & Page Layout --- */
 .stats-viewer-container {
     width: 100%;
+    padding: 20px 40px; /* Add some page padding */
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f8f9fa; /* Light page background */
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #343a40;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Loading and Empty State --- */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 1.5rem;
+    color: #6c757d;
+}
+
+.schedule-card.empty-state {
+    text-align: center;
+    padding: 60px;
+    color: #6c757d;
+    background-color: #fff;
+}
+
+.schedule-card.empty-state h3 {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.back-to-home-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-home-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* --- Card holding the schedule content --- */
 .schedule-card {
     background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #eef2f7;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
-    margin-top: 20px;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Day Selector Buttons (No changes) --- */
+/* --- Day Selector Buttons --- */
 .day-selector {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
 .day-btn {
     padding: 10px 25px;
-    border: 1px solid #dfe4ea;
+    border: 1px solid #dee2e6;
     background-color: #f8f9fa;
-    color: #5a6872;
-    border-radius: 20px;
+    color: #495057;
+    border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.25s ease;
 }
 
 .day-btn:hover {
-    background-color: #eef2f7;
+    background-color: #e9ecef;
     border-color: #ced4da;
-}
-
-.day-btn.active {
-    background: linear-gradient(45deg, #3498db, #2980b9);
-    color: white;
-    border-color: #3498db;
-    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
     transform: translateY(-2px);
 }
 
-/* --- UPDATED: Timetable Grid with visible lines --- */
+.day-btn.active {
+    background: linear-gradient(45deg, #4dabf7, #339af0);
+    color: white;
+    border-color: #339af0;
+    box-shadow: 0 4px 15px rgba(51, 154, 240, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- Timetable Grid --- */
 .timetable-grid-container {
     overflow-x: auto;
-    padding-bottom: 10px;
-    border: 1px solid #c7cdd4; /* Outer border for the grid */
-    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    background-color: #f8f9fa;
 }
 
 .timetable-grid {
     display: grid;
-    /* Columns are set dynamically in the component */
-    min-width: 1800px; /* Wider to accommodate more granular slots */
+    min-width: 2000px;
+    border-collapse: collapse;
 }
 
-/* --- UPDATED: Grid Headers (Time and Halls) --- */
+/* --- Grid Headers, Labels, and Cells (Base Styles) --- */
 .grid-header,
 .hall-label,
 .grid-cell {
-    padding: 10px;
+    padding: 12px 8px;
     text-align: center;
-    border-bottom: 1px solid #d8dde3; 
-    /* Lighter, dotted line for intermediate slots */
+    border-bottom: 1px solid #e9ecef;
     border-right: 1px dotted #e0e4e8;
 }
 
+/* --- Headers (Time) --- */
 .grid-header {
-    background-color: #f1f5f9;
-    color: #34495e;
+    background-color: #f1f3f5;
+    color: #495057;
     font-weight: 600;
+    font-size: 0.8rem;
+    white-space: nowrap;
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.grid-header.full-hour-label {
+    color: #212529;
     font-size: 0.85rem;
-    white-space: nowrap;
 }
 
-/* --- UPDATED: Bolder hour lines for headers and cells --- */
-.time-header.hour-end,
-.grid-cell.hour-end {
-    /* Bolder, solid line for full hours */
-    border-right: 2px solid #b0b9c4; 
-}
-
-
-/* --- UPDATED: Hall Label Styling --- */
+/* --- Labels (Hall) --- */
 .hall-label {
     background-color: #f8f9fa;
-    color: #34495e;
-    font-weight: 600;
+    color: #343a40;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-right: 2px solid #dee2e6;
+}
+
+/* --- Sticky Positioning for Headers & Labels --- */
+.sticky-col {
     position: sticky;
     left: 0;
     z-index: 5;
-    border-right: 2px solid #b0b9c4; /* Match bold hour line */
 }
 
-/* --- UPDATED: Course Cells --- */
+/* --- Grid Cells (Data) --- */
 .grid-cell {
     background-color: #ffffff;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 55px;
     font-size: 0.9rem;
     transition: background-color 0.2s ease;
 }
 
+/* --- Bold Hour Markers on the Grid --- */
+.hour-end-marker {
+    border-right: 1px solid #ced4da;
+}
+
+/* --- Allocated Course Cells --- */
 .grid-cell.allocated {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #51aaff, #339af0);
     color: white;
-    border-color: #2980b9;
+    border: none;
+    display: flex;
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 4px;
     z-index: 2;
     overflow: hidden;
-    border-radius: 4px;
-    margin: 2px; /* Add margin to distinguish merged cells */
-    border-right: 1px solid #2980b9; /* Ensure allocated cells have a consistent border */
+    border-radius: 8px;
+    margin: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-cell.allocated:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .course-code {
     font-weight: 700;
+    font-size: 0.85rem;
 }
 
 .course-time {
-    font-size: 0.75rem;
-    opacity: 0.8;
-}
-
-/* --- Clean up borders at the edges --- */
-/* Number of slots (66) + 1 hall label column = 67 */
-.timetable-grid > *:nth-last-child(-n+67) { 
-    border-bottom: none;
-}
-.timetable-grid > *:nth-child(67n) { 
-    border-right: none;
+    font-size: 0.7rem;
+    opacity: 0.85;
+    margin-top: 2px;
 }

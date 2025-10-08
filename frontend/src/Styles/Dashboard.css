@@ -33,7 +33,7 @@
   padding-left: 2px;
 }
 
-/* --- NEW: Professional Card Design --- */
+/* --- Professional Card Design --- */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -41,7 +41,6 @@
   margin-top: 40px;
 }
 
-/* Base style for all cards */
 .card {
   background-color: #ffffff;
   border-radius: 12px;
@@ -52,7 +51,7 @@
   color: inherit;
   display: flex;
   flex-direction: column;
-  padding: 25px; /* Padding for standard cards */
+  padding: 25px;
 }
 
 .card:hover {
@@ -60,21 +59,20 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Specific styles for LINK cards */
 .card-link {
-    flex-direction: row; /* Arrange icon and content side-by-side */
-    padding: 0; /* Remove base padding to use internal containers */
-    overflow: hidden; /* Ensure border radius is respected by children */
-    border-left: 5px solid transparent; /* Colored border on the left */
+    flex-direction: row;
+    padding: 0;
+    overflow: hidden;
+    border-left: 5px solid transparent;
 }
 .card-link:hover {
-    border-color: #3498db; /* Default hover border color */
+    border-color: #3498db;
 }
 
-/* Color variations for the left border */
 .card-link.blue { border-color: #3498db; }
 .card-link.orange { border-color: #e67e22; }
 .card-link.green { border-color: #27ae60; }
+.card-link.purple { border-color: #8e44ad; }
 
 .card-icon-area {
     display: flex;
@@ -94,22 +92,20 @@
     flex-grow: 1;
 }
 
-/* Text styles for ALL cards */
 .card h3 {
   margin: 0 0 8px 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50; /* Dark, readable text */
+  color: #2c3e50;
 }
 
 .card .description {
   margin: 0;
   font-size: 0.95rem;
-  color: #7f8c8d; /* Readable grey text */
+  color: #7f8c8d;
   flex-grow: 1;
 }
 
-/* Style for the 'Go to ->' link */
 .go-to-link {
   margin-top: 15px;
   font-weight: 600;
@@ -118,23 +114,12 @@
 }
 .card-link.orange .go-to-link { color: #e67e22; }
 .card-link.green .go-to-link { color: #27ae60; }
-
-
-/* Style for standard info cards (like Server Load) */
-.card .metric {
-  margin: 10px 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.card-link.purple { border-color: #8e44ad; }
 .card-link.purple .go-to-link { color: #8e44ad; }
 
 .card-disabled {
     background-color: #f8f9fa;
     cursor: not-allowed;
-    display: flex; /* Ensure layout matches link cards */
+    display: flex;
     flex-direction: row;
     padding: 0;
     overflow: hidden;
