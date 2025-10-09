@@ -130,8 +130,6 @@
     color: #3498db;
 }
 
-/* === RESTORED STYLES for Options Card === */
-
 .options-card {
     border-top: 1px solid #eef2f7;
     padding-top: 30px;
@@ -187,13 +185,91 @@
     color: #34495e;
 }
 
-/* Building Priority Styles */
 .priority-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr; 
     gap: 30px;
     border-top: 1px solid #eef2f7;
     padding-top: 30px;
+}
+
+.priority-caching-toggle {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eef2f7;
+}
+
+.priority-caching-toggle label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.priority-caching-toggle label .tooltip {
+    display: block;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #27ae60;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #27ae60;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 .building-priority-container label {
@@ -206,7 +282,7 @@
 
 .priority-columns {
     display: grid;
-    grid-template-columns: 1fr; /* Single column inside the container now */
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 

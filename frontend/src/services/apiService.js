@@ -47,6 +47,30 @@ const deleteLectureHall = async (id, building) => {
     }
 };
 
+const createBuilding = async (buildingData) => {
+    // Expects an object like { name: 'BuildingName', initialHall: { ... } }
+    const response = await fetch(`${API_BASE_URL}/buildings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(buildingData),
+    });
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to create building.');
+    }
+    return response.json();
+};
+
+const deleteBuilding = async (buildingName) => {
+    const response = await fetch(`${API_BASE_URL}/buildings/${encodeURIComponent(buildingName)}`, {
+        method: 'DELETE',
+    });
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to delete building.');
+    }
+};
+
 // --- Schedule Generator Function (Updated to send separate priority lists) ---
 const generateSchedule = async (courseDataArray, hallDataArray, convenienceFactor, lectureBuildingPriorities, tutorialBuildingPriorities, preallocatedConstraints) => {
     const payload = {
@@ -88,6 +112,8 @@ export {
     createLectureHall,
     updateLectureHall,
     deleteLectureHall,
+    createBuilding,   
+    deleteBuilding,
     generateSchedule,
 };
 

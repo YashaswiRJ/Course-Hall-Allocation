@@ -151,6 +151,7 @@ tr:hover {
 .actions-cell {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
 }
 
 .btn-edit, .btn-delete {
@@ -173,7 +174,7 @@ tr:hover {
   transform: translateY(-1px);
 }
 
-/* NEW: Styles for the delete button */
+/* Styles for the delete button (for halls and buildings) */
 .btn-delete {
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -540,4 +541,18 @@ fieldset {
     padding: 60px;
     color: #95a5a6;
     font-size: 1.1rem;
+}
+
+fieldset {
+  border: 1px solid #eef2f7;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* NEW: Style for descriptive text inside a fieldset */
+.fieldset-description {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }

@@ -157,7 +157,7 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
 
                     visited_tutorial_code[tutorial.course_code] = true;
                 } else {
-                    break;
+                    continue;
                 }
             }
         }

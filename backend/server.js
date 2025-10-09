@@ -10,10 +10,7 @@ const fs = require('fs');
 const XLSX = require('xlsx');
 
 // --- Firebase Admin SDK Setup ---
-// This version is simplified for local development.
-// Ensure your service account key file is named 'firebase-service-account.json'.
 const serviceAccount = require('./firebase-service-account.json');
-const { constrainedMemory } = require('process');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -24,25 +21,96 @@ const db = admin.firestore();
 
 const app = express();
 
-// Configure CORS for your local frontend (assuming it runs on port 3000)
 app.use(cors({ origin: 'http://localhost:3000' }));
-
 app.use(express.json());
 
-// Use a local 'uploads' directory for file storage.
-// IMPORTANT: Make sure you create the 'uploads' folder in your project directory.
 const upload = multer({ dest: 'uploads/' });
+
+// --- Helper Function to Delete a Collection ---
+async function deleteCollection(db, collectionPath, batchSize) {
+    const collectionRef = db.collection(collectionPath);
+    const query = collectionRef.orderBy('__name__').limit(batchSize);
+
+    return new Promise((resolve, reject) => {
+        deleteQueryBatch(db, query, resolve).catch(reject);
+    });
+}
+
+async function deleteQueryBatch(db, query, resolve) {
+    const snapshot = await query.get();
+
+    if (snapshot.size === 0) {
+        return resolve();
+    }
+
+    const batch = db.batch();
+    snapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref);
+    });
+    await batch.commit();
+
+    process.nextTick(() => {
+        deleteQueryBatch(db, query, resolve);
+    });
+}
+
+
+// --- Building API Endpoints ---
+
+// POST: Create a new building (collection) with its first lecture hall
+app.post('/api/buildings', async (req, res) => {
+    try {
+        const { name, initialHall } = req.body;
+
+        if (!name || !initialHall || !initialHall.name || !initialHall.capacity) {
+            return res.status(400).json({ error: 'Building name and details for the initial hall are required.' });
+        }
+        
+        // Firestore automatically creates the collection when the first document is added.
+        const docRef = await db.collection(name).add(initialHall);
+        
+        res.status(201).json({ 
+            message: `Building '${name}' created successfully with initial hall.`,
+            buildingName: name,
+            hallId: docRef.id 
+        });
+    } catch (error) {
+        console.error('Error creating building:', error);
+        res.status(500).json({ error: 'Failed to create building.' });
+    }
+});
+
+// DELETE: Delete a building and all halls within it
+app.delete('/api/buildings/:buildingName', async (req, res) => {
+    try {
+        const { buildingName } = req.params;
+        if (!buildingName) {
+            return res.status(400).json({ error: 'Building name is required.' });
+        }
+
+        // Use the helper function to delete all documents in the collection
+        await deleteCollection(db, buildingName, 50);
+
+        res.status(204).send(); // Success, no content
+    } catch (error) {
+        console.error(`Error deleting building ${req.params.buildingName}:`, error);
+        res.status(500).json({ error: 'Failed to delete building.' });
+    }
+});
+
 
 // --- Lecture Hall API Endpoints for Firebase ---
 
 // GET: Fetch all lecture halls from all building collections
 app.get('/api/lecture-halls', async (req, res) => {
     try {
-        const buildings = ['LHC', 'TB']; // Add any new building collection names here
+        // Dynamically get all collections (buildings)
+        const collections = await db.listCollections();
+        const buildingNames = collections.map(col => col.id);
+
         const allHalls = [];
         
-        // Use Promise.all to fetch from all building collections concurrently
-        await Promise.all(buildings.map(async (buildingName) => {
+        await Promise.all(buildingNames.map(async (buildingName) => {
             const collectionRef = db.collection(buildingName);
             const snapshot = await collectionRef.get();
             snapshot.forEach(doc => {
@@ -50,7 +118,6 @@ app.get('/api/lecture-halls', async (req, res) => {
             });
         }));
 
-        // Sort the results for a consistent order
         allHalls.sort((a, b) => {
             if (a.building < b.building) return -1;
             if (a.building > b.building) return 1;
@@ -73,7 +140,6 @@ app.post('/api/lecture-halls', async (req, res) => {
             return res.status(400).send({ error: 'Missing required fields: name, building, capacity, and schedule are required.' });
         }
         const newHallData = { name, capacity, schedule };
-        // Add the new document to the collection specified by the 'building' field
         const docRef = await db.collection(building).add(newHallData);
         res.status(201).json({ id: docRef.id, building: building, ...newHallData });
     } catch (error) {
@@ -111,7 +177,6 @@ app.put('/api/lecture-halls/:id', async (req, res) => {
 app.delete('/api/lecture-halls/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        // The building name is passed as a query parameter, e.g., /api/lecture-halls/some-id?building=LHC
         const { building } = req.query; 
 
         if (!building) {
@@ -126,7 +191,7 @@ app.delete('/api/lecture-halls/:id', async (req, res) => {
         }
 
         await hallRef.delete();
-        res.status(204).send(); // No Content response for successful deletion
+        res.status(204).send();
     } catch (error) {
         console.error(`Error deleting lecture hall ${req.params.id}:`, error);
         res.status(500).json({ error: 'Failed to delete lecture hall' });
@@ -135,25 +200,17 @@ app.delete('/api/lecture-halls/:id', async (req, res) => {
 
 // Endpoint to run the C++ scheduler binary
 app.post('/api/generate-schedule', (req, res) => {
-    // 1. Get the course data from the request body
     const courseNHallData = req.body;
-    // if (!courseNHallData || !Array.isArray(courseNHallData)) {
-    //     return res.status(400).json({ error: 'Invalid or missing course data.' });
-    // }
 
-    // 2. Spawn the C++ process (it no longer needs command-line arguments)
     const executablePath = path.join(__dirname, '../cpp_core/build/schedule_engine');
     const schedulerProcess = spawn(executablePath);
 
-    console.log('Here we go!');
-    // 3. Write the JSON data to the C++ process's standard input
     schedulerProcess.stdin.write(JSON.stringify(req.body));
-    schedulerProcess.stdin.end(); // Signal that you're done sending data
+    schedulerProcess.stdin.end();
 
     let outputJson = '';
     let errorData = '';
 
-    // 4. Listen for the resulting JSON on standard output
     schedulerProcess.stdout.on('data', (data) => {
         outputJson += data.toString();
     });
@@ -169,10 +226,7 @@ app.post('/api/generate-schedule', (req, res) => {
         }
         
         try {
-            // 5. Parse the JSON output from the C++ program and send it to the client
-            console.log('Trying....');
             const schedule = JSON.parse(outputJson);
-            console.log(typeof schedule);
             res.status(200).json(schedule);
         } catch (error) {
             console.error('Error parsing schedule output from C++ program:', error);

@@ -119,45 +119,101 @@ const BuildingPriorityManager = ({ title, priorities, setPriorities, allBuilding
 const GeneratorPage = () => {
     const navigate = useNavigate();
 
-    // Data source states
-    const [courseDataSource, setCourseDataSource] = useState('upload');
-    const [hallDataSource, setHallDataSource] = useState('saved');
-    const [constraintDataSource, setConstraintDataSource] = useState('saved');
+    const getInitialSource = (storageKey) => {
+        try {
+            const savedData = localStorage.getItem(storageKey);
+            if (savedData && JSON.parse(savedData).length > 0) {
+                return 'saved';
+            }
+        } catch (e) {
+            console.error(`Error reading ${storageKey} from localStorage`, e);
+        }
+        return 'upload';
+    };
 
-    // File states
+    const [courseDataSource, setCourseDataSource] = useState(() => getInitialSource('courseScheduleData'));
+    const [hallDataSource, setHallDataSource] = useState('saved');
+    const [constraintDataSource, setConstraintDataSource] = useState(() => getInitialSource('preallocatedData'));
+
     const [courseFile, setCourseFile] = useState(null);
     const [hallFile, setHallFile] = useState(null);
     const [constraintFile, setConstraintFile] = useState(null);
 
-    // UI and options states
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [convenienceFactor, setConvenienceFactor] = useState(15);
     const [allBuildings, setAllBuildings] = useState([]);
     const [lecturePriorities, setLecturePriorities] = useState([]);
     const [tutorialPriorities, setTutorialPriorities] = useState([]);
+    const [useCachedPriorities, setUseCachedPriorities] = useState(true);
 
+    // --- Caching and Data Loading Logic ---
+
+    // EFFECT 1: Fetch the list of buildings from the database once on mount.
     useEffect(() => {
-        const fetchBuildingNames = async () => {
+        const fetchBuildings = async () => {
             try {
                 const halls = await getLectureHalls();
-                localStorage.setItem('allLectureHalls', JSON.stringify(halls));
-                const uniqueBuildingNames = [...new Set(halls.map(hall => hall.building))];
-                setAllBuildings(uniqueBuildingNames.sort());
+                const currentBuildingList = [...new Set(halls.map(hall => hall.building))].sort();
+                setAllBuildings(currentBuildingList);
             } catch (err) {
-                console.error("Could not fetch building names:", err);
+                console.error("Could not fetch initial data:", err);
                 setError("Could not load building list for prioritization.");
             }
         };
-        fetchBuildingNames();
+        fetchBuildings();
     }, []);
-    
+
+    // EFFECT 2 (FIXED): This effect now handles LOADING or CLEARING priorities.
+    // It runs when the building list is ready OR when the toggle is changed.
+    useEffect(() => {
+        if (useCachedPriorities && allBuildings.length > 0) {
+            const validatePriorities = (saved, current) => {
+                if (!Array.isArray(saved)) return false;
+                const currentSet = new Set(current);
+                return saved.every(building => currentSet.has(building));
+            };
+
+            const savedLec = JSON.parse(localStorage.getItem('lectureBuildingPriorities') || 'null');
+            if (validatePriorities(savedLec, allBuildings)) {
+                setLecturePriorities(savedLec);
+            }
+
+            const savedTut = JSON.parse(localStorage.getItem('tutorialBuildingPriorities') || 'null');
+            if (validatePriorities(savedTut, allBuildings)) {
+                setTutorialPriorities(savedTut);
+            }
+        } else if (!useCachedPriorities) {
+            setLecturePriorities([]);
+            setTutorialPriorities([]);
+        }
+    }, [allBuildings, useCachedPriorities]); // Dependencies trigger this logic correctly
+
+    // EFFECT 3: This effect handles SAVING priorities to localStorage whenever they change.
+    useEffect(() => {
+        if (useCachedPriorities) {
+            localStorage.setItem('lectureBuildingPriorities', JSON.stringify(lecturePriorities));
+            localStorage.setItem('tutorialBuildingPriorities', JSON.stringify(tutorialPriorities));
+        } else {
+            localStorage.removeItem('lectureBuildingPriorities');
+            localStorage.removeItem('tutorialBuildingPriorities');
+        }
+    }, [lecturePriorities, tutorialPriorities, useCachedPriorities]);
+
+
+    // --- Event Handlers ---
+
+    // The toggle handler is now much simpler. It just updates the state.
+    const handleCacheToggle = (e) => {
+        setUseCachedPriorities(e.target.checked);
+    };
+
     const handleConvenienceChange = (e) => {
         const value = Math.max(0, Math.min(100, Number(e.target.value)));
         setConvenienceFactor(value);
     };
-
-    // Helper function to parse uploaded Excel/CSV files into JSON
+    
+    // ... parseFileToJson and handleSubmit functions remain unchanged ...
     const parseFileToJson = (file) => {
         return new Promise((resolve, reject) => {
             if (!file) {
@@ -170,7 +226,6 @@ const GeneratorPage = () => {
                     const workbook = XLSX.read(data, { type: 'array' });
                     const sheetName = workbook.SheetNames[0];
                     const worksheet = workbook.Sheets[sheetName];
-                    // UPDATED: Ensure blank cells are read as empty strings
                     const json = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
                     resolve(json);
                 } catch (err) {
@@ -190,18 +245,16 @@ const GeneratorPage = () => {
         setError('');
 
         try {
-            // 1. Get Course Data
             let coursePayload = [];
             if (courseDataSource === 'upload') {
                 if (!courseFile) throw new Error('Please select a course file to upload.');
                 coursePayload = await parseFileToJson(courseFile);
             } else {
                 const data = localStorage.getItem('courseScheduleData');
-                if (!data) throw new Error('No saved course data found in your browser.');
+                if (!data || JSON.parse(data).length === 0) throw new Error('No saved course data found in your browser.');
                 coursePayload = JSON.parse(data);
             }
 
-            // 2. Get Lecture Hall Data
             let hallPayload = [];
             if (hallDataSource === 'upload') {
                 if (!hallFile) throw new Error('Please select a lecture hall file to upload.');
@@ -213,7 +266,6 @@ const GeneratorPage = () => {
                 }
             }
 
-            // 3. Get Pre-allocated Constraint Data (Optional)
             let constraintPayload = [];
             if (constraintDataSource === 'upload') {
                 constraintPayload = await parseFileToJson(constraintFile);
@@ -224,17 +276,18 @@ const GeneratorPage = () => {
                 }
             }
 
-            // 4. Call API and navigate
             const response = await generateSchedule(coursePayload, hallPayload, convenienceFactor, lecturePriorities, tutorialPriorities, constraintPayload);
             localStorage.setItem('latestScheduleResult', JSON.stringify(response));
             navigate('/results', { state: { schedule: response } });
 
-        } catch (err) {
+        } catch (err)
+ {
             setError(err.message || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
         }
     };
+
 
     return (
         <div className="generator-page-container">
@@ -303,6 +356,22 @@ const GeneratorPage = () => {
                         </div>
 
                         <div className="priority-section">
+                            <div className="priority-caching-toggle">
+                                <label htmlFor="cache-toggle">
+                                    Use Saved Priorities
+                                    <span className="tooltip">(Automatically loads and saves your priority lists if consistent with current buildings)</span>
+                                </label>
+                                <label className="switch">
+                                    <input 
+                                        type="checkbox" 
+                                        id="cache-toggle" 
+                                        checked={useCachedPriorities} 
+                                        onChange={handleCacheToggle} 
+                                    />
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                            
                             <BuildingPriorityManager
                                 title="Lecture Building Priority"
                                 priorities={lecturePriorities}
