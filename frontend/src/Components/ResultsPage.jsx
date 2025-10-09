@@ -49,7 +49,7 @@ const ResultsPage = () => {
     // --- Data Memoization ---
     const assignments = useMemo(() => scheduleData?.['Allocation Result'] || [], [scheduleData]);
     const unallocatedCourses = useMemo(() => scheduleData?.['Unallocated Course'] || [], [scheduleData]);
-
+    console.log('assignments: ', assignments);
     // Get master list of all halls
     const allUniqueHalls = useMemo(() => {
         const hallSet = new Set(assignments.flatMap(item => item['Lecture Hall Allocated']?.split(',').map(h => h.trim()) || []));
