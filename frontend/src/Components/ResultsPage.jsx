@@ -159,6 +159,27 @@ const ResultsPage = () => {
             return courseMatch;
         });
     }, [allHalls, roomViewSearchTerm, allocationsByRoom]);
+
+    // --- Handler for Room View CSV Download ---
+    const handleRoomViewDownload = () => {
+        if (!assignments || assignments.length === 0) {
+            alert("No assignment data to download.");
+            return;
+        }
+
+        const dataToExport = assignments.map(item => ({
+            'Course Name': item['Course Name'] || '',
+            'Course Code': item['Course Code'] || '',
+            'Section': item['Section'] || '',
+            'Lecture Hall Allocated': item['Lecture Hall Allocated'] || '',
+            'Type': item.Type || '',
+            'Schedule': item.Schedule || '',
+            'Modular Course': item['Modular Course'] !== undefined ? item['Modular Course'] : 0,
+            'Students Registered': item['Students Registered'] || 0
+        }));
+
+        downloadCSV(dataToExport, 'full_allocation_schedule');
+    };
     
     // --- Pagination Calculations ---
     const totalPages = Math.ceil(filteredAssignments.length / assignmentsPerPage);
@@ -252,7 +273,6 @@ const ResultsPage = () => {
                 {viewMode === 'room' && (
                     <div id="room-view">
                         <div className="room-search-container">
-                            {/* UPDATED: Single search bar for room view */}
                             <input 
                                 type="text" 
                                 placeholder="Search by room, course name, or code..." 
@@ -260,6 +280,9 @@ const ResultsPage = () => {
                                 value={roomViewSearchTerm} 
                                 onChange={(e) => setRoomViewSearchTerm(e.target.value)} 
                             />
+                            <button className="download-btn" onClick={handleRoomViewDownload}>
+                                Download Full Schedule
+                            </button>
                         </div>
                         <div className="room-view-container">
                             {filteredRoomCards.length > 0 ? filteredRoomCards.map(hall => {
@@ -297,6 +320,7 @@ const ResultsPage = () => {
                                             <th>Section</th>
                                             <th>Schedule</th>
                                             <th>Students</th>
+                                            <th>Reason</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -308,6 +332,7 @@ const ResultsPage = () => {
                                                 <td>{item['Section']}</td>
                                                 <td>{item['Schedule']}</td>
                                                 <td>{item['Students Registered']}</td>
+                                                <td>{item['Reason']}</td>
                                             </tr>
                                         ))}
                                     </tbody>

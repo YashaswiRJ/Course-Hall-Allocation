@@ -191,7 +191,8 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
                     {"Schedule", lecture.string_lecture_schedule},
                     {"Section", section_first},
                     {"Students Registered", lecture.students_registered},
-                    {"Type", "Lecture"}
+                    {"Type", "Lecture"},
+                    {"Reason", "Lecture could not be allocated due to unavailability of a room with sufficient capacity for " + std::to_string(lecture.students_registered) + " students."}
                 });
             }
 
@@ -205,7 +206,8 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
                     {"Schedule", lecture.string_lecture_schedule},
                     {"Section", section_second},
                     {"Students Registered", lecture.students_registered},
-                    {"Type", "Lecture"}
+                    {"Type", "Lecture"},
+                    {"Reason", "Lecture could not be allocated due to unavailability of a room with sufficient capacity for " + std::to_string(lecture.students_registered) + " students."}
                 });
             }
         }
@@ -233,7 +235,8 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
                     {"Section", section_first},
                     {"Students Registered", tutorial.students_registered},
                     {"Tutorial Count", tutorial.tutorial_count},
-                    {"Type", "Tutorial"}
+                    {"Type", "Tutorial"},
+                    {"Reason", std::to_string(tutorial.tutorial_count) + " rooms were not available in any single building."}
                 });
             }
 
@@ -248,7 +251,8 @@ nlohmann::json output_formatter(std::map<std::string, std::vector<Venue>> &alloc
                     {"Section", section_second},
                     {"Students Registered", tutorial.students_registered},
                     {"Tutorial Count", tutorial.tutorial_count},
-                    {"Type", "Tutorial"}
+                    {"Type", "Tutorial"},
+                    {"Reason", std::to_string(tutorial.tutorial_count) + " rooms were not available in any single building."}
                 });
             }
         }

@@ -9,10 +9,9 @@ const timeToMinutes = (timeStr) => {
     return hours * 60 + minutes;
 };
 
-// --- Constants ---
-const SLOT_DURATION_MINUTES = 10;
+// --- Constants for the schedule's time window ---
 const SCHEDULE_START_HOUR = 8;
-const SCHEDULE_END_HOUR = 19;
+const SCHEDULE_END_HOUR = 19; // Ends at 19:00 (7 PM)
 
 // This map now correctly handles 'Th' for Thursday and multi-character day strings
 const DAY_MAP = {
@@ -33,7 +32,6 @@ const StatsViewer = () => {
         try {
             const savedAllocations = localStorage.getItem('latestAllocationResult');
             if (savedAllocations) {
-                // The data might be inside a parent key like 'StatsData'
                 const parsedData = JSON.parse(savedAllocations);
                 setAllocations(Array.isArray(parsedData) ? parsedData : parsedData.StatsData || []);
             }
@@ -44,7 +42,6 @@ const StatsViewer = () => {
         }
     }, []);
 
-    // --- MAJOR REWRITE: This entire block is new to parse your specific data format ---
     const processedSchedule = useMemo(() => {
         const events = [];
         if (!allocations) return [];
@@ -54,25 +51,19 @@ const StatsViewer = () => {
             const hallsString = item['Lecture Hall Allocated']?.trim();
             const courseCode = item['Course Code'] || 'N/A';
 
-            // Skip if essential information is missing
-            if (!scheduleString || !hallsString) {
-                return;
-            }
+            if (!scheduleString || !hallsString) return;
 
-            // 1. Handle multiple, comma-separated halls
-            const halls = hallsString.split(',').map(h => h.trim());
-
-            // 2. Parse the schedule string (e.g., "MWF 09:00-10:00")
             const lastSpaceIndex = scheduleString.lastIndexOf(' ');
-            if (lastSpaceIndex === -1) return; // Invalid format
+            if (lastSpaceIndex === -1) return;
 
             const daysPart = scheduleString.substring(0, lastSpaceIndex);
             const timePart = scheduleString.substring(lastSpaceIndex + 1);
             
             const [start, end] = timePart.split('-');
-            if (!start || !end) return; // Invalid time format
+            if (!start || !end) return;
 
-            // 3. Parse the days part (handles "MWF" and "Th")
+            const halls = hallsString.split(',').map(h => h.trim());
+            
             const days = [];
             let i = 0;
             while (i < daysPart.length) {
@@ -85,13 +76,12 @@ const StatsViewer = () => {
                 }
             }
 
-            // 4. Create an event for each day in each hall
             halls.forEach(hall => {
                 days.forEach(dayCode => {
                     const dayName = DAY_MAP[dayCode];
                     if (dayName) {
                         events.push({
-                            id: `${courseCode}-${hall}-${dayCode}`,
+                            id: `${courseCode}-${hall}-${dayCode}-${start}`, // Added start time for more unique ID
                             course: courseCode,
                             hall: hall,
                             day: dayName,
@@ -106,9 +96,6 @@ const StatsViewer = () => {
         return events;
     }, [allocations]);
 
-    // --- NO CHANGES NEEDED BELOW THIS LINE ---
-    // The rest of the component works perfectly once the data above is processed correctly.
-
     const { daysOfWeek, lectureHalls } = useMemo(() => {
         const daySet = new Set();
         const hallSet = new Set();
@@ -118,14 +105,12 @@ const StatsViewer = () => {
         });
         
         const sortedDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].filter(d => daySet.has(d));
-        // Dynamically create the list of halls from the data provided
         const sortedHalls = Array.from(hallSet).sort();
 
         return { daysOfWeek: sortedDays, lectureHalls: sortedHalls };
     }, [processedSchedule]);
     
-    // ... (The rest of the component is identical to the last version)
-    const [currentDay, setCurrentDay] = useState(daysOfWeek[0] || 'monday');
+    const [currentDay, setCurrentDay] = useState('');
 
     useEffect(() => {
         if(daysOfWeek.length > 0 && !daysOfWeek.includes(currentDay)) {
@@ -133,14 +118,13 @@ const StatsViewer = () => {
         }
     }, [daysOfWeek, currentDay]);
 
-    const timeSlots = useMemo(() => {
-        const slots = [];
+    // --- NEW: Generate hour markers for the header and background grid ---
+    const hourMarkers = useMemo(() => {
+        const hours = [];
         for (let h = SCHEDULE_START_HOUR; h < SCHEDULE_END_HOUR; h++) {
-            for (let m = 0; m < 60; m += SLOT_DURATION_MINUTES) {
-                slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
-            }
+            hours.push(`${String(h).padStart(2, '0')}:00`);
         }
-        return slots;
+        return hours;
     }, []);
 
     const dailyScheduleMap = useMemo(() => {
@@ -188,55 +172,56 @@ const StatsViewer = () => {
                     ))}
                 </div>
 
+                {/* --- REWRITTEN GRID LOGIC --- */}
                 <div className="timetable-grid-container">
-                    <div className="timetable-grid" style={{ gridTemplateColumns: `120px repeat(${timeSlots.length}, 1fr)` }}>
+                    <div className="timetable-grid">
+                        {/* --- Header Row --- */}
                         <div className="grid-header sticky-col">Hall</div>
-                        {timeSlots.map(time => (
-                            <div key={time} className={`grid-header time-header ${time.endsWith(':00') ? 'full-hour-label' : ''} ${time.endsWith('50') ? 'hour-end-marker' : ''}`}>
-                                {time.endsWith(':00') ? time : ''}
-                            </div>
-                        ))}
+                        <div className="time-header-track">
+                            {hourMarkers.map(hour => (
+                                <div key={hour} className="time-label">{hour}</div>
+                            ))}
+                        </div>
 
+                        {/* --- Body Rows (one for each hall) --- */}
                         {lectureHalls.map(hall => {
                             const hallSchedule = dailyScheduleMap.get(hall) || [];
-                            const occupiedSlots = new Set();
-                            hallSchedule.forEach(item => {
-                                const startMinutes = timeToMinutes(item.start);
-                                const endMinutes = timeToMinutes(item.end);
-                                const duration = endMinutes - startMinutes;
-                                const colspan = Math.round(duration / SLOT_DURATION_MINUTES);
-                                const startIndex = timeSlots.findIndex(slot => timeToMinutes(slot) >= startMinutes);
-                                if (startIndex !== -1) {
-                                    for (let i = 1; i < colspan; i++) {
-                                        occupiedSlots.add(timeSlots[startIndex + i]);
-                                    }
-                                }
-                            });
                             return (
                                 <React.Fragment key={hall}>
                                     <div className="hall-label sticky-col">{hall}</div>
-                                    {timeSlots.map(time => {
-                                        if (occupiedSlots.has(time)) return null;
-                                        const event = hallSchedule.find(item => {
-                                            const startMinutes = timeToMinutes(item.start);
-                                            const slotMinutes = timeToMinutes(time);
-                                            return slotMinutes >= startMinutes && slotMinutes < startMinutes + SLOT_DURATION_MINUTES;
-                                        });
-                                        if (event) {
-                                            const startMinutes = timeToMinutes(event.start);
-                                            const endMinutes = timeToMinutes(event.end);
-                                            const duration = endMinutes - startMinutes;
-                                            const colspan = Math.max(1, Math.round(duration / SLOT_DURATION_MINUTES));
+                                    <div className="schedule-track">
+                                        {/* Background vertical lines for each hour */}
+                                        {hourMarkers.map((_, index) => (
+                                            <div key={`line-${index}`} className="hour-marker-line"></div>
+                                        ))}
+
+                                        {/* Placed Events */}
+                                        {hallSchedule.map(event => {
+                                            const totalScheduleMinutes = (SCHEDULE_END_HOUR - SCHEDULE_START_HOUR) * 60;
+                                            const startOffsetMinutes = timeToMinutes(event.start) - (SCHEDULE_START_HOUR * 60);
+                                            const durationMinutes = timeToMinutes(event.end) - timeToMinutes(event.start);
+                                            
+                                            // Skip rendering if event is outside the defined schedule hours
+                                            if (startOffsetMinutes < 0 || startOffsetMinutes > totalScheduleMinutes) {
+                                                return null;
+                                            }
+                                            
+                                            const left = (startOffsetMinutes / totalScheduleMinutes) * 100;
+                                            const width = (durationMinutes / totalScheduleMinutes) * 100;
+
+                                            const eventStyle = {
+                                                left: `${left}%`,
+                                                width: `${width}%`,
+                                            };
+
                                             return (
-                                                <div key={`${hall}-${time}`} className="grid-cell allocated" style={{ gridColumn: `span ${colspan}` }}>
+                                                <div key={event.id} className="allocated-event" style={eventStyle} title={`${event.course} (${event.start} - ${event.end})`}>
                                                    <span className="course-code">{event.course}</span>
                                                    <span className="course-time">{event.start} - {event.end}</span>
                                                 </div>
                                             );
-                                        }
-                                        const cellClass = time.endsWith('50') ? 'grid-cell hour-end-marker' : 'grid-cell';
-                                        return <div key={`${hall}-${time}`} className={cellClass}></div>;
-                                    })}
+                                        })}
+                                    </div>
                                 </React.Fragment>
                             );
                         })}

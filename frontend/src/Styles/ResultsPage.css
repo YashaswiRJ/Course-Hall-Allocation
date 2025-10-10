@@ -228,16 +228,18 @@
     border-bottom: none;
 }
 
-/* UPDATED: Simplified style for a single, centered search bar */
+/* UPDATED: Style for the container holding search bar and download button */
 .room-search-container {
     padding-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .room-search-container .search-input {
-    width: 100%;
-    max-width: 500px; /* Or another width you prefer */
+    flex-grow: 1; /* Allows the search bar to take up available space */
+    max-width: 500px; 
 }
 
 
