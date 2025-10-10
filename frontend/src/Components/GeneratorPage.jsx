@@ -10,8 +10,13 @@ const DataSourceSelector = ({ title, savedDataLabel, storageKey, source, setSour
 
     useEffect(() => {
         if (storageKey) {
-            const savedData = localStorage.getItem(storageKey);
-            setIsLocalStorageAvailable(savedData && JSON.parse(savedData).length > 0);
+            try {
+                const savedData = localStorage.getItem(storageKey);
+                setIsLocalStorageAvailable(savedData && JSON.parse(savedData).length > 0);
+            } catch (e) {
+                console.error(`Error reading ${storageKey} from localStorage`, e);
+                setIsLocalStorageAvailable(false);
+            }
         }
     }, [storageKey]);
 
@@ -145,11 +150,11 @@ const GeneratorPage = () => {
     const [allBuildings, setAllBuildings] = useState([]);
     const [lecturePriorities, setLecturePriorities] = useState([]);
     const [tutorialPriorities, setTutorialPriorities] = useState([]);
-    const [useCachedPriorities, setUseCachedPriorities] = useState(true);
+    const [prioritiesLoaded, setPrioritiesLoaded] = useState(false);
 
     // --- Caching and Data Loading Logic ---
 
-    // EFFECT 1: Fetch the list of buildings from the database once on mount.
+    // 1. Fetch the list of all available buildings from the database on component mount.
     useEffect(() => {
         const fetchBuildings = async () => {
             try {
@@ -164,56 +169,51 @@ const GeneratorPage = () => {
         fetchBuildings();
     }, []);
 
-    // EFFECT 2 (FIXED): This effect now handles LOADING or CLEARING priorities.
-    // It runs when the building list is ready OR when the toggle is changed.
+    // 2. Load priorities from localStorage once the building list is available.
+    // This effect also performs a consistency check to discard any saved buildings that no longer exist.
     useEffect(() => {
-        if (useCachedPriorities && allBuildings.length > 0) {
-            const validatePriorities = (saved, current) => {
-                if (!Array.isArray(saved)) return false;
-                const currentSet = new Set(current);
-                return saved.every(building => currentSet.has(building));
+        if (allBuildings.length > 0) {
+            const validateAndFilterPriorities = (savedJSON, allBuildingsSet) => {
+                try {
+                    const savedArray = JSON.parse(savedJSON || '[]');
+                    if (!Array.isArray(savedArray)) return [];
+                    // Filter saved priorities to keep only buildings that still exist
+                    return savedArray.filter(building => allBuildingsSet.has(building));
+                } catch (e) {
+                    console.error("Failed to parse priorities from localStorage", e);
+                    return [];
+                }
             };
+            
+            const allBuildingsSet = new Set(allBuildings);
 
-            const savedLec = JSON.parse(localStorage.getItem('lectureBuildingPriorities') || 'null');
-            if (validatePriorities(savedLec, allBuildings)) {
-                setLecturePriorities(savedLec);
-            }
+            const savedLecJSON = localStorage.getItem('lectureBuildingPriorities');
+            setLecturePriorities(validateAndFilterPriorities(savedLecJSON, allBuildingsSet));
 
-            const savedTut = JSON.parse(localStorage.getItem('tutorialBuildingPriorities') || 'null');
-            if (validatePriorities(savedTut, allBuildings)) {
-                setTutorialPriorities(savedTut);
-            }
-        } else if (!useCachedPriorities) {
-            setLecturePriorities([]);
-            setTutorialPriorities([]);
+            const savedTutJSON = localStorage.getItem('tutorialBuildingPriorities');
+            setTutorialPriorities(validateAndFilterPriorities(savedTutJSON, allBuildingsSet));
+
+            setPrioritiesLoaded(true); // Signal that initial loading is complete
         }
-    }, [allBuildings, useCachedPriorities]); // Dependencies trigger this logic correctly
+    }, [allBuildings]);
 
-    // EFFECT 3: This effect handles SAVING priorities to localStorage whenever they change.
+    // 3. Automatically save priorities to localStorage whenever they are changed by the user.
+    // This effect only runs after the initial load is complete to avoid overwriting stored data.
     useEffect(() => {
-        if (useCachedPriorities) {
+        if (prioritiesLoaded) {
             localStorage.setItem('lectureBuildingPriorities', JSON.stringify(lecturePriorities));
             localStorage.setItem('tutorialBuildingPriorities', JSON.stringify(tutorialPriorities));
-        } else {
-            localStorage.removeItem('lectureBuildingPriorities');
-            localStorage.removeItem('tutorialBuildingPriorities');
         }
-    }, [lecturePriorities, tutorialPriorities, useCachedPriorities]);
+    }, [lecturePriorities, tutorialPriorities, prioritiesLoaded]);
 
 
     // --- Event Handlers ---
-
-    // The toggle handler is now much simpler. It just updates the state.
-    const handleCacheToggle = (e) => {
-        setUseCachedPriorities(e.target.checked);
-    };
 
     const handleConvenienceChange = (e) => {
         const value = Math.max(0, Math.min(100, Number(e.target.value)));
         setConvenienceFactor(value);
     };
     
-    // ... parseFileToJson and handleSubmit functions remain unchanged ...
     const parseFileToJson = (file) => {
         return new Promise((resolve, reject) => {
             if (!file) {
@@ -280,8 +280,7 @@ const GeneratorPage = () => {
             localStorage.setItem('latestScheduleResult', JSON.stringify(response));
             navigate('/results', { state: { schedule: response } });
 
-        } catch (err)
- {
+        } catch (err) {
             setError(err.message || 'An unexpected error occurred.');
         } finally {
             setIsLoading(false);
@@ -356,22 +355,6 @@ const GeneratorPage = () => {
                         </div>
 
                         <div className="priority-section">
-                            <div className="priority-caching-toggle">
-                                <label htmlFor="cache-toggle">
-                                    Use Saved Priorities
-                                    <span className="tooltip">(Automatically loads and saves your priority lists if consistent with current buildings)</span>
-                                </label>
-                                <label className="switch">
-                                    <input 
-                                        type="checkbox" 
-                                        id="cache-toggle" 
-                                        checked={useCachedPriorities} 
-                                        onChange={handleCacheToggle} 
-                                    />
-                                    <span className="slider round"></span>
-                                </label>
-                            </div>
-                            
                             <BuildingPriorityManager
                                 title="Lecture Building Priority"
                                 priorities={lecturePriorities}
@@ -384,6 +367,29 @@ const GeneratorPage = () => {
                                 setPriorities={setTutorialPriorities}
                                 allBuildings={allBuildings}
                             />
+                        </div>
+                    </div>
+
+                    <div className="options-card saved-priorities-summary">
+                        <h3>Final Priority Settings</h3>
+                        <p className="options-description">The following building priorities will be used for generation. You can adjust them in the section above.</p>
+                        <div className="summary-columns">
+                            <div className="summary-column">
+                                <h4>Lecture Building Priority</h4>
+                                {lecturePriorities.length > 0 ? (
+                                    <ol>
+                                        {lecturePriorities.map((b, i) => <li key={`lec-priority-${b}-${i}`}>{b}</li>)}
+                                    </ol>
+                                ) : <p className="empty-list-summary">No specific priority set.</p>}
+                            </div>
+                            <div className="summary-column">
+                                <h4>Tutorial Building Priority</h4>
+                                {tutorialPriorities.length > 0 ? (
+                                    <ol>
+                                        {tutorialPriorities.map((b, i) => <li key={`tut-priority-${b}-${i}`}>{b}</li>)}
+                                    </ol>
+                                ) : <p className="empty-list-summary">No specific priority set.</p>}
+                            </div>
                         </div>
                     </div>
                     
