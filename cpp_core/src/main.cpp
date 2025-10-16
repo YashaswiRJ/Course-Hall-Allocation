@@ -21,20 +21,20 @@ int main() {
     // instead of looking for a file argument.
     json j;
 
-    // int fd = _open("outputYASH.txt", _O_WRONLY | _O_CREAT | _O_TRUNC, 0644);
+    // int fd = open("outputYASH.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     // if (fd < 0) {
     //     perror("open");
     //     exit(1);
     // }
 
-    // Redirect stdout (1) to the file descriptor
-    // if (_dup2(fd, 1) < 0) {
+    // // Redirect stdout (1) to the file descriptor
+    // if (dup2(fd, 1) < 0) {
     //     perror("dup2");
-    //     _close(fd);
+    //     close(fd);
     //     exit(1);
     // }
     
-    // _close(fd);
+    // close(fd);
 
     std::cin >> j;
     // std::cout << j.dump(4);
