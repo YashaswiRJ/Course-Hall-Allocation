@@ -21,7 +21,7 @@ const db = admin.firestore();
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'http://172.27.5.210:3000' }));
 app.use(express.json());
 
 const upload = multer({ dest: 'uploads/' });
@@ -239,5 +239,5 @@ app.post('/api/generate-schedule', (req, res) => {
 // --- Start the server ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server is running on http://172.27.5.210:${PORT}`);
 });

@@ -46,11 +46,12 @@ int main() {
     std::vector<std::string> lecture_building_priority_order;
     std::vector<std::string> tutorial_building_priority_order;
     int convenience_factor = 0;
+    std::vector<nlohmann::json> lowStrengthCourses;
 
     if(j.contains("courseData") && j.at("courseData").is_array()){
         // ✅ This is the fix: create a variable first
         auto courseData = j.at("courseData").get<std::vector<json>>();
-        preprocessed_course_list = course_preprocessing_function(courseData);
+        preprocessed_course_list = course_preprocessing_function(courseData, lowStrengthCourses);
         // preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
     }
 
@@ -143,7 +144,9 @@ int main() {
     // json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 
     json output_json = output_formatter(processed_venue_list, processed_lecture_lists, processed_tutorial_lists, j.at("preallocatedConstraints").get<std::vector<json>>());
-    
+    output_json["Low Strength Courses"] = json::array();
+    output_json = lowStrengthCourses;
+
     std::cout << output_json.dump(4)<< std::endl;
     std::cout.flush();
 

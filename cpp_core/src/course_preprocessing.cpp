@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <map>
 
-std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &course_list){
+std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &course_list, std::vector<nlohmann::json> &lowStrengthCourses){
     
     int course_size = course_list.size();
     std::vector<Course> lecture_tutorial_lists;
@@ -69,6 +69,10 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
             modular_first_index[course_code] = lecture_tutorial_lists.size();
             is_modular = true;
         }
+        // Remove course having strength less than 10 as approved by senate
+        if(students_registered < 10){
+            lowStrengthCourses.push_back(course_list[ind]);
+        }
 
         Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);
         lecture_tutorial_lists.push_back(course);
@@ -122,6 +126,12 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         }
 
         is_modular = true;
+
+        // Remove course having strength less than 10 as approved by senate
+        if(students_registered < 10){
+            lowStrengthCourses.push_back(modular_second_part[ind]);
+            continue;
+        }
 
         if(modular_second_part[ind].contains("Modular Binding")){
             int index = modular_first_index[modular_second_part[ind].at("Modular Binding")];
