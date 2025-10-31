@@ -63,6 +63,8 @@
 .summary-stats {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap; /* Added for better responsiveness */
+    gap: 10px; /* Added gap for wrapped items */
     text-align: center;
 }
 .stat-item .stat-value {
@@ -74,7 +76,9 @@
 /* Color coding for summary stats */
 .stat-item .stat-value.success { color: #27ae60; }
 .stat-item .stat-value.warning { color: #e67e22; }
-.stat-item .stat-value:not(.success):not(.warning) { color: #2980b9; }
+/* NEW: Added info color for low strength */
+.stat-item .stat-value.info { color: #3498db; }
+.stat-item .stat-value:not(.success):not(.warning):not(.info) { color: #2980b9; }
 
 
 .stat-item .stat-label {
@@ -158,6 +162,7 @@
     background-color: #e9ecef;
     border-radius: 8px;
     padding: 4px;
+    flex-wrap: wrap; /* Added for responsiveness */
 }
 
 .view-toggle button {

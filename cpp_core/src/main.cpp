@@ -145,10 +145,28 @@ int main() {
 
     json output_json = output_formatter(processed_venue_list, processed_lecture_lists, processed_tutorial_lists, j.at("preallocatedConstraints").get<std::vector<json>>());
     output_json["Low Strength Courses"] = json::array();
-    output_json = lowStrengthCourses;
+    output_json["Low Strength Courses"] = lowStrengthCourses;
 
     std::cout << output_json.dump(4)<< std::endl;
     std::cout.flush();
 
+    int fd = open("outputYASH.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0) {
+        perror("open");
+        exit(1);
+    }
+
+    // Redirect stdout (1) to the file descriptor
+    if (dup2(fd, 1) < 0) {
+        perror("dup2");
+        close(fd);
+        exit(1);
+    }
+    
+    close(fd);
+
+    std::cout << "Trying to debug \n";
+    std::cout << output_json["Low strength Courses"].dump(4) << std::endl;
+    std::cout << output_json.dump(4) << std::endl;
     return 0;
 }

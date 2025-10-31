@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import "../Styles/LectureHallManager.css";
 
 // --- API Service Functions ---
-const API_BASE_URL = 'http://172.27.5.210:5000/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const getLectureHalls = async () => {
     const response = await fetch(`${API_BASE_URL}/lecture-halls`);
@@ -376,7 +376,6 @@ const LectureHallManager = () => {
             setError(null);
             console.log('Trying to fetch the lhc data');
             const data = await getLectureHalls();
-            console.log('hall data set hai: ', data);
             setHalls(data);
         } catch (err) {
             setError('Failed to load data from the server. Please check your connection and try again.');

@@ -1,3 +1,3 @@
-/home/cse/projects/Course-Hall-Allocation/cpp_core/build/CMakeFiles/schedule_engine.dir
-/home/cse/projects/Course-Hall-Allocation/cpp_core/build/CMakeFiles/edit_cache.dir
-/home/cse/projects/Course-Hall-Allocation/cpp_core/build/CMakeFiles/rebuild_cache.dir
+/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/schedule_engine.dir
+/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/edit_cache.dir
+/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles/rebuild_cache.dir

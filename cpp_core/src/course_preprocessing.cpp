@@ -72,6 +72,7 @@ std::vector<Course> course_preprocessing_function(std::vector<nlohmann::json> &c
         // Remove course having strength less than 10 as approved by senate
         if(students_registered < 10){
             lowStrengthCourses.push_back(course_list[ind]);
+            continue;
         }
 
         Course course = Course(course_code, course_name, lecture_schedule, tutorial_schedule, tutorial_count, students_registered, is_modular, string_lecture_schedule, string_tutorial_schedule);

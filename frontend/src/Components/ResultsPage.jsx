@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation, Link, Navigate } from 'react-router-dom';
-import "../Styles/ResultsPage.css";
+import "../Styles/ResultsPage.css"; // Assuming CSS is in the same directory
 
 // --- HELPER FUNCTIONS (Moved outside component for performance) ---
 
@@ -26,7 +26,8 @@ const getLectureHalls = async () => {
  */
 const downloadCSV = (data, filename) => {
     if (!data || data.length === 0) {
-        alert("No data to download.");
+        // Use a less intrusive notification instead of alert
+        console.warn("No data to download.");
         return;
     }
     const headers = Object.keys(data[0]);
@@ -65,15 +66,21 @@ const ResultsPage = () => {
             let scheduleResult = null;
             if (location.state?.schedule) {
                 scheduleResult = location.state.schedule;
+                // --- UPDATED: Store all three keys in local storage (with correct plural key) ---
                 localStorage.setItem('latestAllocationResult', JSON.stringify(scheduleResult['Allocation Result'] || []));
                 localStorage.setItem('latestUnallocatedCourses', JSON.stringify(scheduleResult['Unallocated Course'] || []));
+                localStorage.setItem('latestLowStrengthCourses', JSON.stringify(scheduleResult['Low Strength Courses'] || [])); // Fixed key
             } else {
+                // --- UPDATED: Retrieve all three keys from local storage (with correct plural key) ---
                 const savedAllocations = localStorage.getItem('latestAllocationResult');
                 const savedUnallocated = localStorage.getItem('latestUnallocatedCourses');
-                if (savedAllocations || savedUnallocated) {
+                const savedLowStrength = localStorage.getItem('latestLowStrengthCourses'); // Fixed key
+
+                if (savedAllocations || savedUnallocated || savedLowStrength) {
                     scheduleResult = {
                         'Allocation Result': savedAllocations ? JSON.parse(savedAllocations) : [],
                         'Unallocated Course': savedUnallocated ? JSON.parse(savedUnallocated) : [],
+                        'Low Strength Courses': savedLowStrength ? JSON.parse(savedLowStrength) : [], // Fixed key
                     };
                 }
             }
@@ -83,7 +90,7 @@ const ResultsPage = () => {
         };
         
         fetchAllData();
-    }, []); 
+    }, [location.state]); // Added location.state dependency
 
 
     // --- UI State Hooks ---
@@ -91,16 +98,31 @@ const ResultsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedHall, setSelectedHall] = useState('all');
     const [unallocatedSearchTerm, setUnallocatedSearchTerm] = useState('');
-    const [roomViewSearchTerm, setRoomViewSearchTerm] = useState(''); // <-- CONSOLIDATED state for Room View search
+    const [lowStrengthSearchTerm, setLowStrengthSearchTerm] = useState(''); // New state for low strength search
+    const [roomViewSearchTerm, setRoomViewSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [unallocatedCurrentPage, setUnallocatedCurrentPage] = useState(1);
+    const [lowStrengthCurrentPage, setLowStrengthCurrentPage] = useState(1); // New state for low strength page
+    
     const assignmentsPerPage = 20;
     const unallocatedPerPage = 10;
+    const lowStrengthPerPage = 10; // Pagination for new view
 
     // --- Data Memoization ---
     const assignments = useMemo(() => scheduleData?.['Allocation Result'] || [], [scheduleData]);
-    const unallocatedCourses = useMemo(() => scheduleData?.['Unallocated Course'] || [], [scheduleData]);
     
+    // --- UPDATED: Data sources based on new keys (with correct plural key) ---
+    const otherUnallocatedCourses = useMemo(() => scheduleData?.['Unallocated Course'] || [], [scheduleData]);
+    const lowStrengthCourses = useMemo(() => scheduleData?.['Low Strength Courses'] || [], [scheduleData]); // Fixed key
+
+
+    // --- Memoized totals for summary card ---
+    const totalAssignments = useMemo(() => assignments.length, [assignments]);
+    const totalLowStrength = useMemo(() => lowStrengthCourses.length, [lowStrengthCourses]);
+    const totalOtherUnallocated = useMemo(() => otherUnallocatedCourses.length, [otherUnallocatedCourses]);
+    const totalProcessed = useMemo(() => totalAssignments + totalOtherUnallocated + totalLowStrength, [totalAssignments, totalOtherUnallocated, totalLowStrength]);
+
+
     const sortedHallNames = useMemo(() => {
         return [...new Set(allHalls.map(h => h.name))].sort();
     }, [allHalls]);
@@ -118,6 +140,8 @@ const ResultsPage = () => {
         return acc;
     }, [assignments]);
 
+    // --- Filtering Logic ---
+
     const filteredAssignments = useMemo(() => {
         return assignments.filter(item => {
             const normalizedSearch = searchTerm.toLowerCase();
@@ -127,46 +151,45 @@ const ResultsPage = () => {
         });
     }, [assignments, searchTerm, selectedHall]);
 
+    // Filter for "Unallocated View" (now correctly uses its own data source)
     const filteredUnallocated = useMemo(() => {
-        return unallocatedCourses.filter(item => {
+        return otherUnallocatedCourses.filter(item => {
             const normalizedSearch = unallocatedSearchTerm.toLowerCase();
             return item['Course Name']?.toLowerCase().includes(normalizedSearch) || item['Course Code']?.toLowerCase().includes(normalizedSearch);
         });
-    }, [unallocatedCourses, unallocatedSearchTerm]);
+    }, [otherUnallocatedCourses, unallocatedSearchTerm]);
 
-    // UPDATED: Filtering logic for the single, unified search bar in Room View
+    // Filter for "Low Strength View" (now correctly uses its own data source)
+    const filteredLowStrength = useMemo(() => {
+        return lowStrengthCourses.filter(item => {
+            const normalizedSearch = lowStrengthSearchTerm.toLowerCase();
+            return item['Course Name']?.toLowerCase().includes(normalizedSearch) || item['Course Code']?.toLowerCase().includes(normalizedSearch);
+        });
+    }, [lowStrengthCourses, lowStrengthSearchTerm]);
+
     const filteredRoomCards = useMemo(() => {
         if (!roomViewSearchTerm.trim()) {
             return allHalls; // If search is empty, return all halls
         }
-
         const normalizedSearch = roomViewSearchTerm.toLowerCase();
-
         return allHalls.filter(hall => {
-            // Condition 1: Check if the room name itself matches
             const roomNameMatch = hall.name.toLowerCase().includes(normalizedSearch);
-            if (roomNameMatch) {
-                return true;
-            }
-
-            // Condition 2: Check if any of the courses allocated to the room match
+            if (roomNameMatch) return true;
+            
             const allocatedCourses = allocationsByRoom[hall.name] || [];
-            const courseMatch = allocatedCourses.some(course =>
+            return allocatedCourses.some(course =>
                 course['Course Name']?.toLowerCase().includes(normalizedSearch) ||
                 course['Course Code']?.toLowerCase().includes(normalizedSearch)
             );
-
-            return courseMatch;
         });
     }, [allHalls, roomViewSearchTerm, allocationsByRoom]);
 
     // --- Handler for Room View CSV Download ---
     const handleRoomViewDownload = () => {
         if (!assignments || assignments.length === 0) {
-            alert("No assignment data to download.");
+            console.warn("No assignment data to download.");
             return;
         }
-
         const dataToExport = assignments.map(item => ({
             'Course Name': item['Course Name'] || '',
             'Course Code': item['Course Code'] || '',
@@ -177,7 +200,6 @@ const ResultsPage = () => {
             'Modular Course': item['Modular Course'] !== undefined ? item['Modular Course'] : 0,
             'Students Registered': item['Students Registered'] || 0
         }));
-
         downloadCSV(dataToExport, 'full_allocation_schedule');
     };
     
@@ -187,6 +209,10 @@ const ResultsPage = () => {
     
     const totalUnallocatedPages = Math.ceil(filteredUnallocated.length / unallocatedPerPage);
     const currentUnallocated = filteredUnallocated.slice((unallocatedCurrentPage - 1) * unallocatedPerPage, unallocatedCurrentPage * unallocatedPerPage);
+
+    // NEW: Pagination for Low Strength
+    const totalLowStrengthPages = Math.ceil(filteredLowStrength.length / lowStrengthPerPage);
+    const currentLowStrength = filteredLowStrength.slice((lowStrengthCurrentPage - 1) * lowStrengthPerPage, lowStrengthCurrentPage * lowStrengthPerPage);
 
     if (isLoading) {
         return <div style={{ padding: '40px', textAlign: 'center', fontSize: '1.2rem' }}>Loading results and hall data...</div>; 
@@ -203,20 +229,25 @@ const ResultsPage = () => {
                 <p>Review the detailed course allocations and unallocated courses below.</p>
             </header>
 
+            {/* --- UPDATED SUMMARY CARD --- */}
             <div className="summary-card">
                 <h3>Summary</h3>
                 <div className="summary-stats">
                     <div className="stat-item">
-                        <span className="stat-value">{assignments.length + unallocatedCourses.length}</span>
+                        <span className="stat-value">{totalProcessed}</span>
                         <span className="stat-label">Courses Processed</span>
                     </div>
                     <div className="stat-item">
-                        <span className="stat-value success">{assignments.length}</span>
+                        <span className="stat-value success">{totalAssignments}</span>
                         <span className="stat-label">Successful Assignments</span>
                     </div>
                     <div className="stat-item">
-                        <span className="stat-value warning">{unallocatedCourses.length}</span>
-                        <span className="stat-label">Unassigned Courses</span>
+                        <span className="stat-value warning">{totalOtherUnallocated}</span>
+                        <span className="stat-label">Unassigned (No Room/Etc)</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-value info">{totalLowStrength}</span>
+                        <span className="stat-label">Unassigned (Low Strength)</span>
                     </div>
                 </div>
             </div>
@@ -224,10 +255,12 @@ const ResultsPage = () => {
             <div className="assignments-card">
                 <div className="card-header">
                     <h3>Detailed Assignments</h3>
+                    {/* --- UPDATED VIEW TOGGLE --- */}
                     <div className="view-toggle">
                         <button className={viewMode === 'course' ? 'active' : ''} onClick={() => setViewMode('course')}>Course View</button>
                         <button className={viewMode === 'room' ? 'active' : ''} onClick={() => setViewMode('room')}>Room View</button>
                         <button className={viewMode === 'unallocated' ? 'active' : ''} onClick={() => setViewMode('unallocated')}>Unallocated View</button>
+                        <button className={viewMode === 'lowStrength' ? 'active' : ''} onClick={() => setViewMode('lowStrength')}>Low Strength View</button>
                     </div>
                 </div>
 
@@ -303,6 +336,7 @@ const ResultsPage = () => {
                     </div>
                 )}
 
+                {/* --- UNALLOCATED VIEW (Based on otherUnallocatedCourses) --- */}
                 {viewMode === 'unallocated' && (
                     <div id="unallocated-view">
                         <div className="filter-controls">
@@ -323,8 +357,54 @@ const ResultsPage = () => {
                                             <th>Reason</th>
                                         </tr>
                                     </thead>
+                                    {/* --- FIXED: Corrected table structure --- */}
                                     <tbody>
                                         {currentUnallocated.map((item, index) => (
+                                            <tr key={`${item['Course Code']}-${index}`}>
+                                                <td>{item['Course Name']}</td>
+                                                <td>{item['Course Code']}</td>
+                                                <td>{item['Type']}</td>
+                                                <td>{item['Section']}</td>
+                                                <td>{item['Schedule']}</td>
+                                                <td>{item['Students Registered']}</td>
+                                                <td>{item['Reason']}D</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <div className="pagination-controls">
+                                     <button onClick={() => setUnallocatedCurrentPage(p => Math.max(p - 1, 1))} disabled={unallocatedCurrentPage === 1}>&larr; Previous</button>
+                                     <span>Page <strong>{unallocatedCurrentPage}</strong> of <strong>{totalUnallocatedPages}</strong></span>
+                                     <button onClick={() => setUnallocatedCurrentPage(p => Math.min(p + 1, totalUnallocatedPages))} disabled={unallocatedCurrentPage === totalUnallocatedPages || totalUnallocatedPages === 0}>Next &rarr;</button>
+                                </div>
+                            </>
+                        ) : <p className="empty-message">No unallocated courses (due to no room/etc) found.</p>}
+                    </div>
+                )}
+
+                {/* --- LOW STRENGTH VIEW (Based on lowStrengthCourses) --- */}
+                {viewMode === 'lowStrength' && (
+                    <div id="low-strength-view">
+                        <div className="filter-controls">
+                            <input type="text" placeholder="Search by course name or code..." className="search-input" value={lowStrengthSearchTerm} onChange={(e) => { setLowStrengthSearchTerm(e.target.value); setLowStrengthCurrentPage(1);}}/>
+                            <button className="download-btn" onClick={() => downloadCSV(filteredLowStrength, 'low_strength_courses')}>Download CSV</button>
+                        </div>
+                        {currentLowStrength.length > 0 ? (
+                             <>
+                                <table className="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Course Name</th>
+                                            <th>Course Code</th>
+                                            <th>Type</th>
+                                            <th>Section</th>
+                                            <th>Schedule</th>
+                                            <th>Students</th>
+                                            <th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {currentLowStrength.map((item, index) => (
                                             <tr key={`${item['Course Code']}-${index}`}>
                                                 <td>{item['Course Name']}</td>
                                                 <td>{item['Course Code']}</td>
@@ -338,12 +418,13 @@ const ResultsPage = () => {
                                     </tbody>
                                 </table>
                                 <div className="pagination-controls">
-                                     <button onClick={() => setUnallocatedCurrentPage(p => Math.max(p - 1, 1))} disabled={unallocatedCurrentPage === 1}>&larr; Previous</button>
-                                     <span>Page <strong>{unallocatedCurrentPage}</strong> of <strong>{totalUnallocatedPages}</strong></span>
-                                     <button onClick={() => setUnallocatedCurrentPage(p => Math.min(p + 1, totalUnallocatedPages))} disabled={unallocatedCurrentPage === totalUnallocatedPages || totalUnallocatedPages === 0}>Next &rarr;</button>
+                                     <button onClick={() => setLowStrengthCurrentPage(p => Math.max(p - 1, 1))} disabled={lowStrengthCurrentPage === 1}>&larr; Previous</button>
+                                     <span>Page <strong>{lowStrengthCurrentPage}</strong> of <strong>{totalLowStrengthPages}</strong></span>
+                                     {/* --- FIXED: Removed stray text --- */}
+                                     <button onClick={() => setLowStrengthCurrentPage(p => Math.min(p + 1, totalLowStrengthPages))} disabled={lowStrengthCurrentPage === totalLowStrengthPages || totalLowStrengthPages === 0}>Next &rarr;</button>
                                 </div>
                             </>
-                        ) : <p className="empty-message">No unallocated courses found.</p>}
+                        ) : <p className="empty-message">No low strength courses found.</p>}
                     </div>
                 )}
             </div>
@@ -353,3 +434,4 @@ const ResultsPage = () => {
 };
 
 export default ResultsPage;
+
