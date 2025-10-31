@@ -374,7 +374,9 @@ const LectureHallManager = () => {
         try {
             setLoading(true);
             setError(null);
+            console.log('Trying to fetch the lhc data');
             const data = await getLectureHalls();
+            console.log('hall data set hai: ', data);
             setHalls(data);
         } catch (err) {
             setError('Failed to load data from the server. Please check your connection and try again.');
