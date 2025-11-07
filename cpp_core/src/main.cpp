@@ -48,6 +48,8 @@ int main() {
     int convenience_factor = 0;
     std::vector<nlohmann::json> lowStrengthCourses;
 
+    // std::cout<<"Reached lap -1" << std::endl;
+
     if(j.contains("courseData") && j.at("courseData").is_array()){
         // ✅ This is the fix: create a variable first
         auto courseData = j.at("courseData").get<std::vector<json>>();
@@ -55,6 +57,7 @@ int main() {
         // preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
     }
 
+    // std::cout << "Reached lap 0" << std::endl;
     // std::cout << preprocessed_course_list.size() << std::endl;
 
     /*
@@ -88,6 +91,8 @@ int main() {
     if(j.contains("hallData") && j.at("hallData").is_array()){
         processed_venue_list = venue_processing(j.at("hallData").get<std::vector<json>>());
     }
+
+    // std::cout << "Reached lap 1" << std::endl;
 
     /*
     === DEBUG === 
@@ -135,6 +140,11 @@ int main() {
         convenience_factor = std::stoi(j.at("convenienceFactor").get<std::string>());
     }
 
+    if(j.contains("convenienceFactor") && j.at("convenienceFactor").is_number()){
+        convenience_factor = j.at("convenienceFactor").get<int>();
+    }
+
+    // std::cout << convenience_factor << std::endl;
     json unallocated_course = json::object();
     unallocated_course["Unallocated courses"] = json::array();
 
