@@ -129,6 +129,78 @@ schedule_engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/build
 .PHONY : schedule_engine/fast
 
+src/allocate_lecture.o: src/allocate_lecture.cpp.o
+.PHONY : src/allocate_lecture.o
+
+# target to build an object file
+src/allocate_lecture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o
+.PHONY : src/allocate_lecture.cpp.o
+
+src/allocate_lecture.i: src/allocate_lecture.cpp.i
+.PHONY : src/allocate_lecture.i
+
+# target to preprocess a source file
+src/allocate_lecture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.i
+.PHONY : src/allocate_lecture.cpp.i
+
+src/allocate_lecture.s: src/allocate_lecture.cpp.s
+.PHONY : src/allocate_lecture.s
+
+# target to generate assembly for a file
+src/allocate_lecture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.s
+.PHONY : src/allocate_lecture.cpp.s
+
+src/allocate_tutorial.o: src/allocate_tutorial.cpp.o
+.PHONY : src/allocate_tutorial.o
+
+# target to build an object file
+src/allocate_tutorial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o
+.PHONY : src/allocate_tutorial.cpp.o
+
+src/allocate_tutorial.i: src/allocate_tutorial.cpp.i
+.PHONY : src/allocate_tutorial.i
+
+# target to preprocess a source file
+src/allocate_tutorial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.i
+.PHONY : src/allocate_tutorial.cpp.i
+
+src/allocate_tutorial.s: src/allocate_tutorial.cpp.s
+.PHONY : src/allocate_tutorial.s
+
+# target to generate assembly for a file
+src/allocate_tutorial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.s
+.PHONY : src/allocate_tutorial.cpp.s
+
+src/allocation_logic.o: src/allocation_logic.cpp.o
+.PHONY : src/allocation_logic.o
+
+# target to build an object file
+src/allocation_logic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o
+.PHONY : src/allocation_logic.cpp.o
+
+src/allocation_logic.i: src/allocation_logic.cpp.i
+.PHONY : src/allocation_logic.i
+
+# target to preprocess a source file
+src/allocation_logic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.i
+.PHONY : src/allocation_logic.cpp.i
+
+src/allocation_logic.s: src/allocation_logic.cpp.s
+.PHONY : src/allocation_logic.s
+
+# target to generate assembly for a file
+src/allocation_logic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.s
+.PHONY : src/allocation_logic.cpp.s
+
 src/constraint_processing.o: src/constraint_processing.cpp.o
 .PHONY : src/constraint_processing.o
 
@@ -249,30 +321,6 @@ src/helper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/helper.cpp.s
 .PHONY : src/helper.cpp.s
 
-src/lecture_allocation.o: src/lecture_allocation.cpp.o
-.PHONY : src/lecture_allocation.o
-
-# target to build an object file
-src/lecture_allocation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/lecture_allocation.cpp.o
-.PHONY : src/lecture_allocation.cpp.o
-
-src/lecture_allocation.i: src/lecture_allocation.cpp.i
-.PHONY : src/lecture_allocation.i
-
-# target to preprocess a source file
-src/lecture_allocation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/lecture_allocation.cpp.i
-.PHONY : src/lecture_allocation.cpp.i
-
-src/lecture_allocation.s: src/lecture_allocation.cpp.s
-.PHONY : src/lecture_allocation.s
-
-# target to generate assembly for a file
-src/lecture_allocation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/lecture_allocation.cpp.s
-.PHONY : src/lecture_allocation.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -321,30 +369,6 @@ src/output_formatter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.s
 .PHONY : src/output_formatter.cpp.s
 
-src/tutorial_allocation.o: src/tutorial_allocation.cpp.o
-.PHONY : src/tutorial_allocation.o
-
-# target to build an object file
-src/tutorial_allocation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/tutorial_allocation.cpp.o
-.PHONY : src/tutorial_allocation.cpp.o
-
-src/tutorial_allocation.i: src/tutorial_allocation.cpp.i
-.PHONY : src/tutorial_allocation.i
-
-# target to preprocess a source file
-src/tutorial_allocation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/tutorial_allocation.cpp.i
-.PHONY : src/tutorial_allocation.cpp.i
-
-src/tutorial_allocation.s: src/tutorial_allocation.cpp.s
-.PHONY : src/tutorial_allocation.s
-
-# target to generate assembly for a file
-src/tutorial_allocation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/tutorial_allocation.cpp.s
-.PHONY : src/tutorial_allocation.cpp.s
-
 src/venue_processing.o: src/venue_processing.cpp.o
 .PHONY : src/venue_processing.o
 
@@ -378,6 +402,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... schedule_engine"
+	@echo "... src/allocate_lecture.o"
+	@echo "... src/allocate_lecture.i"
+	@echo "... src/allocate_lecture.s"
+	@echo "... src/allocate_tutorial.o"
+	@echo "... src/allocate_tutorial.i"
+	@echo "... src/allocate_tutorial.s"
+	@echo "... src/allocation_logic.o"
+	@echo "... src/allocation_logic.i"
+	@echo "... src/allocation_logic.s"
 	@echo "... src/constraint_processing.o"
 	@echo "... src/constraint_processing.i"
 	@echo "... src/constraint_processing.s"
@@ -393,18 +426,12 @@ help:
 	@echo "... src/helper.o"
 	@echo "... src/helper.i"
 	@echo "... src/helper.s"
-	@echo "... src/lecture_allocation.o"
-	@echo "... src/lecture_allocation.i"
-	@echo "... src/lecture_allocation.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/output_formatter.o"
 	@echo "... src/output_formatter.i"
 	@echo "... src/output_formatter.s"
-	@echo "... src/tutorial_allocation.o"
-	@echo "... src/tutorial_allocation.i"
-	@echo "... src/tutorial_allocation.s"
 	@echo "... src/venue_processing.o"
 	@echo "... src/venue_processing.i"
 	@echo "... src/venue_processing.s"
