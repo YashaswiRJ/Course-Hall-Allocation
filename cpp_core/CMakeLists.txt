@@ -16,22 +16,24 @@ set(EXECUTABLE_NAME schedule_engine)
 set(SOURCES
     src/main.cpp
     src/ds.hpp
+    src/allocation_logic.hpp
+    src/allocate_lecture.hpp
+    src/allocate_tutorial.hpp
     src/course_preprocessing.hpp
     src/course_processing.hpp
     src/venue_processing.hpp
     src/constraint_processing.hpp
     src/helper.hpp
-    src/lecture_allocation.hpp
-    src/tutorial_allocation.hpp
     src/output_formatter.hpp
     src/ds.cpp
+    src/allocation_logic.cpp
+    src/allocate_lecture.cpp
+    src/allocate_tutorial.cpp
     src/course_preprocessing.cpp
     src/course_processing.cpp
     src/venue_processing.cpp
     src/constraint_processing.cpp
     src/helper.cpp
-    src/lecture_allocation.cpp
-    src/tutorial_allocation.cpp
     src/output_formatter.cpp
 )
 

@@ -9,8 +9,7 @@
 #include "course_processing.hpp"
 #include "venue_processing.hpp"
 #include "constraint_processing.hpp"
-#include "lecture_allocation.hpp"
-#include "tutorial_allocation.hpp"
+#include "allocation_logic.hpp"
 #include "output_formatter.hpp"
 
 // for convenience
@@ -51,7 +50,7 @@ int main() {
     // std::cout<<"Reached lap -1" << std::endl;
 
     if(j.contains("courseData") && j.at("courseData").is_array()){
-        // ✅ This is the fix: create a variable first
+        // This is the fix: create a variable first
         auto courseData = j.at("courseData").get<std::vector<json>>();
         preprocessed_course_list = course_preprocessing_function(courseData, lowStrengthCourses);
         // preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
@@ -121,7 +120,7 @@ int main() {
     */
     if(j.contains("preallocatedConstraints") && j.at("preallocatedConstraints").is_array()){
         // constraint_processing(processed_venue_list, j.at("preallocatedConstraints").get<std::vector<json>>());
-        // ✅ Fix: Use a variable
+        // Fix: Use a variable
         auto constraint_list = j.at("preallocatedConstraints").get<std::vector<json>>();
         constraint_processing(processed_venue_list, constraint_list);
     }
@@ -148,9 +147,8 @@ int main() {
     json unallocated_course = json::object();
     unallocated_course["Unallocated courses"] = json::array();
 
-    core_lecture_allocation_logic(processed_lecture_lists, processed_venue_list, lecture_building_priority_order, convenience_factor);
-    core_tutorial_allocation_logic(processed_tutorial_lists, processed_venue_list, tutorial_building_priority_order, convenience_factor);
-
+    core_allocation_logic(processed_lecture_lists, processed_tutorial_lists, processed_venue_list, lecture_building_priority_order, tutorial_building_priority_order, convenience_factor);
+    
     // json output_json = prepareOutput(processed_venue_list, processed_lecture_lists, processed_tutorial_lists);
 
     json output_json = output_formatter(processed_venue_list, processed_lecture_lists, processed_tutorial_lists, j.at("preallocatedConstraints").get<std::vector<json>>());

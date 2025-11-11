@@ -54,15 +54,16 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               <span className="text">Dashboard</span>
             </Link>
           </li>
-          <li className={location.pathname === '/schedule-viewer' ? 'active' : ''}>
-            <Link to="/schedule-viewer" data-tooltip="Grid Viewer">
-              <span className="icon">📅</span>
-              <span className="text">Grid Viewer</span>
+          <li className={location.pathname === '/lecture-halls' ? 'active' : ''}>
+            <Link to="/lecture-halls" data-tooltip="Lecture Halls">
+              <span className="icon">🏛️</span>
+              <span className="text">Lecture Halls</span>
             </Link>
           </li>
+          
           <li className={location.pathname === '/generate-schedule' ? 'active' : ''}>
               <Link to="/generate-schedule" data-tooltip="Generate Schedule">
-                  <span className="icon">🚀</span>
+                  <span className="icon">🏗️</span>
                   <span className="text">Generate Schedule</span>
               </Link>
           </li>
@@ -78,13 +79,13 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               <span className="text">View Last Result</span>
             </Link>
           </li>
-
-          <li className={location.pathname === '/lecture-halls' ? 'active' : ''}>
-            <Link to="/lecture-halls" data-tooltip="Lecture Halls">
-              <span className="icon">🏛️</span>
-              <span className="text">Lecture Halls</span>
+          <li className={location.pathname === '/schedule-viewer' ? 'active' : ''}>
+            <Link to="/schedule-viewer" data-tooltip="Grid Viewer">
+              <span className="icon">📅</span>
+              <span className="text">Grid Viewer</span>
             </Link>
           </li>
+          
           <li className={`collapsible-menu ${location.pathname.startsWith('/upload') ? 'active-parent' : ''}`}>
             <div className="collapsible-menu-header">
                 <Link to="/upload-files" className="main-link" data-tooltip="Upload Files">

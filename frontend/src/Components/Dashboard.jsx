@@ -72,7 +72,7 @@ const Dashboard = () => {
                 </Link>
 
                 <Link to="/generate-schedule" className="card card-link orange">
-                    <div className="card-icon-area"><span className="icon">🚀</span></div>
+                    <div className="card-icon-area"><span className="icon">🏗️</span></div>
                     <div className="card-content">
                         <h3>Generate Schedule</h3>
                         <p className="description">Use the AI engine to generate the master course schedule.</p>
