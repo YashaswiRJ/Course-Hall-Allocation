@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { sha256 } from 'js-sha256';
 import { useNavigate } from 'react-router-dom'; // 1. IMPORT the useNavigate hook
 import '../Styles/LoginPage.css';
 
@@ -12,12 +13,12 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const HARDCODED_USERNAME = 'user';
-    const HARDCODED_PASSWORD = 'password123';
+    const HARDCODED_USERNAME = 'admin';
+    const HARDCODED_PASSWORD = 'fee1d8c87aa14849af750fd57e8493065415f3f7c786b9a9f0cdae45757b129b';
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
+        if (username === HARDCODED_USERNAME && sha256(password) === HARDCODED_PASSWORD) {
             setError('');
             login();
             navigate('/dashboard'); // 3. REDIRECT to the dashboard on success
@@ -43,7 +44,7 @@ const LoginPage = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             className="input-field"
-                            placeholder="user"
+                            placeholder="Enter username"
                         />
                     </div>
                     <div className="input-group">
@@ -54,7 +55,7 @@ const LoginPage = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="input-field"
-                            placeholder="password123"
+                            placeholder="Enter password"
                         />
                     </div>
                     
@@ -66,7 +67,7 @@ const LoginPage = () => {
                 </form>
 
                 <p className="login-hint">
-                    Hint: Use 'user' and 'password123' to login.
+                    Be mindful for your password security. 
                 </p>
             </div>
         </div>
