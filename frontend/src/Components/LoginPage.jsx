@@ -3,12 +3,16 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { sha256 } from 'js-sha256';
-import { useNavigate } from 'react-router-dom'; // 1. IMPORT the useNavigate hook
+import { useNavigate } from 'react-router-dom';
 import '../Styles/LoginPage.css';
+
+// 1. IMPORT THE LOGO
+// Make sure this path matches where you saved the logo.
+import iitkLogo from '../assets/iitk_logo.png'; 
 
 const LoginPage = () => {
     const { login } = useAuth();
-    const navigate = useNavigate(); // 2. INITIALIZE the navigate function
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -21,7 +25,7 @@ const LoginPage = () => {
         if (username === HARDCODED_USERNAME && sha256(password) === HARDCODED_PASSWORD) {
             setError('');
             login();
-            navigate('/dashboard'); // 3. REDIRECT to the dashboard on success
+            navigate('/dashboard');
         } else {
             setError('Invalid username or password.');
         }
@@ -30,6 +34,10 @@ const LoginPage = () => {
     return (
         <div className="login-page-container">
             <div className="login-card">
+                
+                {/* 2. ADD THE LOGO IMAGE */}
+                <img src={iitkLogo} alt="IIT Kanpur Logo" className="login-logo" />
+
                 <div className="login-header">
                     <h1>Welcome Back!</h1>
                     <p>Enter your credentials to access your list.</p>
@@ -44,7 +52,7 @@ const LoginPage = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             className="input-field"
-                            placeholder="Enter username"
+                            placeholder="who_are_you?"
                         />
                     </div>
                     <div className="input-group">
@@ -55,7 +63,7 @@ const LoginPage = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="input-field"
-                            placeholder="Enter password"
+                            placeholder="verify_identity()"
                         />
                     </div>
                     
@@ -67,7 +75,8 @@ const LoginPage = () => {
                 </form>
 
                 <p className="login-hint">
-                    Be mindful for your password security. 
+                    {/* 3. Minor typo fix */}
+                    Be mindful of your password security. 
                 </p>
             </div>
         </div>

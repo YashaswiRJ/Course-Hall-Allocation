@@ -3,15 +3,20 @@
 
 /* --- Main container with a dark, professional gradient --- */
 .login-page-container {
+    /* --- DEFINE BRAND COLORS HERE --- */
+    --brand-color: #00509E;       /* A strong, professional "IITK" blue */
+    --brand-color-dark: #003d7a;  /* A darker shade for hover effects */
+    --brand-color-light: rgba(0, 80, 158, 0.2); /* For the focus ring */
+
     font-family: 'Inter', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensures it takes full viewport height */
-    width: 100vw;      /* Ensures it takes full viewport width */
+    min-height: 100vh;
+    width: 100vw;
     padding: 1rem;
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); /* Dark slate gradient */
-    overflow: hidden; /* Prevents any accidental scrollbars on the body */
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -27,13 +32,12 @@
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Media query for smaller screens to reduce padding */
+/* Media query for smaller screens */
 @media (max-width: 480px) {
     .login-card {
         padding: 2rem;
     }
 }
-
 
 @keyframes fadeIn {
     from {
@@ -44,6 +48,14 @@
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* --- NEW: Logo styles --- */
+.login-logo {
+    display: block;
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    margin: 0 auto 1.5rem auto; /* Center it and add space below */
 }
 
 /* --- Header styles --- */
@@ -58,7 +70,7 @@
 .login-header p {
     text-align: center;
     font-weight: 400;
-    color: #718096; /* A softer grey for subtitle */
+    color: #718096;
     margin-bottom: 2.5rem;
 }
 
@@ -90,29 +102,29 @@
     color: #a0aec0;
 }
 
-/* --- Updated focus color to a deep teal --- */
+/* --- UPDATED: focus color to brand blue --- */
 .input-field:focus {
     outline: none;
-    border-color: #047857; /* Deep Teal/Green */
-    box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 3px var(--brand-color-light);
 }
 
 /* --- Error message --- */
 .error-message {
-    color: #e53e3e; /* A standard error red */
+    color: #e53e3e;
     font-size: 0.875rem;
     text-align: center;
     margin-bottom: 1rem;
-    height: 1.25em; /* Reserve space to prevent layout shift */
+    height: 1.25em;
 }
 
-/* --- Submit button with new theme color --- */
+/* --- UPDATED: Submit button with brand blue --- */
 .submit-button {
     width: 100%;
     padding: 0.875rem 1rem;
     border: none;
     border-radius: 8px;
-    background: #059669; /* Vibrant Teal/Green */
+    background: var(--brand-color); /* Use brand color */
     color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
@@ -121,11 +133,11 @@
 }
 
 .submit-button:hover {
-    background: #047857; /* Darker shade for hover */
+    background: var(--brand-color-dark); /* Use dark brand color */
 }
 
 .submit-button:active {
-    transform: scale(0.98); /* Click effect */
+    transform: scale(0.98);
 }
 
 /* --- Hint text below the card --- */
