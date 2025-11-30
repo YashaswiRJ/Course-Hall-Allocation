@@ -120,6 +120,12 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               </li>
             </ul>
           </li>
+          <li className={location.pathname === '/pingala' ? 'active' : ''}>
+            <Link to="/pingala" data-tooltip="Pingala Processor">
+              <span className="icon">🧬</span>
+              <span className="text">Pingala Format</span>
+            </Link>
+          </li>
           {/* <li className={location.pathname === '/users' ? 'active' : ''}>
             <Link to="/users" data-tooltip="Users">
               <span className="icon">👥</span>

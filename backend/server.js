@@ -239,6 +239,45 @@ app.post('/api/generate-schedule', (req, res) => {
 });
 
 
+app.post('/api/process-pingala', (req, res) => {
+    const mergedData = req.body;
+
+    const executablePath = path.join(__dirname, '../cpp_core/build/pingala_processor');
+    const processOutput = spawn(executablePath);
+
+    processOutput.stdin.write(JSON.stringify(req.body));
+    console.log(req.body);
+    processOutput.stdin.end();
+
+    let outputJson = '';
+    let errorData = '';
+
+    processOutput.stdout.on('data', (data) => {
+        outputJson += data.toString();
+    });
+
+    processOutput.stderr.on('data', (data) => {
+        errorData += data.toString();
+    });
+
+    processOutput.on('close', (code) => {
+        if (code !== 0) {
+            console.error(`Pingala Error: ${errorData}`);
+            return res.status(500).json({ error: 'Failed to generate schedule', details: errorData });
+        }
+        try {
+            console.log(outputJson)
+            const pingalaOut = JSON.parse(outputJson);
+            console.log('backend pe bhi pingala dekh lete hain', pingalaOut);
+            res.status(200).json(pingalaOut);
+        } catch (error) {
+            console.error('Error parsing pingala output from C++ program:', error);
+            res.status(500).json({ error: 'Failed to process pingala output.' });
+        }
+    });
+});
+
+
 // --- Start the server ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -129,6 +129,19 @@ schedule_engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/build
 .PHONY : schedule_engine/fast
 
+#=============================================================================
+# Target rules for targets named pingala_processor
+
+# Build rule for target.
+pingala_processor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pingala_processor
+.PHONY : pingala_processor
+
+# fast build rule for target.
+pingala_processor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/build
+.PHONY : pingala_processor/fast
+
 src/allocate_lecture.o: src/allocate_lecture.cpp.o
 .PHONY : src/allocate_lecture.o
 
@@ -369,6 +382,30 @@ src/output_formatter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.s
 .PHONY : src/output_formatter.cpp.s
 
+src/pingala_processor.o: src/pingala_processor.cpp.o
+.PHONY : src/pingala_processor.o
+
+# target to build an object file
+src/pingala_processor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/src/pingala_processor.cpp.o
+.PHONY : src/pingala_processor.cpp.o
+
+src/pingala_processor.i: src/pingala_processor.cpp.i
+.PHONY : src/pingala_processor.i
+
+# target to preprocess a source file
+src/pingala_processor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/src/pingala_processor.cpp.i
+.PHONY : src/pingala_processor.cpp.i
+
+src/pingala_processor.s: src/pingala_processor.cpp.s
+.PHONY : src/pingala_processor.s
+
+# target to generate assembly for a file
+src/pingala_processor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/src/pingala_processor.cpp.s
+.PHONY : src/pingala_processor.cpp.s
+
 src/venue_processing.o: src/venue_processing.cpp.o
 .PHONY : src/venue_processing.o
 
@@ -401,6 +438,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... pingala_processor"
 	@echo "... schedule_engine"
 	@echo "... src/allocate_lecture.o"
 	@echo "... src/allocate_lecture.i"
@@ -432,6 +470,9 @@ help:
 	@echo "... src/output_formatter.o"
 	@echo "... src/output_formatter.i"
 	@echo "... src/output_formatter.s"
+	@echo "... src/pingala_processor.o"
+	@echo "... src/pingala_processor.i"
+	@echo "... src/pingala_processor.s"
 	@echo "... src/venue_processing.o"
 	@echo "... src/venue_processing.i"
 	@echo "... src/venue_processing.s"

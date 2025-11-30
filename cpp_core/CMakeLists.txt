@@ -8,12 +8,14 @@ project(ScheduleEngine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Define the name of the executable file.
-set(EXECUTABLE_NAME schedule_engine)
+# Tell CMake where to find include files for the nlohmann/json library.
+# Assuming 'helpers' contains json.hpp or similar
+include_directories(helpers)
 
-# Explicitly list ALL your source (.cpp) files.
-# NOTE: helper.cpp has been removed as its code is now inline in helper.hpp
-set(SOURCES
+# --- Executable 1: Main Schedule Engine ---
+set(MAIN_EXECUTABLE_NAME schedule_engine)
+
+set(MAIN_SOURCES
     src/main.cpp
     src/ds.hpp
     src/allocation_logic.hpp
@@ -37,20 +39,24 @@ set(SOURCES
     src/output_formatter.cpp
 )
 
-# Tell CMake where to find include files for the nlohmann/json library.
-include_directories(helpers)
+add_executable(${MAIN_EXECUTABLE_NAME} ${MAIN_SOURCES})
+target_include_directories(${MAIN_EXECUTABLE_NAME} PUBLIC "src")
 
-# Create the executable from the listed source files.
-add_executable(${EXECUTABLE_NAME} ${SOURCES})
+# --- Executable 2: Pingala Processor (New) ---
+set(PINGALA_EXECUTABLE_NAME pingala_processor)
 
-# Tell CMake where to find our project's own header files (e.g., ds.hpp).
-target_include_directories(${EXECUTABLE_NAME} PUBLIC "src")
+# This executable only needs the pingala source file 
+# (and generic helpers if you include them inside pingala_processor.cpp)
+set(PINGALA_SOURCES
+    src/pingala_processor.cpp
+)
 
-# On Windows, add the .exe extension automatically.
+add_executable(${PINGALA_EXECUTABLE_NAME} ${PINGALA_SOURCES})
+target_include_directories(${PINGALA_EXECUTABLE_NAME} PUBLIC "src")
+
+
+# --- OS Specific Configurations ---
 if(WIN32)
-    set_target_properties(${EXECUTABLE_NAME} PROPERTIES SUFFIX ".exe")
+    set_target_properties(${MAIN_EXECUTABLE_NAME} PROPERTIES SUFFIX ".exe")
+    set_target_properties(${PINGALA_EXECUTABLE_NAME} PROPERTIES SUFFIX ".exe")
 endif()
-
-# A message to show when configuration is done.
-message(STATUS "Configuration complete. Run 'cmake --build .' to compile ${EXECUTABLE_NAME}")
-

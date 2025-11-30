@@ -108,6 +108,29 @@ const generateSchedule = async (courseDataArray, hallDataArray, convenienceFacto
     }
 };
 
+const processPingalaData = async (mergedData) => {
+    try {
+        console.log('Sending merged data to backend:', mergedData);
+        const response = await fetch(`${API_BASE_URL}/process-pingala`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(mergedData),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ error: 'An unknown server error occurred hua.' }));
+            throw new Error(errorData.details || errorData.error || `HTTP error! Status: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error in processPingalaData API:', error);
+        throw error;
+    }
+};
+
 export {
     getLectureHalls,
     createLectureHall,
@@ -116,5 +139,6 @@ export {
     createBuilding,   
     deleteBuilding,
     generateSchedule,
+    processPingalaData
 };
 

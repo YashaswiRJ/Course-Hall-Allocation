@@ -13,6 +13,7 @@ import GeneratorPage from '../Components/GeneratorPage';
 import StatsViewer from '../Components/StatsViewer';
 import TimelineViewer from '../Components/TimelineViewer';
 import ResultsPage from '../Components/ResultsPage';
+import PingalaPage from '../Components/PingalaPage';
 
 /**
  * A wrapper component that protects routes.
@@ -94,6 +95,7 @@ const AppRoutes = () => {
                             <Route path="/schedule-viewer" element={<StatsViewer />} />
                             <Route path="/timeline-viewer" element={<TimelineViewer />} />
                             <Route path="/results" element={<ResultsPage />} />
+                            <Route path="/pingala" element={<PingalaPage />} />
 
                             {/* Default route for logged-in users */}
                             <Route path="/" element={<Navigate to="/dashboard" replace />} />
