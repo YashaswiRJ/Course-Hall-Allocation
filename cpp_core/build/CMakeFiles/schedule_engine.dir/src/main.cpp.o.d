@@ -851,10 +851,13 @@ CMakeFiles/schedule_engine.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_execution_policy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/any \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_preprocessing.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_processing.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Data_Structures/Header_Files/ds.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/helpers/../helpers/json.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Header_Files/course_preprocessing.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Header_Files/../../Data_Structures/Header_Files/ds.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Header_Files/course_processing.hpp \
   /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/venue_processing.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/constraint_processing.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocation_logic.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Header_Files/constraint_processing.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Header_Files/allocation_logic.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Header_Files/../../Data_Structures/Header_Files/ds.hpp \
   /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/output_formatter.hpp

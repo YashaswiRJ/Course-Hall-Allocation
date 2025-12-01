@@ -1,8 +1,8 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "helper.hpp"
-#include "ds.hpp"
+#include "../../Utils/Header_Files/helper.hpp"
+#include "../../Data_Structures/Header_Files/ds.hpp"
 #include "../helpers/json.hpp"
 
 bool check_availibility(std::unordered_map<int, int> &is_available, std::vector<int> &tutor_schedule){
@@ -24,7 +24,7 @@ void try_allocate_tutorial(std::vector<Tutorial>::iterator tutorial, std::map<st
         auto check_venue = venue;
         int tutorial_found = 0;
         while(tutorial_found < tutorial->tutorial_count){
-            if(check_venue == venues[priority].end())break;
+            if(check_venue == venues[priority].end() || ((check_venue->capacity > (3*tutorial->students_registered)/(tutorial->tutorial_count))))break;
             if(check_availibility(check_venue->is_available, tutorial->tutorial_schedule)){
                     tutorial_found++;
             }

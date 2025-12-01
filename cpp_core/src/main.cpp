@@ -4,12 +4,12 @@
 #include <fcntl.h>   // for open
 #include <cstdlib>
 #include "../helpers/json.hpp" // Make sure this path is correct
-#include "ds.hpp"
-#include "course_preprocessing.hpp"
-#include "course_processing.hpp"
+#include "Data_Structures/Header_Files/ds.hpp"
+#include "Preliminary_Processing/Header_Files/course_preprocessing.hpp"
+#include "Preliminary_Processing/Header_Files/course_processing.hpp"
 #include "venue_processing.hpp"
-#include "constraint_processing.hpp"
-#include "allocation_logic.hpp"
+#include "Preliminary_Processing/Header_Files/constraint_processing.hpp"
+#include "Allocation_Strategy/Header_Files/allocation_logic.hpp"
 #include "output_formatter.hpp"
 
 // for convenience

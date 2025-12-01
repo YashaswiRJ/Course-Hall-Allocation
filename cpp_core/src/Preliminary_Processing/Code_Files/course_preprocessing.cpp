@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
-#include "ds.hpp"
-#include "helper.hpp"
+#include "../../Utils/Header_Files/helper.hpp"
+#include "../../Data_Structures/Header_Files/ds.hpp"
 #include <algorithm>
 #include <map>
 #include <iostream>

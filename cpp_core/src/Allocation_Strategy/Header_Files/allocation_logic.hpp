@@ -4,6 +4,6 @@
 #include <string>
 #include <map>
 #include <unordered_map>
-#include "ds.hpp"
+#include "../../Data_Structures/Header_Files/ds.hpp"
 
 void core_allocation_logic(std::vector<Lecture> &lectures, std::vector<Tutorial> &tutorials, std::map<std::string, std::vector<Venue>> &venues, std::vector<std::string> &lecture_building_priority_order, std::vector<std::string> &tutorial_building_priority_order, int convenience_factor);

@@ -142,197 +142,197 @@ pingala_processor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/build
 .PHONY : pingala_processor/fast
 
-src/allocate_lecture.o: src/allocate_lecture.cpp.o
-.PHONY : src/allocate_lecture.o
+src/Allocation_Strategy/Code_Files/allocate_lecture.o: src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.o
 
 # target to build an object file
-src/allocate_lecture.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o
-.PHONY : src/allocate_lecture.cpp.o
+src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o
 
-src/allocate_lecture.i: src/allocate_lecture.cpp.i
-.PHONY : src/allocate_lecture.i
+src/Allocation_Strategy/Code_Files/allocate_lecture.i: src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.i
 
 # target to preprocess a source file
-src/allocate_lecture.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.i
-.PHONY : src/allocate_lecture.cpp.i
+src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i
 
-src/allocate_lecture.s: src/allocate_lecture.cpp.s
-.PHONY : src/allocate_lecture.s
+src/Allocation_Strategy/Code_Files/allocate_lecture.s: src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.s
 
 # target to generate assembly for a file
-src/allocate_lecture.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.s
-.PHONY : src/allocate_lecture.cpp.s
+src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s
 
-src/allocate_tutorial.o: src/allocate_tutorial.cpp.o
-.PHONY : src/allocate_tutorial.o
+src/Allocation_Strategy/Code_Files/allocate_tutorial.o: src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.o
 
 # target to build an object file
-src/allocate_tutorial.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o
-.PHONY : src/allocate_tutorial.cpp.o
+src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o
 
-src/allocate_tutorial.i: src/allocate_tutorial.cpp.i
-.PHONY : src/allocate_tutorial.i
+src/Allocation_Strategy/Code_Files/allocate_tutorial.i: src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.i
 
 # target to preprocess a source file
-src/allocate_tutorial.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.i
-.PHONY : src/allocate_tutorial.cpp.i
+src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i
 
-src/allocate_tutorial.s: src/allocate_tutorial.cpp.s
-.PHONY : src/allocate_tutorial.s
+src/Allocation_Strategy/Code_Files/allocate_tutorial.s: src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.s
 
 # target to generate assembly for a file
-src/allocate_tutorial.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.s
-.PHONY : src/allocate_tutorial.cpp.s
+src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s
 
-src/allocation_logic.o: src/allocation_logic.cpp.o
-.PHONY : src/allocation_logic.o
+src/Allocation_Strategy/Code_Files/allocation_logic.o: src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.o
 
 # target to build an object file
-src/allocation_logic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o
-.PHONY : src/allocation_logic.cpp.o
+src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o
 
-src/allocation_logic.i: src/allocation_logic.cpp.i
-.PHONY : src/allocation_logic.i
+src/Allocation_Strategy/Code_Files/allocation_logic.i: src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.i
 
 # target to preprocess a source file
-src/allocation_logic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.i
-.PHONY : src/allocation_logic.cpp.i
+src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i
 
-src/allocation_logic.s: src/allocation_logic.cpp.s
-.PHONY : src/allocation_logic.s
+src/Allocation_Strategy/Code_Files/allocation_logic.s: src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.s
 
 # target to generate assembly for a file
-src/allocation_logic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.s
-.PHONY : src/allocation_logic.cpp.s
+src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s
+.PHONY : src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s
 
-src/constraint_processing.o: src/constraint_processing.cpp.o
-.PHONY : src/constraint_processing.o
+src/Data_Structures/Code_Files/ds.o: src/Data_Structures/Code_Files/ds.cpp.o
+.PHONY : src/Data_Structures/Code_Files/ds.o
 
 # target to build an object file
-src/constraint_processing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o
-.PHONY : src/constraint_processing.cpp.o
+src/Data_Structures/Code_Files/ds.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o
+.PHONY : src/Data_Structures/Code_Files/ds.cpp.o
 
-src/constraint_processing.i: src/constraint_processing.cpp.i
-.PHONY : src/constraint_processing.i
+src/Data_Structures/Code_Files/ds.i: src/Data_Structures/Code_Files/ds.cpp.i
+.PHONY : src/Data_Structures/Code_Files/ds.i
 
 # target to preprocess a source file
-src/constraint_processing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.i
-.PHONY : src/constraint_processing.cpp.i
+src/Data_Structures/Code_Files/ds.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.i
+.PHONY : src/Data_Structures/Code_Files/ds.cpp.i
 
-src/constraint_processing.s: src/constraint_processing.cpp.s
-.PHONY : src/constraint_processing.s
+src/Data_Structures/Code_Files/ds.s: src/Data_Structures/Code_Files/ds.cpp.s
+.PHONY : src/Data_Structures/Code_Files/ds.s
 
 # target to generate assembly for a file
-src/constraint_processing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.s
-.PHONY : src/constraint_processing.cpp.s
+src/Data_Structures/Code_Files/ds.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.s
+.PHONY : src/Data_Structures/Code_Files/ds.cpp.s
 
-src/course_preprocessing.o: src/course_preprocessing.cpp.o
-.PHONY : src/course_preprocessing.o
+src/Preliminary_Processing/Code_Files/constraint_processing.o: src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.o
 
 # target to build an object file
-src/course_preprocessing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o
-.PHONY : src/course_preprocessing.cpp.o
+src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o
 
-src/course_preprocessing.i: src/course_preprocessing.cpp.i
-.PHONY : src/course_preprocessing.i
+src/Preliminary_Processing/Code_Files/constraint_processing.i: src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.i
 
 # target to preprocess a source file
-src/course_preprocessing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.i
-.PHONY : src/course_preprocessing.cpp.i
+src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i
 
-src/course_preprocessing.s: src/course_preprocessing.cpp.s
-.PHONY : src/course_preprocessing.s
+src/Preliminary_Processing/Code_Files/constraint_processing.s: src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.s
 
 # target to generate assembly for a file
-src/course_preprocessing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.s
-.PHONY : src/course_preprocessing.cpp.s
+src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s
 
-src/course_processing.o: src/course_processing.cpp.o
-.PHONY : src/course_processing.o
+src/Preliminary_Processing/Code_Files/course_preprocessing.o: src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.o
 
 # target to build an object file
-src/course_processing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o
-.PHONY : src/course_processing.cpp.o
+src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o
 
-src/course_processing.i: src/course_processing.cpp.i
-.PHONY : src/course_processing.i
+src/Preliminary_Processing/Code_Files/course_preprocessing.i: src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.i
 
 # target to preprocess a source file
-src/course_processing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_processing.cpp.i
-.PHONY : src/course_processing.cpp.i
+src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i
 
-src/course_processing.s: src/course_processing.cpp.s
-.PHONY : src/course_processing.s
+src/Preliminary_Processing/Code_Files/course_preprocessing.s: src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.s
 
 # target to generate assembly for a file
-src/course_processing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/course_processing.cpp.s
-.PHONY : src/course_processing.cpp.s
+src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s
 
-src/ds.o: src/ds.cpp.o
-.PHONY : src/ds.o
+src/Preliminary_Processing/Code_Files/course_processing.o: src/Preliminary_Processing/Code_Files/course_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.o
 
 # target to build an object file
-src/ds.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/ds.cpp.o
-.PHONY : src/ds.cpp.o
+src/Preliminary_Processing/Code_Files/course_processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.cpp.o
 
-src/ds.i: src/ds.cpp.i
-.PHONY : src/ds.i
+src/Preliminary_Processing/Code_Files/course_processing.i: src/Preliminary_Processing/Code_Files/course_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.i
 
 # target to preprocess a source file
-src/ds.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/ds.cpp.i
-.PHONY : src/ds.cpp.i
+src/Preliminary_Processing/Code_Files/course_processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.cpp.i
 
-src/ds.s: src/ds.cpp.s
-.PHONY : src/ds.s
+src/Preliminary_Processing/Code_Files/course_processing.s: src/Preliminary_Processing/Code_Files/course_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.s
 
 # target to generate assembly for a file
-src/ds.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/ds.cpp.s
-.PHONY : src/ds.cpp.s
+src/Preliminary_Processing/Code_Files/course_processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/course_processing.cpp.s
 
-src/helper.o: src/helper.cpp.o
-.PHONY : src/helper.o
+src/Utils/Code_Files/helper.o: src/Utils/Code_Files/helper.cpp.o
+.PHONY : src/Utils/Code_Files/helper.o
 
 # target to build an object file
-src/helper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/helper.cpp.o
-.PHONY : src/helper.cpp.o
+src/Utils/Code_Files/helper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o
+.PHONY : src/Utils/Code_Files/helper.cpp.o
 
-src/helper.i: src/helper.cpp.i
-.PHONY : src/helper.i
+src/Utils/Code_Files/helper.i: src/Utils/Code_Files/helper.cpp.i
+.PHONY : src/Utils/Code_Files/helper.i
 
 # target to preprocess a source file
-src/helper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/helper.cpp.i
-.PHONY : src/helper.cpp.i
+src/Utils/Code_Files/helper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.i
+.PHONY : src/Utils/Code_Files/helper.cpp.i
 
-src/helper.s: src/helper.cpp.s
-.PHONY : src/helper.s
+src/Utils/Code_Files/helper.s: src/Utils/Code_Files/helper.cpp.s
+.PHONY : src/Utils/Code_Files/helper.s
 
 # target to generate assembly for a file
-src/helper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/helper.cpp.s
-.PHONY : src/helper.cpp.s
+src/Utils/Code_Files/helper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.s
+.PHONY : src/Utils/Code_Files/helper.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -440,30 +440,30 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... pingala_processor"
 	@echo "... schedule_engine"
-	@echo "... src/allocate_lecture.o"
-	@echo "... src/allocate_lecture.i"
-	@echo "... src/allocate_lecture.s"
-	@echo "... src/allocate_tutorial.o"
-	@echo "... src/allocate_tutorial.i"
-	@echo "... src/allocate_tutorial.s"
-	@echo "... src/allocation_logic.o"
-	@echo "... src/allocation_logic.i"
-	@echo "... src/allocation_logic.s"
-	@echo "... src/constraint_processing.o"
-	@echo "... src/constraint_processing.i"
-	@echo "... src/constraint_processing.s"
-	@echo "... src/course_preprocessing.o"
-	@echo "... src/course_preprocessing.i"
-	@echo "... src/course_preprocessing.s"
-	@echo "... src/course_processing.o"
-	@echo "... src/course_processing.i"
-	@echo "... src/course_processing.s"
-	@echo "... src/ds.o"
-	@echo "... src/ds.i"
-	@echo "... src/ds.s"
-	@echo "... src/helper.o"
-	@echo "... src/helper.i"
-	@echo "... src/helper.s"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_lecture.o"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_lecture.i"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_lecture.s"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_tutorial.o"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_tutorial.i"
+	@echo "... src/Allocation_Strategy/Code_Files/allocate_tutorial.s"
+	@echo "... src/Allocation_Strategy/Code_Files/allocation_logic.o"
+	@echo "... src/Allocation_Strategy/Code_Files/allocation_logic.i"
+	@echo "... src/Allocation_Strategy/Code_Files/allocation_logic.s"
+	@echo "... src/Data_Structures/Code_Files/ds.o"
+	@echo "... src/Data_Structures/Code_Files/ds.i"
+	@echo "... src/Data_Structures/Code_Files/ds.s"
+	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.o"
+	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.i"
+	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.s"
+	@echo "... src/Preliminary_Processing/Code_Files/course_preprocessing.o"
+	@echo "... src/Preliminary_Processing/Code_Files/course_preprocessing.i"
+	@echo "... src/Preliminary_Processing/Code_Files/course_preprocessing.s"
+	@echo "... src/Preliminary_Processing/Code_Files/course_processing.o"
+	@echo "... src/Preliminary_Processing/Code_Files/course_processing.i"
+	@echo "... src/Preliminary_Processing/Code_Files/course_processing.s"
+	@echo "... src/Utils/Code_Files/helper.o"
+	@echo "... src/Utils/Code_Files/helper.i"
+	@echo "... src/Utils/Code_Files/helper.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

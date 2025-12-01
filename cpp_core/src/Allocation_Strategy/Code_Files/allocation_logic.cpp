@@ -2,9 +2,9 @@
 #include <string>
 #include <map>
 #include <unordered_map>
-#include "ds.hpp"
-#include "allocate_lecture.hpp"
-#include "allocate_tutorial.hpp"
+#include "../../Data_Structures/Header_Files/ds.hpp"
+#include "../Header_Files/allocate_lecture.hpp"
+#include "../Header_Files/allocate_tutorial.hpp"
 #include <iostream>
 
 void core_allocation_logic(std::vector<Lecture> &lectures, std::vector<Tutorial> &tutorials, std::map<std::string, std::vector<Venue>> &venues, std::vector<std::string> &lecture_building_priority_order, std::vector<std::string> &tutorial_building_priority_order, int convenience_factor){

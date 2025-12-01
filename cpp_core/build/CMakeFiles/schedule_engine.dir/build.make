@@ -86,89 +86,89 @@ CMakeFiles/schedule_engine.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/main.cpp -o CMakeFiles/schedule_engine.dir/src/main.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/ds.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/ds.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.cpp
-CMakeFiles/schedule_engine.dir/src/ds.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/schedule_engine.dir/src/ds.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/ds.cpp.o -MF CMakeFiles/schedule_engine.dir/src/ds.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/ds.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.cpp
+CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Data_Structures/Code_Files/ds.cpp
+CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Data_Structures/Code_Files/ds.cpp
 
-CMakeFiles/schedule_engine.dir/src/ds.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/ds.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.cpp > CMakeFiles/schedule_engine.dir/src/ds.cpp.i
+CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Data_Structures/Code_Files/ds.cpp > CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/ds.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/ds.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.cpp -o CMakeFiles/schedule_engine.dir/src/ds.cpp.s
+CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Data_Structures/Code_Files/ds.cpp -o CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocation_logic.cpp
-CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o -MF CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocation_logic.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocation_logic.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocation_logic.cpp
 
-CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocation_logic.cpp > CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.i
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocation_logic.cpp > CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocation_logic.cpp -o CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.s
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocation_logic.cpp -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_lecture.cpp
-CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o -MF CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_lecture.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp
 
-CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_lecture.cpp > CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.i
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp > CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_lecture.cpp -o CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.s
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_tutorial.cpp
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o -MF CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_tutorial.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp
 
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_tutorial.cpp > CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.i
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp > CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_tutorial.cpp -o CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.s
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp -o CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_preprocessing.cpp
-CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_preprocessing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp
 
-CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_preprocessing.cpp > CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.i
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp > CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_preprocessing.cpp -o CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.s
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_processing.cpp
-CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_processing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_processing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_processing.cpp
 
-CMakeFiles/schedule_engine.dir/src/course_processing.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/course_processing.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_processing.cpp > CMakeFiles/schedule_engine.dir/src/course_processing.cpp.i
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_processing.cpp > CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/course_processing.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/course_processing.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/course_processing.cpp -o CMakeFiles/schedule_engine.dir/src/course_processing.cpp.s
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/course_processing.cpp -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.s
 
 CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
 CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/venue_processing.cpp
@@ -184,33 +184,33 @@ CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/venue_processing.cpp -o CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/constraint_processing.cpp
-CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/constraint_processing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/constraint_processing.cpp
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/constraint_processing.cpp
 
-CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/constraint_processing.cpp > CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.i
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/constraint_processing.cpp > CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/constraint_processing.cpp -o CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.s
+CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Preliminary_Processing/Code_Files/constraint_processing.cpp -o CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.s
 
-CMakeFiles/schedule_engine.dir/src/helper.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
-CMakeFiles/schedule_engine.dir/src/helper.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/helper.cpp
-CMakeFiles/schedule_engine.dir/src/helper.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/schedule_engine.dir/src/helper.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/helper.cpp.o -MF CMakeFiles/schedule_engine.dir/src/helper.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/helper.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/helper.cpp
+CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
+CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Utils/Code_Files/helper.cpp
+CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o: CMakeFiles/schedule_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o -MF CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o.d -o CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o -c /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Utils/Code_Files/helper.cpp
 
-CMakeFiles/schedule_engine.dir/src/helper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/helper.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/helper.cpp > CMakeFiles/schedule_engine.dir/src/helper.cpp.i
+CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Utils/Code_Files/helper.cpp > CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.i
 
-CMakeFiles/schedule_engine.dir/src/helper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/helper.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/helper.cpp -o CMakeFiles/schedule_engine.dir/src/helper.cpp.s
+CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Utils/Code_Files/helper.cpp -o CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.s
 
 CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.o: CMakeFiles/schedule_engine.dir/flags.make
 CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.o: /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/output_formatter.cpp
@@ -229,30 +229,30 @@ CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.s: cmake_force
 # Object files for target schedule_engine
 schedule_engine_OBJECTS = \
 "CMakeFiles/schedule_engine.dir/src/main.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/ds.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o" \
 "CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o" \
-"CMakeFiles/schedule_engine.dir/src/helper.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o" \
+"CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o" \
 "CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.o"
 
 # External object files for target schedule_engine
 schedule_engine_EXTERNAL_OBJECTS =
 
 schedule_engine: CMakeFiles/schedule_engine.dir/src/main.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/ds.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/allocation_logic.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/allocate_lecture.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/course_preprocessing.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/course_processing.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocation_logic.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_lecture.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_preprocessing.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.o
 schedule_engine: CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/constraint_processing.cpp.o
-schedule_engine: CMakeFiles/schedule_engine.dir/src/helper.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o
+schedule_engine: CMakeFiles/schedule_engine.dir/src/Utils/Code_Files/helper.cpp.o
 schedule_engine: CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.o
 schedule_engine: CMakeFiles/schedule_engine.dir/build.make
 schedule_engine: CMakeFiles/schedule_engine.dir/link.txt

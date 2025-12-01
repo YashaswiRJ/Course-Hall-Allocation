@@ -1,7 +1,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "ds.hpp"
+#include "../../Data_Structures/Header_Files/ds.hpp"
 #include "../helpers/json.hpp"
 
 bool check_availability(std::unordered_map<int, int> &is_available, std::vector<int> &lecture_schedule){
@@ -19,7 +19,7 @@ void try_allocation_lecture(std::vector<Lecture>::iterator lecture, std::map<std
         auto venue = lower_bound(venues[priority].begin(), venues[priority].end(), convenient_size, [](const Venue& v, int size) {return v.capacity < size;});
 
         while(true){
-            if(venue == venues[priority].end())break;
+            if(venue == venues[priority].end() || ((venue->capacity) > 3*(lecture->students_registered)))break;
                 
                 //check_logic if the venue can be given to the lecture
             if(check_availability(venue->is_available, lecture->lecture_schedule)){

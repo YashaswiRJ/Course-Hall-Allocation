@@ -17,25 +17,25 @@ set(MAIN_EXECUTABLE_NAME schedule_engine)
 
 set(MAIN_SOURCES
     src/main.cpp
-    src/ds.hpp
-    src/allocation_logic.hpp
-    src/allocate_lecture.hpp
-    src/allocate_tutorial.hpp
-    src/course_preprocessing.hpp
-    src/course_processing.hpp
+    src/Data_Structures/Header_Files/ds.hpp
+    src/Allocation_Strategy/Header_Files/allocation_logic.hpp
+    src/Allocation_Strategy/Header_Files/allocate_lecture.hpp
+    src/Allocation_Strategy/Header_Files/allocate_tutorial.hpp
+    src/Preliminary_Processing/Header_Files/course_preprocessing.hpp
+    src/Preliminary_Processing/Header_Files/course_processing.hpp
     src/venue_processing.hpp
-    src/constraint_processing.hpp
-    src/helper.hpp
+    src/Preliminary_Processing/Header_Files/constraint_processing.hpp
+    src/Utils/Header_Files/helper.hpp
     src/output_formatter.hpp
-    src/ds.cpp
-    src/allocation_logic.cpp
-    src/allocate_lecture.cpp
-    src/allocate_tutorial.cpp
-    src/course_preprocessing.cpp
-    src/course_processing.cpp
+    src/Data_Structures/Code_Files/ds.cpp
+    src/Allocation_Strategy/Code_Files/allocation_logic.cpp
+    src/Allocation_Strategy/Code_Files/allocate_lecture.cpp
+    src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp
+    src/Preliminary_Processing/Code_Files/course_preprocessing.cpp
+    src/Preliminary_Processing/Code_Files/course_processing.cpp
     src/venue_processing.cpp
-    src/constraint_processing.cpp
-    src/helper.cpp
+    src/Preliminary_Processing/Code_Files/constraint_processing.cpp
+    src/Utils/Code_Files/helper.cpp
     src/output_formatter.cpp
 )
 

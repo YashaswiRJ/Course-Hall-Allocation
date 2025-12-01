@@ -1,5 +1,5 @@
-CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o: \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/allocate_tutorial.cpp \
+CMakeFiles/schedule_engine.dir/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp.o: \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h \
@@ -780,9 +780,9 @@ CMakeFiles/schedule_engine.dir/src/allocate_tutorial.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/default_searcher.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/not_fn.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/perfect_forward.h \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/helper.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/ds.hpp \
-  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/../helpers/json.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/../../Utils/Header_Files/helper.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/src/Allocation_Strategy/Code_Files/../../Data_Structures/Header_Files/ds.hpp \
+  /Users/verma/Documents/QuadCHA/Course-Hall-Allocation/cpp_core/helpers/../helpers/json.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/valarray \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
