@@ -15,6 +15,9 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
   );
   const [hasResult, setHasResult] = useState(false);
 
+  // Check if current page is Analytics to apply special theme
+  const isAnalyticsPage = location.pathname === '/analytics';
+
   useEffect(() => {
     if (location.pathname.startsWith('/upload')) {
       setUploadMenuOpen(true);
@@ -38,7 +41,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
   };
 
   return (
-    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isAnalyticsPage ? 'analytics-theme' : ''}`}>
       <div className="sidebar-header">
         <h2>Admin</h2>
       </div>
@@ -126,12 +129,13 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               <span className="text">Pingala Format</span>
             </Link>
           </li>
-          {/* <li className={location.pathname === '/users' ? 'active' : ''}>
-            <Link to="/users" data-tooltip="Users">
-              <span className="icon">👥</span>
-              <span className="text">Users</span>
+
+          <li className={location.pathname === '/analytics' ? 'active' : ''}>
+            <Link to="/analytics" data-tooltip="Research Lab">
+              <span className="icon">🔥</span>
+              <span className="text">Research Lab</span>
             </Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
 

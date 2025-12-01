@@ -11,6 +11,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
   position: relative;
+  transition: background-color 0.5s ease; /* Smooth transition for theme change */
 }
 
 /* --- Header and Toggle Button --- */
@@ -257,4 +258,95 @@
 .sidebar.collapsed a[data-tooltip]:hover::after {
     opacity: 1;
     transform: translateY(-50%) translateX(10px);
+}
+
+/* ========================================================================= */
+/* === THEME OVERRIDE: ANALYTICS PAGE (Red Furious Fire) === */
+/* ========================================================================= */
+
+.sidebar.analytics-theme {
+    background: linear-gradient(180deg, #1a0505 0%, #2b0202 100%);
+    border-right: 1px solid rgba(255, 69, 0, 0.3);
+    color: #ffe6e6;
+}
+
+/* -- Toggle Button -- */
+.sidebar.analytics-theme .sidebar-toggle {
+    background: #4a0d0d;
+    color: #ffccbc;
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.2);
+}
+.sidebar.analytics-theme .sidebar-toggle:hover {
+    background: #ff4500;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+}
+
+/* -- Header Text -- */
+.sidebar.analytics-theme .sidebar-header h2 {
+    background: linear-gradient(to top, #ff9a00 0%, #ff5200 50%, #ff0000 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.4));
+}
+
+/* -- Nav Links -- */
+.sidebar.analytics-theme .sidebar-nav li a,
+.sidebar.analytics-theme .sidebar-nav .main-link {
+    color: #ffccbc; /* Light peach text */
+}
+
+.sidebar.analytics-theme .sidebar-nav a:hover,
+.sidebar.analytics-theme .sidebar-nav .main-link:hover {
+    background-color: rgba(255, 69, 0, 0.15); /* Reddish hover */
+    color: #ff9a00; /* Bright orange text on hover */
+    border-left: 2px solid #ff4500; /* Subtle accent */
+}
+
+/* -- Active Link -- */
+.sidebar.analytics-theme .sidebar-nav .active > a,
+.sidebar.analytics-theme .sidebar-nav .active > .collapsible-menu-header .main-link {
+    background: linear-gradient(45deg, #ff0000, #ff8c00); /* Fire gradient */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    border-left: none;
+}
+
+/* -- Active Link Indicator (Little white bar) -- */
+.sidebar.analytics-theme .sidebar-nav .active > a::before {
+    background-color: #fff;
+    box-shadow: 0 0 8px #ffeb3b; /* Glowing tip */
+}
+
+/* -- Submenus -- */
+.sidebar.analytics-theme .submenu {
+    border-left: 1px solid #ff4500;
+}
+.sidebar.analytics-theme .submenu li.active > a {
+    background-color: rgba(255, 69, 0, 0.3);
+    color: #ffab91;
+}
+
+/* -- Footer & Logout -- */
+.sidebar.analytics-theme .sidebar-footer {
+    border-top: 1px solid rgba(255, 69, 0, 0.3);
+}
+
+.sidebar.analytics-theme .logout-button {
+    background: rgba(20, 0, 0, 0.5);
+    border: 1px solid #ff4500;
+    color: #ff4500;
+}
+.sidebar.analytics-theme .logout-button:hover {
+    background: #ff4500;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+}
+
+/* -- Collapsed Tooltips -- */
+.sidebar.analytics-theme.collapsed a[data-tooltip]::after {
+    background-color: #2b0202;
+    color: #ffccbc;
+    border: 1px solid #ff4500;
 }

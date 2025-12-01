@@ -1,0 +1,230 @@
+/* === AnalyticsPage.css - Red Furious Fire Theme === */
+
+.analytics-page-container {
+    /* Dark background to make the fire colors pop */
+    background: linear-gradient(135deg, #1a0505 0%, #2b0202 50%, #000000 100%);
+    min-height: 100vh;
+    padding: 40px;
+    font-family: 'Inter', sans-serif;
+    color: #ffe6e6;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- Fiery Header --- */
+.analytics-header {
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 69, 0, 0.3);
+}
+
+.analytics-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    
+    /* Text Gradient - Fire Effect */
+    background: linear-gradient(to top, #ff9a00 0%, #ff5200 50%, #ff0000 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6));
+}
+
+.analytics-header p {
+    font-size: 1.2rem;
+    color: #ffccbc;
+    margin-top: 15px;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* --- Main Poster Content Area --- */
+.analytics-poster {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Glassmorphism Card with Red Tint */
+.fire-card {
+    background: rgba(40, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 69, 0, 0.4);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(255, 20, 0, 0.15), inset 0 0 20px rgba(255, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fire-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(255, 69, 0, 0.25), inset 0 0 30px rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 69, 0, 0.8);
+}
+
+/* Glowing accent line */
+.fire-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff9a00, #ff0000);
+    box-shadow: 0 0 15px #ff4500;
+}
+
+.poster-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.poster-title h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.poster-icon {
+    color: #ff4500;
+    filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.8));
+}
+
+.poster-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ffdbcc;
+    margin-bottom: 20px;
+}
+
+.highlight-text {
+    background: rgba(255, 69, 0, 0.1);
+    border-left: 3px solid #ff4500;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* --- Features Grid --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.feature-item {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 87, 34, 0.3);
+    text-align: center;
+}
+
+.feature-item h3 {
+    color: #ffab91;
+    margin: 10px 0;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: #cfd8dc;
+}
+
+/* --- Upload Section Styling --- */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fire-upload-box {
+    border: 2px dashed #ff4500;
+    background: rgba(255, 69, 0, 0.05);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.fire-upload-box:hover {
+    background: rgba(255, 69, 0, 0.15);
+    border-color: #ff9a00;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+}
+
+.upload-icon-wrapper {
+    background: linear-gradient(135deg, #ff4b1f, #ff9068);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+}
+
+.upload-text h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+}
+
+.upload-text p {
+    color: #ffccbc;
+    margin: 0;
+}
+
+.hidden-input {
+    display: none;
+}
+
+/* --- Button Styling --- */
+.btn-analyze {
+    background: linear-gradient(45deg, #ff0000, #ff8c00);
+    border: none;
+    padding: 18px 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+}
+
+.btn-analyze:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.6);
+    background: linear-gradient(45deg, #c40000, #e65100);
+}
+
+/* Pulse animation for the upload icon */
+@keyframes firePulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 69, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+}
+
+.upload-icon-wrapper {
+    animation: firePulse 2s infinite;
+}
