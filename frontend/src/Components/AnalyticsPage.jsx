@@ -22,7 +22,7 @@ const AnalyticsPage = () => {
     <div className="analytics-page-container">
       {/* Header Section */}
       <header className="analytics-header">
-        <h1>The Analytics Part</h1>
+        <h1>The Research Lab</h1>
         <p>Future-Proof Your Infrastructure with Machine Learning</p>
       </header>
 
