@@ -98,11 +98,7 @@ int main() {
         }
     }
 
-    // 4. Output Result
-    // std::cout << output_json.dump(4) << std::endl;
-
     close(fd);
 
-    // std::cout << output_json.dump(4) << std::endl;
     return 0;
 }

@@ -238,6 +238,30 @@ src/Data_Structures/Code_Files/ds.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Data_Structures/Code_Files/ds.cpp.s
 .PHONY : src/Data_Structures/Code_Files/ds.cpp.s
 
+src/Output_Formatter/Code_Files/output_formatter.o: src/Output_Formatter/Code_Files/output_formatter.cpp.o
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.o
+
+# target to build an object file
+src/Output_Formatter/Code_Files/output_formatter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Output_Formatter/Code_Files/output_formatter.cpp.o
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.cpp.o
+
+src/Output_Formatter/Code_Files/output_formatter.i: src/Output_Formatter/Code_Files/output_formatter.cpp.i
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.i
+
+# target to preprocess a source file
+src/Output_Formatter/Code_Files/output_formatter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Output_Formatter/Code_Files/output_formatter.cpp.i
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.cpp.i
+
+src/Output_Formatter/Code_Files/output_formatter.s: src/Output_Formatter/Code_Files/output_formatter.cpp.s
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.s
+
+# target to generate assembly for a file
+src/Output_Formatter/Code_Files/output_formatter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Output_Formatter/Code_Files/output_formatter.cpp.s
+.PHONY : src/Output_Formatter/Code_Files/output_formatter.cpp.s
+
 src/Preliminary_Processing/Code_Files/constraint_processing.o: src/Preliminary_Processing/Code_Files/constraint_processing.cpp.o
 .PHONY : src/Preliminary_Processing/Code_Files/constraint_processing.o
 
@@ -310,6 +334,30 @@ src/Preliminary_Processing/Code_Files/course_processing.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/course_processing.cpp.s
 .PHONY : src/Preliminary_Processing/Code_Files/course_processing.cpp.s
 
+src/Preliminary_Processing/Code_Files/venue_processing.o: src/Preliminary_Processing/Code_Files/venue_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.o
+
+# target to build an object file
+src/Preliminary_Processing/Code_Files/venue_processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/venue_processing.cpp.o
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.cpp.o
+
+src/Preliminary_Processing/Code_Files/venue_processing.i: src/Preliminary_Processing/Code_Files/venue_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.i
+
+# target to preprocess a source file
+src/Preliminary_Processing/Code_Files/venue_processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/venue_processing.cpp.i
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.cpp.i
+
+src/Preliminary_Processing/Code_Files/venue_processing.s: src/Preliminary_Processing/Code_Files/venue_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.s
+
+# target to generate assembly for a file
+src/Preliminary_Processing/Code_Files/venue_processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/Preliminary_Processing/Code_Files/venue_processing.cpp.s
+.PHONY : src/Preliminary_Processing/Code_Files/venue_processing.cpp.s
+
 src/Utils/Code_Files/helper.o: src/Utils/Code_Files/helper.cpp.o
 .PHONY : src/Utils/Code_Files/helper.o
 
@@ -358,30 +406,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/output_formatter.o: src/output_formatter.cpp.o
-.PHONY : src/output_formatter.o
-
-# target to build an object file
-src/output_formatter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.o
-.PHONY : src/output_formatter.cpp.o
-
-src/output_formatter.i: src/output_formatter.cpp.i
-.PHONY : src/output_formatter.i
-
-# target to preprocess a source file
-src/output_formatter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.i
-.PHONY : src/output_formatter.cpp.i
-
-src/output_formatter.s: src/output_formatter.cpp.s
-.PHONY : src/output_formatter.s
-
-# target to generate assembly for a file
-src/output_formatter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/output_formatter.cpp.s
-.PHONY : src/output_formatter.cpp.s
-
 src/pingala_processor.o: src/pingala_processor.cpp.o
 .PHONY : src/pingala_processor.o
 
@@ -406,30 +430,6 @@ src/pingala_processor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pingala_processor.dir/build.make CMakeFiles/pingala_processor.dir/src/pingala_processor.cpp.s
 .PHONY : src/pingala_processor.cpp.s
 
-src/venue_processing.o: src/venue_processing.cpp.o
-.PHONY : src/venue_processing.o
-
-# target to build an object file
-src/venue_processing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.o
-.PHONY : src/venue_processing.cpp.o
-
-src/venue_processing.i: src/venue_processing.cpp.i
-.PHONY : src/venue_processing.i
-
-# target to preprocess a source file
-src/venue_processing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.i
-.PHONY : src/venue_processing.cpp.i
-
-src/venue_processing.s: src/venue_processing.cpp.s
-.PHONY : src/venue_processing.s
-
-# target to generate assembly for a file
-src/venue_processing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule_engine.dir/build.make CMakeFiles/schedule_engine.dir/src/venue_processing.cpp.s
-.PHONY : src/venue_processing.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -452,6 +452,9 @@ help:
 	@echo "... src/Data_Structures/Code_Files/ds.o"
 	@echo "... src/Data_Structures/Code_Files/ds.i"
 	@echo "... src/Data_Structures/Code_Files/ds.s"
+	@echo "... src/Output_Formatter/Code_Files/output_formatter.o"
+	@echo "... src/Output_Formatter/Code_Files/output_formatter.i"
+	@echo "... src/Output_Formatter/Code_Files/output_formatter.s"
 	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.o"
 	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.i"
 	@echo "... src/Preliminary_Processing/Code_Files/constraint_processing.s"
@@ -461,21 +464,18 @@ help:
 	@echo "... src/Preliminary_Processing/Code_Files/course_processing.o"
 	@echo "... src/Preliminary_Processing/Code_Files/course_processing.i"
 	@echo "... src/Preliminary_Processing/Code_Files/course_processing.s"
+	@echo "... src/Preliminary_Processing/Code_Files/venue_processing.o"
+	@echo "... src/Preliminary_Processing/Code_Files/venue_processing.i"
+	@echo "... src/Preliminary_Processing/Code_Files/venue_processing.s"
 	@echo "... src/Utils/Code_Files/helper.o"
 	@echo "... src/Utils/Code_Files/helper.i"
 	@echo "... src/Utils/Code_Files/helper.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/output_formatter.o"
-	@echo "... src/output_formatter.i"
-	@echo "... src/output_formatter.s"
 	@echo "... src/pingala_processor.o"
 	@echo "... src/pingala_processor.i"
 	@echo "... src/pingala_processor.s"
-	@echo "... src/venue_processing.o"
-	@echo "... src/venue_processing.i"
-	@echo "... src/venue_processing.s"
 .PHONY : help
 
 

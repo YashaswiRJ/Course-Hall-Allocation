@@ -2,7 +2,7 @@
 #include <vector>
 #include <map>
 #include "Data_Structures/Header_Files/ds.hpp"
-#include "../helpers/json.hpp"
+#include "../../Utils/Header_Files/helper.hpp"
 
 std::pair<std::string, std::string> retrieve_section_course_code(std::string code){
     std::string section;

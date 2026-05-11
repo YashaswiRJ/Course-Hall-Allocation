@@ -23,20 +23,20 @@ set(MAIN_SOURCES
     src/Allocation_Strategy/Header_Files/allocate_tutorial.hpp
     src/Preliminary_Processing/Header_Files/course_preprocessing.hpp
     src/Preliminary_Processing/Header_Files/course_processing.hpp
-    src/venue_processing.hpp
+    src/Preliminary_Processing/Header_Files/venue_processing.hpp
     src/Preliminary_Processing/Header_Files/constraint_processing.hpp
     src/Utils/Header_Files/helper.hpp
-    src/output_formatter.hpp
+    src/Output_Formatter/Header_Files/output_formatter.hpp
     src/Data_Structures/Code_Files/ds.cpp
     src/Allocation_Strategy/Code_Files/allocation_logic.cpp
     src/Allocation_Strategy/Code_Files/allocate_lecture.cpp
     src/Allocation_Strategy/Code_Files/allocate_tutorial.cpp
     src/Preliminary_Processing/Code_Files/course_preprocessing.cpp
     src/Preliminary_Processing/Code_Files/course_processing.cpp
-    src/venue_processing.cpp
+    src/Preliminary_Processing/Code_Files/venue_processing.cpp
     src/Preliminary_Processing/Code_Files/constraint_processing.cpp
     src/Utils/Code_Files/helper.cpp
-    src/output_formatter.cpp
+    src/Output_Formatter/Code_Files/output_formatter.cpp
 )
 
 add_executable(${MAIN_EXECUTABLE_NAME} ${MAIN_SOURCES})

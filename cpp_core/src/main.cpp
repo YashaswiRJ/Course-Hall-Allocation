@@ -7,36 +7,20 @@
 #include "Data_Structures/Header_Files/ds.hpp"
 #include "Preliminary_Processing/Header_Files/course_preprocessing.hpp"
 #include "Preliminary_Processing/Header_Files/course_processing.hpp"
-#include "venue_processing.hpp"
+#include "Preliminary_Processing/Header_Files/venue_processing.hpp"
 #include "Preliminary_Processing/Header_Files/constraint_processing.hpp"
 #include "Allocation_Strategy/Header_Files/allocation_logic.hpp"
-#include "output_formatter.hpp"
+#include "Output_Formatter/Header_Files/output_formatter.hpp"
 
-// for convenience
 using json = nlohmann::json;
 
 int main() {
-    // The C++ program will now wait for input from stdin
-    // instead of looking for a file argument.
+    /*
+    Reads input JSON data from stdin using nlohmann::json.
+    The variable `j` stores all input data required for course allocation processing.
+    */
     json j;
-
-    // int fd = open("outputYASH.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    // if (fd < 0) {
-    //     perror("open");
-    //     exit(1);
-    // }
-
-    // // Redirect stdout (1) to the file descriptor
-    // if (dup2(fd, 1) < 0) {
-    //     perror("dup2");
-    //     close(fd);
-    //     exit(1);
-    // }
-    
-    // close(fd);
-
     std::cin >> j;
-    // std::cout << j.dump(4);
 
     std::vector<Course> preprocessed_course_list; 
     std::map<std::string, std::vector<Venue>> processed_venue_list;
@@ -47,30 +31,11 @@ int main() {
     int convenience_factor = 0;
     std::vector<nlohmann::json> lowStrengthCourses;
 
-    // std::cout<<"Reached lap -1" << std::endl;
-
     if(j.contains("courseData") && j.at("courseData").is_array()){
-        // This is the fix: create a variable first
         auto courseData = j.at("courseData").get<std::vector<json>>();
-        preprocessed_course_list = course_preprocessing_function(courseData, lowStrengthCourses);
-        // preprocessed_course_list = course_preprocessing_function(j.at("courseData").get<std::vector<json>>());    
+        preprocessed_course_list = course_preprocessing_function(courseData, lowStrengthCourses); 
     }
 
-    // std::cout << "Reached lap 0" << std::endl;
-    // std::cout << preprocessed_course_list.size() << std::endl;
-
-    /*
-    === DEBUG MODE ===
-    std::string course_code;
-    std::string course_name;
-    std::vector<int> lecture_schedule;
-    std::vector<int> tutorial_schedule;
-    int tutorial_count;
-    int students_registered;
-    bool is_modular;
-    std::string string_lecture_schedule;
-    std::string string_tutorial_schedule;
-    */
     json o1 = json::array();
     for(auto course: preprocessed_course_list){
         o1.push_back({
